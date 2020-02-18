@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>http://underscorehao.net/</loc>
+    <lastmod>2020-01-11T19:33:48+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://underscorehao.net/posts/</loc>
+    <lastmod>2020-01-11T19:33:48+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://underscorehao.net/2020/01/publishing-to-multiple-topics-in-azure-service-bus/</loc>
+    <lastmod>2020-01-11T19:33:48+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://underscorehao.net/2019/07/auto-refreshing-cache-in-dotnet/</loc>
+    <lastmod>2019-07-11T22:47:02+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://underscorehao.net/about/</loc>
+    <lastmod>2018-10-24T19:59:07+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://underscorehao.net/2018/03/net-core-api-dynamodb-dependency-injection/</loc>
+    <lastmod>2018-03-13T22:27:05+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://underscorehao.net/contact/</loc>
+    <lastmod>2018-03-03T10:54:07+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://underscorehao.net/categories/</loc>
+  </url>
+  
+  <url>
+    <loc>http://underscorehao.net/series/</loc>
+  </url>
+  
+  <url>
+    <loc>http://underscorehao.net/tags/</loc>
+  </url>
+  
+</urlset>
