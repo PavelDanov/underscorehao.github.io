@@ -6,10 +6,21 @@
     <description>Recent content on _hao</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 11 Jan 2020 19:33:48 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 21 Feb 2020 22:49:07 +0000</lastBuildDate>
     
 	<atom:link href="https://underscorehao.net/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>About</title>
+      <link>https://underscorehao.net/about/</link>
+      <pubDate>Fri, 21 Feb 2020 22:49:07 +0000</pubDate>
+      
+      <guid>https://underscorehao.net/about/</guid>
+      <description>Hello there I&#39;m Pavel Danov a.k.a. _hao or underscoreHao (on websites that don&#39;t support underscores). Welcome to my personal website. Here you can find about things that interest me and occupy my attention most of the time. I&#39;m currently residing in
+London, United Kingdom I was born in Bulgaria but moved to London a couple of months ago almost a year ago.
+For the better part of a decade my time has been devoted to Software and Martial Arts.</description>
+    </item>
     
     <item>
       <title>Publishing to Multiple Topics in Azure Service Bus</title>
@@ -29,17 +40,6 @@
       <guid>https://underscorehao.net/2019/07/auto-refreshing-cache-in-dotnet/</guid>
       <description>Caching is hard On a bright sunny day while you&#39;re working on your awesome project you catch a glimpse of something. You bring yourself closer to the monitor and begin meticulously examining your code. What you find brings you feelings of disgust and shame! You&#39;ve been calling an API retrieving data you need over and over again even though said data hardly changes!
 Being the smart and responsible engineer that you are, you decide to rectify your mistake immediately.</description>
-    </item>
-    
-    <item>
-      <title>About</title>
-      <link>https://underscorehao.net/about/</link>
-      <pubDate>Wed, 24 Oct 2018 19:59:07 +0000</pubDate>
-      
-      <guid>https://underscorehao.net/about/</guid>
-      <description>Hello there I&#39;m Pavel Danov a.k.a. _hao or underscoreHao (on websites that don&#39;t support underscores). Welcome to my personal website. Here you can find about things that interest me and occupy my attention most of the time. I&#39;m currently residing in
-London, United Kingdom I was born in Bulgaria but moved to London a couple of months ago almost a year ago.
-For the better part of a decade my time has been devoted to Software and Martial Arts.</description>
     </item>
     
     <item>
