@@ -27,7 +27,7 @@
       <base href="https://underscorehao.net/2020/01/publishing-to-multiple-topics-in-azure-service-bus/">
     
     <title>
-  Publishing to Multiple Topics in Azure Service Bus · _hao
+Publishing to Multiple Topics in Azure Service Bus · _hao
 </title>
 
     
@@ -107,32 +107,33 @@
 
       <div class="content">
         
-  <section class="container post">
-    <article>
-      <header>
-        <div class="post-title">
-          <h1 class="title">Publishing to Multiple Topics in Azure Service Bus</h1>
+<section class="container post">
+  <article>
+    <header>
+      <div class="post-title">
+        <h1 class="title">Publishing to Multiple Topics in Azure Service Bus</h1>
+      </div>
+      <div class="post-meta">
+        <div class="date">
+          <span class="posted-on">
+            <i class="fas fa-calendar"></i>
+            <time datetime='2020-01-11T19:33:48Z'>
+              January 11, 2020
+            </time>
+          </span>
+          <span class="reading-time">
+            <i class="fas fa-clock"></i>
+            6 minutes read
+          </span>
         </div>
-        <div class="post-meta">
-          <div class="date">
-            <span class="posted-on">
-              <i class="fas fa-calendar"></i>
-              <time datetime='2020-01-11T19:33:48Z'>
-                January 11, 2020
-              </time>
-            </span>
-            <span class="reading-time">
-              <i class="fas fa-clock"></i>
-              6 minutes read
-            </span>
-          </div>
-          
-          
-        </div>
-      </header>
+        
+        
+      </div>
+    </header>
 
-      <div>
-        <h2 id="multiple-topics">Multiple topics</h2>
+    <div>
+      
+      <h2 id="multiple-topics">Multiple topics</h2>
 <p>There are two main approaches when it comes to topics in Azure Service Bus. Depending what's your architecture and needs you can have either:</p>
 <ul>
 <li><strong>Filtered topic</strong> - this means you have only one topic for all of your event types. All publishers push messages onto that single topic. Some of the message fields and properties are then used for filtering by the subscribers since in most cases a subscriber will be interested only in certain types of messages.</li>
@@ -359,13 +360,13 @@
 <span class="p">}</span>
 </code></pre></div><p>And that's it! With this setup now you can add multiple topic clients with ease! Hope you find this post useful. There are other ways to accomplish the same thing and solve this problem, but I like this approach because it's extremely clean, elegant and testable!</p>
 
-      </div>
+    </div>
 
-      <footer>
-        
+    <footer>
+      
 
 
-        <div id="disqus_thread"></div>
+      <div id="disqus_thread"></div>
 <script type="application/javascript">
     var disqus_config = function () {
     
@@ -385,12 +386,12 @@
 </script>
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-        
-        
-      </footer>
-    </article>
+      
+      
+    </footer>
+  </article>
 
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script type="text/javascript" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/startup.js" id="MathJax-script"></script>
   <script>
@@ -407,7 +408,7 @@
       }
     };
   </script>
-  </section>
+</section>
 
       </div>
 

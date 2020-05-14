@@ -27,7 +27,7 @@ Amazon&#39;s .NET Core SDK is very good for the most part. Everything works as i
       <base href="https://underscorehao.net/2018/03/net-core-api-dynamodb-dependency-injection/">
     
     <title>
-  .NET Core API with DynamoDB Context Dependency Injection · _hao
+.NET Core API with DynamoDB Context Dependency Injection · _hao
 </title>
 
     
@@ -107,32 +107,33 @@ Amazon&#39;s .NET Core SDK is very good for the most part. Everything works as i
 
       <div class="content">
         
-  <section class="container post">
-    <article>
-      <header>
-        <div class="post-title">
-          <h1 class="title">.NET Core API with DynamoDB Context Dependency Injection</h1>
+<section class="container post">
+  <article>
+    <header>
+      <div class="post-title">
+        <h1 class="title">.NET Core API with DynamoDB Context Dependency Injection</h1>
+      </div>
+      <div class="post-meta">
+        <div class="date">
+          <span class="posted-on">
+            <i class="fas fa-calendar"></i>
+            <time datetime='2018-03-13T22:27:05&#43;02:00'>
+              March 13, 2018
+            </time>
+          </span>
+          <span class="reading-time">
+            <i class="fas fa-clock"></i>
+            5 minutes read
+          </span>
         </div>
-        <div class="post-meta">
-          <div class="date">
-            <span class="posted-on">
-              <i class="fas fa-calendar"></i>
-              <time datetime='2018-03-13T22:27:05&#43;02:00'>
-                March 13, 2018
-              </time>
-            </span>
-            <span class="reading-time">
-              <i class="fas fa-clock"></i>
-              5 minutes read
-            </span>
-          </div>
-          
-          
-        </div>
-      </header>
+        
+        
+      </div>
+    </header>
 
-      <div>
-        <h2 id="the-problem">The Problem</h2>
+    <div>
+      
+      <h2 id="the-problem">The Problem</h2>
 <p>Today I faced a problem which I knew would come, but didn't have time to implement properly at the time. There were more urgent tasks at hand before, deadlines to be met and this issue remained unresolved.</p>
 <p>Amazon's .NET Core SDK is very good for the most part. Everything works as it should. But let's say you use the <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DotNetSDKHighLevel.html">.NET Object Persistence Model</a> for <a href="https://aws.amazon.com/dynamodb/">DynamoDB</a> in your service and you have mapped C# classes to DynamoDB tables like this:</p>
 <div class="highlight"><pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">namespace</span> <span class="nn">Models</span>
@@ -362,13 +363,13 @@ Amazon&#39;s .NET Core SDK is very good for the most part. Everything works as i
 </code></pre></div><p>Depending on your case you can use different services for different tables or other requirements. This solution might seem a bit more cumbersome than the original, but it makes us flexible in case we need to work with multiple databases and different build environments. The only thing you have to do is to tell your build tool/pipeline to change the table names in your <strong><code>appsettings.json</code></strong> files.</p>
 <p>This method also is more robust when it comes to testing because it'll be much easier to mock! All in all I'm really happy with how it all turned out!</p>
 
-      </div>
+    </div>
 
-      <footer>
-        
+    <footer>
+      
 
 
-        <div id="disqus_thread"></div>
+      <div id="disqus_thread"></div>
 <script type="application/javascript">
     var disqus_config = function () {
     
@@ -388,12 +389,12 @@ Amazon&#39;s .NET Core SDK is very good for the most part. Everything works as i
 </script>
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-        
-        
-      </footer>
-    </article>
+      
+      
+    </footer>
+  </article>
 
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script type="text/javascript" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/startup.js" id="MathJax-script"></script>
   <script>
@@ -410,7 +411,7 @@ Amazon&#39;s .NET Core SDK is very good for the most part. Everything works as i
       }
     };
   </script>
-  </section>
+</section>
 
       </div>
 
