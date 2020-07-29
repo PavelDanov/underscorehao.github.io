@@ -6,10 +6,21 @@
     <description>Recent content on _hao</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 14 May 2020 20:00:00 +0100</lastBuildDate>
+    <lastBuildDate>Wed, 29 Jul 2020 07:07:00 +0100</lastBuildDate>
     
 	<atom:link href="https://underscorehao.net/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>About</title>
+      <link>https://underscorehao.net/about/</link>
+      <pubDate>Wed, 29 Jul 2020 07:07:00 +0100</pubDate>
+      
+      <guid>https://underscorehao.net/about/</guid>
+      <description>Hello there I&#39;m Pavel Danov a.k.a. _hao or underscoreHao (on websites that don&#39;t support underscores). Welcome to my personal website. Here you can find about things that interest me and occupy my attention most of the time. I&#39;m currently residing in
+London, United Kingdom I was born in Bulgaria but moved to London a couple of months ago almost two years ago.
+For the better part of a decade my time has been devoted to mainly to Software.</description>
+    </item>
     
     <item>
       <title>How I learned 1500 Chinese Characters in a Month - Heisig Method Review</title>
@@ -19,17 +30,6 @@
       <guid>https://underscorehao.net/2020/05/learning-1500-chinese-characters-in-a-month-heisig-method-review/</guid>
       <description>Introduction Hello dear visitor!
 Before you stands a very long article in which you&#39;ll find my review and results after spending 31 days with a book called Remembering Simplified Hanzi 1: How Not to Forget the Meaning and Writing of Chinese Characters written by James Heisig and Timothy W. Richardson. I think it&#39;s a groundbreaking book and an amazing method because it broke down a certain wall that was hindering my desire and drive to learn the Chinese language for a long time.</description>
-    </item>
-    
-    <item>
-      <title>About</title>
-      <link>https://underscorehao.net/about/</link>
-      <pubDate>Thu, 30 Apr 2020 22:37:52 +0100</pubDate>
-      
-      <guid>https://underscorehao.net/about/</guid>
-      <description>Hello there I&#39;m Pavel Danov a.k.a. _hao or underscoreHao (on websites that don&#39;t support underscores). Welcome to my personal website. Here you can find about things that interest me and occupy my attention most of the time. I&#39;m currently residing in
-London, United Kingdom I was born in Bulgaria but moved to London a couple of months ago almost two years ago.
-For the better part of a decade my time has been devoted to mainly to Software.</description>
     </item>
     
     <item>
