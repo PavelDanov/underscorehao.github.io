@@ -9,9 +9,7 @@
     <meta name="author" content="Pavel Danov">
     <meta name="description" content="Caching is hard On a bright sunny day while you&rsquo;re working on your awesome project you catch a glimpse of something. You bring yourself closer to the monitor and begin meticulously examining your code. What you find brings you feelings of disgust and shame! You&rsquo;ve been calling an API retrieving data you need over and over again even though said data hardly changes!
 Being the smart and responsible engineer that you are, you decide to rectify your mistake immediately.">
-    <meta name="keywords" content="blog,developer,personal,back-end,c#,c&#43;&#43;,programming,software,tech,backend,fintech,gamedev,games">
-
-    
+    <meta name="keywords" content="blog,developer,personal,back-end,c#,c&#43;&#43;,.net,dotnet,programming,software,tech,backend,fintech,gamedev,games,martial arts,books">
 
     <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Auto Refreshing Cache in .NET"/>
@@ -27,9 +25,6 @@ Being the smart and responsible engineer that you are, you decide to rectify you
 <meta property="article:modified_time" content="2019-07-11T22:47:02+01:00" />
 
 
-    
-      <base href="https://underscorehao.net/2019/07/auto-refreshing-cache-in-dotnet/">
-    
     <title>
 Auto Refreshing Cache in .NET · _hao
 </title>
@@ -38,10 +33,11 @@ Auto Refreshing Cache in .NET · _hao
       <link rel="canonical" href="https://underscorehao.net/2019/07/auto-refreshing-cache-in-dotnet/">
     
 
+    <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700%7CMerriweather:300,700%7CSource+Code+Pro:400,700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css" integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css"
+      integrity="sha256-gsmEoJAws/Kd3CjuOQzLie5Q3yshhvmo7YNtBG7aaEY=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8/normalize.min.css">
     
       
       
@@ -59,15 +55,16 @@ Auto Refreshing Cache in .NET · _hao
     
 
     
-      <link rel="stylesheet" href="https://underscorehao.net/css/custom.css" />
-    
-      <link rel="stylesheet" href="https://underscorehao.net/css/syntax.css" />
-    
 
     
 
     <link rel="icon" type="image/png" href="https://underscorehao.net/images/favicon-32x32.png" sizes="32x32">
     <link rel="icon" type="image/png" href="https://underscorehao.net/images/favicon-16x16.png" sizes="16x16">
+
+    <link rel="apple-touch-icon" href="https://underscorehao.net/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://underscorehao.net/images/apple-touch-icon.png">
+
+    
 
     <meta name="generator" content="Hugo 0.80.0" />
   </head>
@@ -79,6 +76,14 @@ Auto Refreshing Cache in .NET · _hao
   <body class="colorscheme-dark"
         onload=""
   >
+    
+<div class="float-container">
+    <a id="dark-mode-toggle" class="colorscheme-toggle">
+        <i class="fa fa-adjust fa-fw" aria-hidden="true"></i>
+    </a>
+</div>
+
+
     <main class="wrapper">
       <nav class="navigation">
   <section class="container">
@@ -86,26 +91,28 @@ Auto Refreshing Cache in .NET · _hao
       _hao
     </a>
     
-    <input type="checkbox" id="menu-toggle" />
-    <label class="menu-button float-right" for="menu-toggle"><i class="fas fa-bars"></i></label>
-    <ul class="navigation-list">
-      
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
         
-          <li class="navigation-item">
-            <a class="navigation-link" href="https://underscorehao.net/posts/">Blog</a>
-          </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="https://underscorehao.net/posts/">Blog</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="https://underscorehao.net/about/">About</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="https://underscorehao.net/contact/">Contact</a>
+            </li>
+          
         
-          <li class="navigation-item">
-            <a class="navigation-link" href="https://underscorehao.net/about/">About</a>
-          </li>
         
-          <li class="navigation-item">
-            <a class="navigation-link" href="https://underscorehao.net/contact/">Contact</a>
-          </li>
-        
-      
-      
-    </ul>
+      </ul>
     
   </section>
 </nav>
@@ -114,33 +121,34 @@ Auto Refreshing Cache in .NET · _hao
       <div class="content">
         
 <section class="container post">
-  <article>
-    <header>
-      <div class="post-title">
-        <h1 class="title">Auto Refreshing Cache in .NET</h1>
-      </div>
-      <div class="post-meta">
-        <div class="date">
-          <span class="posted-on">
-            <i class="fas fa-calendar"></i>
-            <time datetime='2019-07-11T22:47:02&#43;01:00'>
-              July 11, 2019
-            </time>
-          </span>
-          <span class="reading-time">
-            <i class="fas fa-clock"></i>
-            10-minute read
-          </span>
-        </div>
-        
-        
-      </div>
-    </header>
+	<article>
+		<header>
+			<div class="post-title">
+				<h1 class="title">Auto Refreshing Cache in .NET</h1>
+			</div>
+			<div class="post-meta">
+				<div class="date">
+					<span class="posted-on">
+						<i class="fa fa-calendar" aria-hidden="true"></i>
+						<time datetime='2019-07-11T22:47:02&#43;01:00'>
+							July 11, 2019
+						</time>
+					</span>
+					<span class="reading-time">
+						<i class="fa fa-clock-o" aria-hidden="true"></i>
+						10-minute read
+					</span>
+				</div>
+				
+				
+				
+			</div>
+		</header>
 
-    <div>
-      
-      
-      <h2 id="caching-is-hard">Caching is hard</h2>
+		<div>
+			
+			
+			<h2 id="caching-is-hard">Caching is hard</h2>
 <p>On a bright sunny day while you&rsquo;re working on your awesome project you catch a glimpse of something. You bring yourself closer to the monitor and begin meticulously examining your code. What you find brings you feelings of disgust and shame! You&rsquo;ve been calling an API retrieving data you need over and over again even though said data hardly changes!</p>
 <p>Being the smart and responsible engineer that you are, you decide to rectify your mistake immediately. You think to yourself</p>
 <blockquote>
@@ -158,51 +166,51 @@ Auto Refreshing Cache in .NET · _hao
 <p>If that&rsquo;s what you need, keep on reading!</p>
 <h2 id="implementation-with-memorycache-in-net-framework">Implementation with MemoryCache in .NET Framework</h2>
 <p>Let&rsquo;s start with the simple stuff. We want to perform some basic CRUD operations on our cache - saving data to it, getting our cached objects and potentially deleting our data. The best way to do it is to define an interface.</p>
-<div class="highlight"><pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">using</span> <span class="nn">System.Runtime.Caching</span><span class="p">;</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#66d9ef">using</span> System.Runtime.Caching;
 
-<span class="k">namespace</span> <span class="nn">FooBar.Caching</span>
-<span class="p">{</span>
-    <span class="k">public</span> <span class="k">interface</span> <span class="n">IMemoryAutoRefreshCache</span>
-    <span class="p">{</span>
-        <span class="n">T</span> <span class="n">GetById</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;(</span><span class="kt">string</span> <span class="n">id</span><span class="p">);</span>
-        <span class="k">void</span> <span class="n">Save</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;(</span><span class="kt">string</span> <span class="n">id</span><span class="p">,</span> <span class="n">T</span> <span class="n">cacheObj</span><span class="p">,</span> <span class="n">CacheItemPolicy</span> <span class="n">refreshPolicy</span><span class="p">);</span>
-        <span class="k">void</span> <span class="n">Remove</span><span class="p">(</span><span class="kt">string</span> <span class="n">id</span><span class="p">);</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+<span style="color:#66d9ef">namespace</span> FooBar.Caching
+{
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> IMemoryAutoRefreshCache
+    {
+        T GetById&lt;T&gt;(<span style="color:#66d9ef">string</span> id);
+        <span style="color:#66d9ef">void</span> Save&lt;T&gt;(<span style="color:#66d9ef">string</span> id, T cacheObj, CacheItemPolicy refreshPolicy);
+        <span style="color:#66d9ef">void</span> Remove(<span style="color:#66d9ef">string</span> id);
+    }
+}
 </code></pre></div><p>These are the methods I&rsquo;m going to use to illustrate my example. Depending on your use case you can have a lot more of them doing various things to your cache, but for my case those are enough. The point I want you to focus on here is the <strong><code>CacheItemPolicy</code></strong> we can set during the Save.</p>
 <p>Now that we have our interface we can also implement it in a new class</p>
-<div class="highlight"><pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">using</span> <span class="nn">System.Runtime.Caching</span><span class="p">;</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#66d9ef">using</span> System.Runtime.Caching;
 
-<span class="k">namespace</span> <span class="nn">FooBar.Caching</span>
-<span class="p">{</span>
-    <span class="k">public</span> <span class="k">class</span> <span class="nc">MemoryAutoRefreshCache</span> <span class="p">:</span> <span class="n">IMemoryAutoRefreshCache</span>
-    <span class="p">{</span>
-        <span class="k">private</span> <span class="k">readonly</span> <span class="n">MemoryCache</span> <span class="n">memoryCache</span><span class="p">;</span>
+<span style="color:#66d9ef">namespace</span> FooBar.Caching
+{
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MemoryAutoRefreshCache</span> : IMemoryAutoRefreshCache
+    {
+        <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">readonly</span> MemoryCache memoryCache;
 
-        <span class="k">public</span> <span class="n">MemoryAutoRefreshCache</span><span class="p">(</span><span class="n">MemoryCache</span> <span class="n">memoryCache</span> <span class="p">=</span> <span class="k">null</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="k">this</span><span class="p">.</span><span class="n">memoryCache</span> <span class="p">=</span> <span class="n">memoryCache</span> <span class="p">??</span> <span class="n">MemoryCache</span><span class="p">.</span><span class="n">Default</span><span class="p">;</span>
+        <span style="color:#66d9ef">public</span> MemoryAutoRefreshCache(MemoryCache memoryCache = <span style="color:#66d9ef">null</span>) =&gt; <span style="color:#66d9ef">this</span>.memoryCache = memoryCache ?? MemoryCache.Default;
 
-        <span class="k">public</span> <span class="n">T</span> <span class="n">GetById</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;(</span><span class="kt">string</span> <span class="n">id</span><span class="p">)</span>
-        <span class="p">{</span>
-            <span class="kt">var</span> <span class="k">value</span> <span class="p">=</span> <span class="p">(</span><span class="n">T</span><span class="p">)</span><span class="n">memoryCache</span><span class="p">.</span><span class="n">Get</span><span class="p">(</span><span class="n">id</span><span class="p">);</span>
-            <span class="k">if</span> <span class="p">(</span><span class="k">value</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span>
-            <span class="p">{</span>
-                <span class="k">return</span> <span class="k">default</span><span class="p">(</span><span class="n">T</span><span class="p">);</span>
-            <span class="p">}</span>
+        <span style="color:#66d9ef">public</span> T GetById&lt;T&gt;(<span style="color:#66d9ef">string</span> id)
+        {
+            <span style="color:#66d9ef">var</span> <span style="color:#66d9ef">value</span> = (T)memoryCache.Get(id);
+            <span style="color:#66d9ef">if</span> (<span style="color:#66d9ef">value</span> == <span style="color:#66d9ef">null</span>)
+            {
+                <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">default</span>(T);
+            }
 
-            <span class="k">return</span> <span class="k">value</span><span class="p">;</span>
-        <span class="p">}</span>
+            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">value</span>;
+        }
 
-        <span class="k">public</span> <span class="k">void</span> <span class="n">Save</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;(</span><span class="kt">string</span> <span class="n">id</span><span class="p">,</span> <span class="n">T</span> <span class="n">result</span><span class="p">,</span> <span class="n">CacheItemPolicy</span> <span class="n">refreshPolicy</span><span class="p">)</span>
-        <span class="p">{</span>
-            <span class="n">memoryCache</span><span class="p">.</span><span class="n">Set</span><span class="p">(</span><span class="n">id</span><span class="p">,</span> <span class="n">result</span><span class="p">,</span> <span class="n">refreshPolicy</span><span class="p">);</span>
-        <span class="p">}</span>
+        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> Save&lt;T&gt;(<span style="color:#66d9ef">string</span> id, T result, CacheItemPolicy refreshPolicy)
+        {
+            memoryCache.Set(id, result, refreshPolicy);
+        }
 
-        <span class="k">public</span> <span class="k">void</span> <span class="n">Remove</span><span class="p">(</span><span class="kt">string</span> <span class="n">id</span><span class="p">)</span>
-        <span class="p">{</span>
-            <span class="n">memoryCache</span><span class="p">.</span><span class="n">Remove</span><span class="p">(</span><span class="n">id</span><span class="p">);</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> Remove(<span style="color:#66d9ef">string</span> id)
+        {
+            memoryCache.Remove(id);
+        }
+    }
+}
 </code></pre></div><p>Nothing out of the ordinary here. I want to bring your attention to our <strong><code>Save</code></strong> method one more time and the CacheItemPolicy. The summary of <strong><code>CacheItemPolicy</code></strong> states:</p>
 <blockquote>
 <p>Represents a set of eviction and expiration details for a specific cache entry.</p>
@@ -214,314 +222,314 @@ Auto Refreshing Cache in .NET · _hao
 </ul>
 <p>As you can imagine we&rsquo;ll use the <strong><code>UpdateCallback</code></strong> in our case.</p>
 <p>So let&rsquo;s see how an implementation of this auto refreshing cache will look like!</p>
-<div class="highlight"><pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
-<span class="k">using</span> <span class="nn">System.Runtime.Caching</span><span class="p">;</span>
-<span class="k">using</span> <span class="nn">System.Threading</span><span class="p">;</span>
-<span class="k">using</span> <span class="nn">FooBar.Caching</span><span class="p">;</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#66d9ef">using</span> System;
+<span style="color:#66d9ef">using</span> System.Runtime.Caching;
+<span style="color:#66d9ef">using</span> System.Threading;
+<span style="color:#66d9ef">using</span> FooBar.Caching;
 
-<span class="k">namespace</span> <span class="nn">FooBar.Services.Configuration</span>
-<span class="p">{</span>
-    <span class="k">public</span> <span class="k">class</span> <span class="nc">ConfigurationProvider</span>
-    <span class="p">{</span>
-        <span class="k">private</span> <span class="k">readonly</span> <span class="n">IMemoryAutoRefreshCache</span> <span class="n">localCache</span><span class="p">;</span>
-        <span class="k">private</span> <span class="k">const</span> <span class="kt">string</span> <span class="n">cacheKey</span> <span class="p">=</span> <span class="s">&#34;myAwesomeCacheKey&#34;</span><span class="p">;</span>
+<span style="color:#66d9ef">namespace</span> FooBar.Services.Configuration
+{
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ConfigurationProvider</span>
+    {
+        <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">readonly</span> IMemoryAutoRefreshCache localCache;
+        <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">string</span> cacheKey = <span style="color:#e6db74">&#34;myAwesomeCacheKey&#34;</span>;
 
-        <span class="k">private</span> <span class="k">static</span> <span class="k">readonly</span> <span class="kt">object</span> <span class="n">_lock</span> <span class="p">=</span> <span class="k">new</span> <span class="kt">object</span><span class="p">();</span>
+        <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">readonly</span> <span style="color:#66d9ef">object</span> _lock = <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">object</span>();
 
-        <span class="k">public</span> <span class="n">ConfigurationProvider</span><span class="p">(</span><span class="n">ILocalAutoRefreshCache</span> <span class="n">localCache</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="k">this</span><span class="p">.</span><span class="n">localCache</span> <span class="p">=</span> <span class="n">localCache</span><span class="p">;</span>
+        <span style="color:#66d9ef">public</span> ConfigurationProvider(ILocalAutoRefreshCache localCache) =&gt; <span style="color:#66d9ef">this</span>.localCache = localCache;
 
-        <span class="k">public</span> <span class="n">Configuration</span> <span class="n">GetConfiguration</span><span class="p">()</span>
-        <span class="p">{</span>
-            <span class="kt">var</span> <span class="n">cachedConfig</span> <span class="p">=</span> <span class="n">localCache</span><span class="p">.</span><span class="n">GetById</span><span class="p">&lt;</span><span class="n">Configuration</span><span class="p">&gt;(</span><span class="n">cacheKey</span><span class="p">);</span>
-            <span class="k">if</span> <span class="p">(</span><span class="n">cachedConfig</span> <span class="p">!=</span> <span class="k">null</span><span class="p">)</span>
-            <span class="p">{</span>
-                <span class="k">return</span> <span class="n">cachedConfig</span><span class="p">;</span>
-            <span class="p">}</span>
+        <span style="color:#66d9ef">public</span> Configuration GetConfiguration()
+        {
+            <span style="color:#66d9ef">var</span> cachedConfig = localCache.GetById&lt;Configuration&gt;(cacheKey);
+            <span style="color:#66d9ef">if</span> (cachedConfig != <span style="color:#66d9ef">null</span>)
+            {
+                <span style="color:#66d9ef">return</span> cachedConfig;
+            }
 
-            <span class="k">lock</span> <span class="p">(</span><span class="n">_lock</span><span class="p">)</span>
-            <span class="p">{</span>
-                <span class="c1">// Check to see if anyone wrote in the cache while we&#39;re waiting for our turn
-</span><span class="c1"></span>                <span class="n">cachedConfig</span> <span class="p">=</span> <span class="n">localCache</span><span class="p">.</span><span class="n">GetById</span><span class="p">&lt;</span><span class="n">Configuration</span><span class="p">&gt;(</span><span class="n">cacheKey</span><span class="p">);</span>
-                <span class="k">if</span> <span class="p">(</span><span class="n">cachedConfig</span> <span class="p">!=</span> <span class="k">null</span><span class="p">)</span>
-                <span class="p">{</span>
-                    <span class="k">return</span> <span class="n">cachedConfig</span><span class="p">;</span>
-                <span class="p">}</span>
+            <span style="color:#66d9ef">lock</span> (_lock)
+            {
+                <span style="color:#75715e">// Check to see if anyone wrote in the cache while we&#39;re waiting for our turn
+</span><span style="color:#75715e"></span>                cachedConfig = localCache.GetById&lt;Configuration&gt;(cacheKey);
+                <span style="color:#66d9ef">if</span> (cachedConfig != <span style="color:#66d9ef">null</span>)
+                {
+                    <span style="color:#66d9ef">return</span> cachedConfig;
+                }
 
-                <span class="c1">// This method is not implemented because it can be anything. The main part is that you want to cache an object.
-</span><span class="c1"></span>                <span class="n">cachedConfig</span> <span class="p">=</span> <span class="n">GetConfigurationFromRemoteLocation</span><span class="p">(</span><span class="n">provider</span><span class="p">);</span>
-                <span class="kt">int</span> <span class="n">refreshTimeInSeconds</span> <span class="p">=</span> <span class="m">3600</span><span class="p">;</span> <span class="c1">// 1 hour
-</span><span class="c1"></span>                <span class="n">localCache</span><span class="p">.</span><span class="n">Save</span><span class="p">(</span><span class="n">cacheKey</span><span class="p">,</span> <span class="n">cachedConfig</span><span class="p">,</span> <span class="n">GetPolicy</span><span class="p">(</span><span class="n">refreshTimeInSeconds</span><span class="p">));</span>
+                <span style="color:#75715e">// This method is not implemented because it can be anything. The main part is that you want to cache an object.
+</span><span style="color:#75715e"></span>                cachedConfig = GetConfigurationFromRemoteLocation(provider);
+                <span style="color:#66d9ef">int</span> refreshTimeInSeconds = <span style="color:#ae81ff">3600</span>; <span style="color:#75715e">// 1 hour
+</span><span style="color:#75715e"></span>                localCache.Save(cacheKey, cachedConfig, GetPolicy(refreshTimeInSeconds));
 
-                <span class="k">return</span> <span class="n">cachedConfig</span><span class="p">;</span>
-            <span class="p">}</span>
-        <span class="p">}</span>
+                <span style="color:#66d9ef">return</span> cachedConfig;
+            }
+        }
 
-        <span class="k">private</span> <span class="n">CacheItemPolicy</span> <span class="n">GetPolicy</span><span class="p">(</span><span class="kt">int</span> <span class="n">refreshInterval</span><span class="p">)</span>
-        <span class="p">{</span>
-            <span class="k">return</span> <span class="k">new</span> <span class="n">CacheItemPolicy</span>
-            <span class="p">{</span>
-                <span class="c1">// This is where the magic happens
-</span><span class="c1"></span>                <span class="c1">// The UpdateCallback will be called before our object is removed from the cache
-</span><span class="c1"></span>                <span class="n">UpdateCallback</span> <span class="p">=</span> <span class="p">(</span><span class="n">CacheEntryUpdateArguments</span> <span class="n">args</span><span class="p">)</span> <span class="p">=&gt;</span>
-                <span class="p">{</span>
-                    <span class="k">if</span> <span class="p">(</span><span class="n">args</span><span class="p">.</span><span class="n">RemovedReason</span> <span class="p">==</span> <span class="n">CacheEntryRemovedReason</span><span class="p">.</span><span class="n">Expired</span><span class="p">)</span>
-                    <span class="p">{</span>
-                        <span class="kt">var</span> <span class="n">cacheKey</span> <span class="p">=</span> <span class="n">args</span><span class="p">.</span><span class="n">Key</span><span class="p">;</span>
+        <span style="color:#66d9ef">private</span> CacheItemPolicy GetPolicy(<span style="color:#66d9ef">int</span> refreshInterval)
+        {
+            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> CacheItemPolicy
+            {
+                <span style="color:#75715e">// This is where the magic happens
+</span><span style="color:#75715e"></span>                <span style="color:#75715e">// The UpdateCallback will be called before our object is removed from the cache
+</span><span style="color:#75715e"></span>                UpdateCallback = (CacheEntryUpdateArguments args) =&gt;
+                {
+                    <span style="color:#66d9ef">if</span> (args.RemovedReason == CacheEntryRemovedReason.Expired)
+                    {
+                        <span style="color:#66d9ef">var</span> cacheKey = args.Key;
 
-                        <span class="c1">// Get current cached value
-</span><span class="c1"></span>                        <span class="kt">var</span> <span class="n">currentCachedEntity</span> <span class="p">=</span> <span class="n">args</span><span class="p">.</span><span class="n">Source</span><span class="p">[</span><span class="n">cacheKey</span><span class="p">]</span> <span class="k">as</span> <span class="n">Configuration</span><span class="p">;</span>
+                        <span style="color:#75715e">// Get current cached value
+</span><span style="color:#75715e"></span>                        <span style="color:#66d9ef">var</span> currentCachedEntity = args.Source[cacheKey] <span style="color:#66d9ef">as</span> Configuration;
 
-                        <span class="c1">// Get the potentially new data
-</span><span class="c1"></span>                        <span class="kt">var</span> <span class="n">newEntity</span> <span class="p">=</span> <span class="n">GetConfigurationFromRemoteLocation</span><span class="p">(</span><span class="n">provider</span><span class="p">);</span>
+                        <span style="color:#75715e">// Get the potentially new data
+</span><span style="color:#75715e"></span>                        <span style="color:#66d9ef">var</span> newEntity = GetConfigurationFromRemoteLocation(provider);
 
-                        <span class="c1">// If new is not null - update, otherwise just refresh the old value
-</span><span class="c1"></span>                        <span class="c1">// The condition by which you decide to update or refresh the data depends entirely on you
-</span><span class="c1"></span>                        <span class="k">if</span> <span class="p">(</span><span class="n">newEntity</span> <span class="p">!=</span> <span class="k">null</span><span class="p">)</span>
-                        <span class="p">{</span>
-                            <span class="kt">var</span> <span class="n">updatedEntity</span> <span class="p">=</span> <span class="n">newEntity</span><span class="p">;</span>
-                            <span class="n">args</span><span class="p">.</span><span class="n">UpdatedCacheItem</span> <span class="p">=</span> <span class="k">new</span> <span class="n">CacheItem</span><span class="p">(</span><span class="n">cacheKey</span><span class="p">,</span> <span class="n">updatedEntity</span><span class="p">);</span>
-                            <span class="n">args</span><span class="p">.</span><span class="n">UpdatedCacheItemPolicy</span> <span class="p">=</span> <span class="n">GetPolicy</span><span class="p">(</span><span class="n">refreshInterval</span><span class="p">);</span>
-                        <span class="p">}</span>
-                        <span class="k">else</span>
-                        <span class="p">{</span>
-                            <span class="kt">var</span> <span class="n">updatedEntity</span> <span class="p">=</span> <span class="n">currentCachedEntity</span><span class="p">;</span>
-                            <span class="n">args</span><span class="p">.</span><span class="n">UpdatedCacheItem</span> <span class="p">=</span> <span class="k">new</span> <span class="n">CacheItem</span><span class="p">(</span><span class="n">cacheKey</span><span class="p">,</span> <span class="n">updatedEntity</span><span class="p">);</span>
-                            <span class="n">args</span><span class="p">.</span><span class="n">UpdatedCacheItemPolicy</span> <span class="p">=</span> <span class="n">GetPolicy</span><span class="p">(</span><span class="n">refreshInterval</span><span class="p">);</span>
-                        <span class="p">}</span>
-                    <span class="p">}</span>
-                <span class="p">},</span>
-                <span class="n">AbsoluteExpiration</span> <span class="p">=</span> <span class="n">DateTime</span><span class="p">.</span><span class="n">UtcNow</span><span class="p">.</span><span class="n">AddSeconds</span><span class="p">(</span><span class="n">refreshInterval</span><span class="p">),</span>
-            <span class="p">};</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+                        <span style="color:#75715e">// If new is not null - update, otherwise just refresh the old value
+</span><span style="color:#75715e"></span>                        <span style="color:#75715e">// The condition by which you decide to update or refresh the data depends entirely on you
+</span><span style="color:#75715e"></span>                        <span style="color:#66d9ef">if</span> (newEntity != <span style="color:#66d9ef">null</span>)
+                        {
+                            <span style="color:#66d9ef">var</span> updatedEntity = newEntity;
+                            args.UpdatedCacheItem = <span style="color:#66d9ef">new</span> CacheItem(cacheKey, updatedEntity);
+                            args.UpdatedCacheItemPolicy = GetPolicy(refreshInterval);
+                        }
+                        <span style="color:#66d9ef">else</span>
+                        {
+                            <span style="color:#66d9ef">var</span> updatedEntity = currentCachedEntity;
+                            args.UpdatedCacheItem = <span style="color:#66d9ef">new</span> CacheItem(cacheKey, updatedEntity);
+                            args.UpdatedCacheItemPolicy = GetPolicy(refreshInterval);
+                        }
+                    }
+                },
+                AbsoluteExpiration = DateTime.UtcNow.AddSeconds(refreshInterval),
+            };
+        }
+    }
+}
 </code></pre></div><p>So there you go! Now you can refresh, update or invalidate your cache every hour depending on the behavior you desire!</p>
 <h3 id="bonus">Bonus</h3>
 <p>As a bonus you can read on the interesting thing that happens when you put <strong><code>AbsoluteExpiration</code></strong> below 20 seconds <a href="https://stackoverflow.com/questions/12630168/memorycache-absoluteexpiration-acting-strange">here</a>.</p>
 <p>Also it&rsquo;s important to note that items can expire some time after the AbsoluteExpiration, there&rsquo;s no guarantee that they&rsquo;ll expire right on the spot. Here are two tests confirming that (I know we shouldn&rsquo;t test code that isn&rsquo;t ours, but it&rsquo;s fun!)</p>
-<div class="highlight"><pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">using</span> <span class="nn">FooBar.Caching</span><span class="p">;</span>
-<span class="k">using</span> <span class="nn">NUnit.Framework</span><span class="p">;</span>
-<span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
-<span class="k">using</span> <span class="nn">System.Runtime.Caching</span><span class="p">;</span>
-<span class="k">using</span> <span class="nn">System.Threading</span><span class="p">;</span>
-<span class="k">using</span> <span class="nn">System.Threading.Tasks</span><span class="p">;</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#66d9ef">using</span> FooBar.Caching;
+<span style="color:#66d9ef">using</span> NUnit.Framework;
+<span style="color:#66d9ef">using</span> System;
+<span style="color:#66d9ef">using</span> System.Runtime.Caching;
+<span style="color:#66d9ef">using</span> System.Threading;
+<span style="color:#66d9ef">using</span> System.Threading.Tasks;
 
-<span class="k">namespace</span> <span class="nn">FooBar.Caching.UnitTests</span>
-<span class="p">{</span>
-<span class="na">    [TestFixture]</span>
-    <span class="k">public</span> <span class="k">class</span> <span class="nc">MemoryAutoRefreshCacheTests</span>
-    <span class="p">{</span>
-        <span class="k">private</span> <span class="n">MemoryAutoRefreshCache</span> <span class="n">subject</span><span class="p">;</span>
-        <span class="k">private</span> <span class="kt">int</span> <span class="n">updateItemCounter</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span>
-<span class="na">
-</span><span class="na">        [SetUp]</span>
-        <span class="k">public</span> <span class="k">void</span> <span class="n">Setup</span><span class="p">()</span> <span class="p">=&gt;</span> <span class="n">subject</span> <span class="p">=</span> <span class="k">new</span> <span class="n">MemoryAutoRefreshCache</span><span class="p">();</span>
-<span class="na">
-</span><span class="na">        [Test]</span>
-        <span class="k">public</span> <span class="k">async</span> <span class="n">Task</span> <span class="n">VerifyUpdateCallback_LocalMemoryCache</span><span class="p">()</span>
-        <span class="p">{</span>
-            <span class="n">updateItemCounter</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span>
+<span style="color:#66d9ef">namespace</span> FooBar.Caching.UnitTests
+{
+<span style="color:#a6e22e">    [TestFixture]</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MemoryAutoRefreshCacheTests</span>
+    {
+        <span style="color:#66d9ef">private</span> MemoryAutoRefreshCache subject;
+        <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">int</span> updateItemCounter = <span style="color:#ae81ff">0</span>;
+<span style="color:#a6e22e">
+</span><span style="color:#a6e22e">        [SetUp]</span>
+        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> Setup() =&gt; subject = <span style="color:#66d9ef">new</span> MemoryAutoRefreshCache();
+<span style="color:#a6e22e">
+</span><span style="color:#a6e22e">        [Test]</span>
+        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">async</span> Task VerifyUpdateCallback_LocalMemoryCache()
+        {
+            updateItemCounter = <span style="color:#ae81ff">0</span>;
 
-            <span class="n">subject</span><span class="p">.</span><span class="n">Save</span><span class="p">(</span><span class="s">$&#34;key&#34;</span><span class="p">,</span> <span class="s">&#34;value&#34;</span><span class="p">,</span> <span class="n">GetPolicy</span><span class="p">(</span><span class="m">1</span><span class="p">));</span>
+            subject.Save(<span style="color:#e6db74">$&#34;key&#34;</span>, <span style="color:#e6db74">&#34;value&#34;</span>, GetPolicy(<span style="color:#ae81ff">1</span>));
 
-            <span class="c1">// The item can be expired between 0 and 30 seconds after expiration time
-</span><span class="c1"></span>            <span class="k">await</span> <span class="n">Task</span><span class="p">.</span><span class="n">Delay</span><span class="p">(</span><span class="n">TimeSpan</span><span class="p">.</span><span class="n">FromSeconds</span><span class="p">(</span><span class="m">32</span><span class="p">));</span>
+            <span style="color:#75715e">// The item can be expired between 0 and 30 seconds after expiration time
+</span><span style="color:#75715e"></span>            <span style="color:#66d9ef">await</span> Task.Delay(TimeSpan.FromSeconds(<span style="color:#ae81ff">32</span>));
 
-            <span class="c1">// Test that the update callback was invoked at least once
-</span><span class="c1"></span>            <span class="n">Assert</span><span class="p">.</span><span class="n">IsTrue</span><span class="p">(</span><span class="n">updateItemCounter</span> <span class="p">&gt;=</span> <span class="m">1</span><span class="p">);</span>
-        <span class="p">}</span>
-<span class="na">
-</span><span class="na">        [Test]</span>
-        <span class="k">public</span> <span class="k">void</span> <span class="n">VerifyUpdateCallbackReturnsDuringRefresh_LocalMemoryCache</span><span class="p">()</span>
-        <span class="p">{</span>
-            <span class="n">updateItemCounter</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span>
+            <span style="color:#75715e">// Test that the update callback was invoked at least once
+</span><span style="color:#75715e"></span>            Assert.IsTrue(updateItemCounter &gt;= <span style="color:#ae81ff">1</span>);
+        }
+<span style="color:#a6e22e">
+</span><span style="color:#a6e22e">        [Test]</span>
+        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> VerifyUpdateCallbackReturnsDuringRefresh_LocalMemoryCache()
+        {
+            updateItemCounter = <span style="color:#ae81ff">0</span>;
 
-            <span class="kt">string</span> <span class="n">key</span> <span class="p">=</span> <span class="s">&#34;key&#34;</span><span class="p">;</span>
-            <span class="kt">string</span> <span class="k">value</span> <span class="p">=</span> <span class="s">&#34;value&#34;</span><span class="p">;</span>
+            <span style="color:#66d9ef">string</span> key = <span style="color:#e6db74">&#34;key&#34;</span>;
+            <span style="color:#66d9ef">string</span> <span style="color:#66d9ef">value</span> = <span style="color:#e6db74">&#34;value&#34;</span>;
 
-            <span class="n">subject</span><span class="p">.</span><span class="n">Save</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="k">value</span><span class="p">,</span> <span class="n">GetPolicyWithDelay</span><span class="p">(</span><span class="m">1</span><span class="p">));</span>
+            subject.Save(key, <span style="color:#66d9ef">value</span>, GetPolicyWithDelay(<span style="color:#ae81ff">1</span>));
 
-            <span class="c1">// The item can be expired between 0 and 30 seconds after expiration time
-</span><span class="c1"></span>            <span class="kt">var</span> <span class="n">start</span> <span class="p">=</span> <span class="n">DateTime</span><span class="p">.</span><span class="n">UtcNow</span><span class="p">;</span>
+            <span style="color:#75715e">// The item can be expired between 0 and 30 seconds after expiration time
+</span><span style="color:#75715e"></span>            <span style="color:#66d9ef">var</span> start = DateTime.UtcNow;
 
-            <span class="k">do</span>
-            <span class="p">{</span>
-                <span class="kt">var</span> <span class="n">cachedItem</span> <span class="p">=</span> <span class="n">subject</span><span class="p">.</span><span class="n">GetById</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;(</span><span class="s">&#34;key&#34;</span><span class="p">);</span>
-                <span class="n">Assert</span><span class="p">.</span><span class="n">AreEqual</span><span class="p">(</span><span class="k">value</span><span class="p">,</span> <span class="n">cachedItem</span><span class="p">);</span>
-            <span class="p">}</span> <span class="k">while</span> <span class="p">(</span><span class="n">start</span><span class="p">.</span><span class="n">AddSeconds</span><span class="p">(</span><span class="m">40</span><span class="p">)</span> <span class="p">&gt;</span> <span class="n">DateTime</span><span class="p">.</span><span class="n">UtcNow</span><span class="p">);</span>
+            <span style="color:#66d9ef">do</span>
+            {
+                <span style="color:#66d9ef">var</span> cachedItem = subject.GetById&lt;<span style="color:#66d9ef">string</span>&gt;(<span style="color:#e6db74">&#34;key&#34;</span>);
+                Assert.AreEqual(<span style="color:#66d9ef">value</span>, cachedItem);
+            } <span style="color:#66d9ef">while</span> (start.AddSeconds(<span style="color:#ae81ff">40</span>) &gt; DateTime.UtcNow);
 
-            <span class="n">Assert</span><span class="p">.</span><span class="n">IsTrue</span><span class="p">(</span><span class="n">updateItemCounter</span> <span class="p">&gt;=</span> <span class="m">1</span><span class="p">);</span>
-        <span class="p">}</span>
+            Assert.IsTrue(updateItemCounter &gt;= <span style="color:#ae81ff">1</span>);
+        }
 
-        <span class="k">private</span> <span class="kt">string</span> <span class="n">AddKeys</span><span class="p">(</span><span class="kt">string</span> <span class="n">key</span><span class="p">)</span>
-        <span class="p">{</span>
-            <span class="n">updateItemCounter</span><span class="p">++;</span>
-            <span class="k">return</span> <span class="n">key</span> <span class="p">+</span> <span class="n">key</span><span class="p">;</span>
-        <span class="p">}</span>
+        <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">string</span> AddKeys(<span style="color:#66d9ef">string</span> key)
+        {
+            updateItemCounter++;
+            <span style="color:#66d9ef">return</span> key + key;
+        }
 
-        <span class="k">private</span> <span class="k">void</span> <span class="n">UpdateCounter</span><span class="p">()</span>
-        <span class="p">{</span>
-            <span class="n">updateItemCounter</span><span class="p">++;</span>
-        <span class="p">}</span>
+        <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> UpdateCounter()
+        {
+            updateItemCounter++;
+        }
 
-        <span class="k">private</span> <span class="n">CacheItemPolicy</span> <span class="n">GetPolicyWithDelay</span><span class="p">(</span><span class="kt">double</span> <span class="n">refreshInterval</span><span class="p">)</span>
-        <span class="p">{</span>
-            <span class="k">return</span> <span class="k">new</span> <span class="n">CacheItemPolicy</span>
-            <span class="p">{</span>
-                <span class="n">UpdateCallback</span> <span class="p">=</span> <span class="p">(</span><span class="n">CacheEntryUpdateArguments</span> <span class="n">args</span><span class="p">)</span> <span class="p">=&gt;</span>
-                <span class="p">{</span>
-                    <span class="k">if</span> <span class="p">(</span><span class="n">args</span><span class="p">.</span><span class="n">RemovedReason</span> <span class="p">==</span> <span class="n">CacheEntryRemovedReason</span><span class="p">.</span><span class="n">Expired</span><span class="p">)</span>
-                    <span class="p">{</span>
-                        <span class="n">Thread</span><span class="p">.</span><span class="n">Sleep</span><span class="p">(</span><span class="m">2000</span><span class="p">);</span>
-                        <span class="kt">var</span> <span class="n">id</span> <span class="p">=</span> <span class="n">args</span><span class="p">.</span><span class="n">Key</span><span class="p">;</span>
+        <span style="color:#66d9ef">private</span> CacheItemPolicy GetPolicyWithDelay(<span style="color:#66d9ef">double</span> refreshInterval)
+        {
+            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> CacheItemPolicy
+            {
+                UpdateCallback = (CacheEntryUpdateArguments args) =&gt;
+                {
+                    <span style="color:#66d9ef">if</span> (args.RemovedReason == CacheEntryRemovedReason.Expired)
+                    {
+                        Thread.Sleep(<span style="color:#ae81ff">2000</span>);
+                        <span style="color:#66d9ef">var</span> id = args.Key;
 
-                        <span class="c1">// Get current cached value
-</span><span class="c1"></span>                        <span class="kt">var</span> <span class="n">currentCachedEntity</span> <span class="p">=</span> <span class="n">args</span><span class="p">.</span><span class="n">Source</span><span class="p">[</span><span class="n">id</span><span class="p">]</span> <span class="k">as</span> <span class="kt">string</span><span class="p">;</span>
-                        <span class="n">UpdateCounter</span><span class="p">();</span>
+                        <span style="color:#75715e">// Get current cached value
+</span><span style="color:#75715e"></span>                        <span style="color:#66d9ef">var</span> currentCachedEntity = args.Source[id] <span style="color:#66d9ef">as</span> <span style="color:#66d9ef">string</span>;
+                        UpdateCounter();
 
-                        <span class="kt">var</span> <span class="n">newEntity</span> <span class="p">=</span> <span class="n">args</span><span class="p">.</span><span class="n">Source</span><span class="p">[</span><span class="n">id</span><span class="p">];</span>
+                        <span style="color:#66d9ef">var</span> newEntity = args.Source[id];
 
-                        <span class="c1">// If new is not null - update, otherwise just refresh the old value
-</span><span class="c1"></span>                        <span class="k">if</span> <span class="p">(</span><span class="n">newEntity</span> <span class="p">!=</span> <span class="k">null</span><span class="p">)</span>
-                        <span class="p">{</span>
-                            <span class="kt">var</span> <span class="n">updatedEntity</span> <span class="p">=</span> <span class="n">newEntity</span><span class="p">;</span>
-                            <span class="n">args</span><span class="p">.</span><span class="n">UpdatedCacheItem</span> <span class="p">=</span> <span class="k">new</span> <span class="n">CacheItem</span><span class="p">(</span><span class="n">id</span><span class="p">,</span> <span class="n">updatedEntity</span><span class="p">);</span>
-                            <span class="n">args</span><span class="p">.</span><span class="n">UpdatedCacheItemPolicy</span> <span class="p">=</span> <span class="n">GetPolicy</span><span class="p">(</span><span class="n">refreshInterval</span><span class="p">);</span>
-                        <span class="p">}</span>
-                        <span class="k">else</span>
-                        <span class="p">{</span>
-                            <span class="kt">var</span> <span class="n">updatedEntity</span> <span class="p">=</span> <span class="n">currentCachedEntity</span><span class="p">;</span>
-                            <span class="n">args</span><span class="p">.</span><span class="n">UpdatedCacheItem</span> <span class="p">=</span> <span class="k">new</span> <span class="n">CacheItem</span><span class="p">(</span><span class="n">id</span><span class="p">,</span> <span class="n">updatedEntity</span><span class="p">);</span>
-                            <span class="n">args</span><span class="p">.</span><span class="n">UpdatedCacheItemPolicy</span> <span class="p">=</span> <span class="n">GetPolicy</span><span class="p">(</span><span class="n">refreshInterval</span><span class="p">);</span>
-                        <span class="p">}</span>
+                        <span style="color:#75715e">// If new is not null - update, otherwise just refresh the old value
+</span><span style="color:#75715e"></span>                        <span style="color:#66d9ef">if</span> (newEntity != <span style="color:#66d9ef">null</span>)
+                        {
+                            <span style="color:#66d9ef">var</span> updatedEntity = newEntity;
+                            args.UpdatedCacheItem = <span style="color:#66d9ef">new</span> CacheItem(id, updatedEntity);
+                            args.UpdatedCacheItemPolicy = GetPolicy(refreshInterval);
+                        }
+                        <span style="color:#66d9ef">else</span>
+                        {
+                            <span style="color:#66d9ef">var</span> updatedEntity = currentCachedEntity;
+                            args.UpdatedCacheItem = <span style="color:#66d9ef">new</span> CacheItem(id, updatedEntity);
+                            args.UpdatedCacheItemPolicy = GetPolicy(refreshInterval);
+                        }
 
-                    <span class="p">}</span>
-                <span class="p">},</span>
-                <span class="n">AbsoluteExpiration</span> <span class="p">=</span> <span class="n">DateTimeOffset</span><span class="p">.</span><span class="n">UtcNow</span><span class="p">.</span><span class="n">AddSeconds</span><span class="p">(</span><span class="n">refreshInterval</span><span class="p">)</span>
-            <span class="p">};</span>
-        <span class="p">}</span>
+                    }
+                },
+                AbsoluteExpiration = DateTimeOffset.UtcNow.AddSeconds(refreshInterval)
+            };
+        }
 
-        <span class="k">private</span> <span class="n">CacheItemPolicy</span> <span class="n">GetPolicy</span><span class="p">(</span><span class="kt">double</span> <span class="n">refreshInterval</span><span class="p">)</span>
-        <span class="p">{</span>
-            <span class="k">return</span> <span class="k">new</span> <span class="n">CacheItemPolicy</span>
-            <span class="p">{</span>
-                <span class="n">UpdateCallback</span> <span class="p">=</span> <span class="p">(</span><span class="n">CacheEntryUpdateArguments</span> <span class="n">args</span><span class="p">)</span> <span class="p">=&gt;</span>
-                <span class="p">{</span>
-                    <span class="k">if</span> <span class="p">(</span><span class="n">args</span><span class="p">.</span><span class="n">RemovedReason</span> <span class="p">==</span> <span class="n">CacheEntryRemovedReason</span><span class="p">.</span><span class="n">Expired</span><span class="p">)</span>
-                    <span class="p">{</span>
-                        <span class="kt">var</span> <span class="n">id</span> <span class="p">=</span> <span class="n">args</span><span class="p">.</span><span class="n">Key</span><span class="p">;</span>
+        <span style="color:#66d9ef">private</span> CacheItemPolicy GetPolicy(<span style="color:#66d9ef">double</span> refreshInterval)
+        {
+            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> CacheItemPolicy
+            {
+                UpdateCallback = (CacheEntryUpdateArguments args) =&gt;
+                {
+                    <span style="color:#66d9ef">if</span> (args.RemovedReason == CacheEntryRemovedReason.Expired)
+                    {
+                        <span style="color:#66d9ef">var</span> id = args.Key;
 
-                        <span class="c1">// Get current cached value
-</span><span class="c1"></span>                        <span class="kt">var</span> <span class="n">currentCachedEntity</span> <span class="p">=</span> <span class="n">args</span><span class="p">.</span><span class="n">Source</span><span class="p">[</span><span class="n">id</span><span class="p">]</span> <span class="k">as</span> <span class="kt">string</span><span class="p">;</span>
+                        <span style="color:#75715e">// Get current cached value
+</span><span style="color:#75715e"></span>                        <span style="color:#66d9ef">var</span> currentCachedEntity = args.Source[id] <span style="color:#66d9ef">as</span> <span style="color:#66d9ef">string</span>;
 
-                        <span class="kt">var</span> <span class="n">newEntity</span> <span class="p">=</span> <span class="n">AddKeys</span><span class="p">(</span><span class="n">id</span><span class="p">);</span>
+                        <span style="color:#66d9ef">var</span> newEntity = AddKeys(id);
 
-                        <span class="c1">// If new is not null - update, otherwise just refresh the old value
-</span><span class="c1"></span>                        <span class="k">if</span> <span class="p">(</span><span class="n">newEntity</span> <span class="p">!=</span> <span class="k">null</span><span class="p">)</span>
-                        <span class="p">{</span>
-                            <span class="kt">var</span> <span class="n">updatedEntity</span> <span class="p">=</span> <span class="n">newEntity</span><span class="p">;</span>
-                            <span class="n">args</span><span class="p">.</span><span class="n">UpdatedCacheItem</span> <span class="p">=</span> <span class="k">new</span> <span class="n">CacheItem</span><span class="p">(</span><span class="n">id</span><span class="p">,</span> <span class="n">updatedEntity</span><span class="p">);</span>
-                            <span class="n">args</span><span class="p">.</span><span class="n">UpdatedCacheItemPolicy</span> <span class="p">=</span> <span class="n">GetPolicy</span><span class="p">(</span><span class="n">refreshInterval</span><span class="p">);</span>
-                        <span class="p">}</span>
-                        <span class="k">else</span>
-                        <span class="p">{</span>
-                            <span class="kt">var</span> <span class="n">updatedEntity</span> <span class="p">=</span> <span class="n">currentCachedEntity</span><span class="p">;</span>
-                            <span class="n">args</span><span class="p">.</span><span class="n">UpdatedCacheItem</span> <span class="p">=</span> <span class="k">new</span> <span class="n">CacheItem</span><span class="p">(</span><span class="n">id</span><span class="p">,</span> <span class="n">updatedEntity</span><span class="p">);</span>
-                            <span class="n">args</span><span class="p">.</span><span class="n">UpdatedCacheItemPolicy</span> <span class="p">=</span> <span class="n">GetPolicy</span><span class="p">(</span><span class="n">refreshInterval</span><span class="p">);</span>
-                        <span class="p">}</span>
+                        <span style="color:#75715e">// If new is not null - update, otherwise just refresh the old value
+</span><span style="color:#75715e"></span>                        <span style="color:#66d9ef">if</span> (newEntity != <span style="color:#66d9ef">null</span>)
+                        {
+                            <span style="color:#66d9ef">var</span> updatedEntity = newEntity;
+                            args.UpdatedCacheItem = <span style="color:#66d9ef">new</span> CacheItem(id, updatedEntity);
+                            args.UpdatedCacheItemPolicy = GetPolicy(refreshInterval);
+                        }
+                        <span style="color:#66d9ef">else</span>
+                        {
+                            <span style="color:#66d9ef">var</span> updatedEntity = currentCachedEntity;
+                            args.UpdatedCacheItem = <span style="color:#66d9ef">new</span> CacheItem(id, updatedEntity);
+                            args.UpdatedCacheItemPolicy = GetPolicy(refreshInterval);
+                        }
 
-                    <span class="p">}</span>
-                <span class="p">},</span>
-                <span class="n">SlidingExpiration</span> <span class="p">=</span> <span class="n">TimeSpan</span><span class="p">.</span><span class="n">FromSeconds</span><span class="p">(</span><span class="n">refreshInterval</span><span class="p">),</span>
-            <span class="p">};</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+                    }
+                },
+                SlidingExpiration = TimeSpan.FromSeconds(refreshInterval),
+            };
+        }
+    }
+}
 </code></pre></div><h2 id="implementation-with-imemorycache-in-net-core">Implementation with IMemoryCache in .NET Core</h2>
 <p>I have a strong feeling a lot of people will come to read this article for the part that follows&hellip; Who cares about .NET Framework, amirite?! It&rsquo;s all about .NET Core nowadays, son!</p>
 <p>I&rsquo;d be lying if I didn&rsquo;t say that I prefer the .NET Core implementation. But I digress. Let&rsquo;s stay on the issue at hand - implementing an auto refreshing cache.</p>
 <p>We still have access to <strong><code>MemoryCache</code>** in .NET Core. However it only provides a callback which will execute <strong>_after_** an item has been <a href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.extensions.caching.memory.memorycacheentryoptions.postevictioncallbacks?view=aspnetcore-2.2#Microsoft_Extensions_Caching_Memory_MemoryCacheEntryOptions_PostEvictionCallbacks">removed</a>. That doesn&rsquo;t matter for our use case. Remember what we said at the start. We don&rsquo;t care if we get stale data as long as there are no cache misses! To achieve the same thing we did in the previous section we are going to use a shiny new interface called </strong><code>IMemoryCache</code></strong><a href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.extensions.caching.memory.imemorycache?view=aspnetcore-2.2"></a>. And guess what! It&rsquo;s provided by Microsoft too!</p>
 <p>The code is more or less the same with some differences when it comes to the locking. This time we&rsquo;re performing operations inside an async method so we can&rsquo;t use a regular lock. For the sake of completeness I&rsquo;ll provide the full implementation + tests and gotchas after.</p>
-<div class="highlight"><pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
-<span class="k">using</span> <span class="nn">System.Collections.Concurrent</span><span class="p">;</span>
-<span class="k">using</span> <span class="nn">System.Threading</span><span class="p">;</span>
-<span class="k">using</span> <span class="nn">System.Threading.Tasks</span><span class="p">;</span>
-<span class="k">using</span> <span class="nn">Microsoft.Extensions.Caching.Memory</span><span class="p">;</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#66d9ef">using</span> System;
+<span style="color:#66d9ef">using</span> System.Collections.Concurrent;
+<span style="color:#66d9ef">using</span> System.Threading;
+<span style="color:#66d9ef">using</span> System.Threading.Tasks;
+<span style="color:#66d9ef">using</span> Microsoft.Extensions.Caching.Memory;
 
-<span class="k">namespace</span> <span class="nn">FooBar.Providers</span>
-<span class="p">{</span>
-    <span class="k">public</span> <span class="k">class</span> <span class="nc">SettingsStore</span>
-    <span class="p">{</span>
-        <span class="k">private</span> <span class="k">const</span> <span class="kt">string</span> <span class="n">cacheKey</span> <span class="p">=</span> <span class="s">&#34;FooBarPrivateKey&#34;</span><span class="p">;</span>
-        <span class="k">private</span> <span class="k">const</span> <span class="kt">int</span> <span class="n">refreshTimeInSeconds</span> <span class="p">=</span> <span class="m">3600</span><span class="p">;</span>
-        <span class="k">private</span> <span class="k">readonly</span> <span class="n">IMemoryCache</span> <span class="n">memoryCache</span><span class="p">;</span>
-        <span class="k">private</span> <span class="k">readonly</span> <span class="n">ConcurrentDictionary</span><span class="p">&lt;</span><span class="kt">object</span><span class="p">,</span> <span class="n">SemaphoreSlim</span><span class="p">&gt;</span> <span class="n">locks</span> <span class="p">=</span> <span class="k">new</span> <span class="n">ConcurrentDictionary</span><span class="p">&lt;</span><span class="kt">object</span><span class="p">,</span> <span class="n">SemaphoreSlim</span><span class="p">&gt;();</span>
+<span style="color:#66d9ef">namespace</span> FooBar.Providers
+{
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SettingsStore</span>
+    {
+        <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">string</span> cacheKey = <span style="color:#e6db74">&#34;FooBarPrivateKey&#34;</span>;
+        <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">int</span> refreshTimeInSeconds = <span style="color:#ae81ff">3600</span>;
+        <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">readonly</span> IMemoryCache memoryCache;
+        <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">readonly</span> ConcurrentDictionary&lt;<span style="color:#66d9ef">object</span>, SemaphoreSlim&gt; locks = <span style="color:#66d9ef">new</span> ConcurrentDictionary&lt;<span style="color:#66d9ef">object</span>, SemaphoreSlim&gt;();
 
-        <span class="k">public</span> <span class="n">SettingsStore</span><span class="p">(</span><span class="n">IMemoryCache</span> <span class="n">memoryCache</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="k">this</span><span class="p">.</span><span class="n">memoryCache</span> <span class="p">=</span> <span class="n">memoryCache</span><span class="p">;</span>
+        <span style="color:#66d9ef">public</span> SettingsStore(IMemoryCache memoryCache) =&gt; <span style="color:#66d9ef">this</span>.memoryCache = memoryCache;
 
-        <span class="k">public</span> <span class="k">async</span> <span class="n">Task</span><span class="p">&lt;</span><span class="n">Settings</span><span class="p">&gt;</span> <span class="n">GetSettingsAsync</span><span class="p">()</span>
-        <span class="p">{</span>
-            <span class="c1">// Normal lock doesn&#39;t work in async code
-</span><span class="c1"></span>            <span class="k">if</span> <span class="p">(!</span><span class="n">memoryCache</span><span class="p">.</span><span class="n">TryGetValue</span><span class="p">(</span><span class="n">cacheKey</span><span class="p">,</span> <span class="k">out</span> <span class="n">Settings</span> <span class="n">settings</span><span class="p">))</span>
-            <span class="p">{</span>
-                <span class="n">SemaphoreSlim</span> <span class="n">certLock</span> <span class="p">=</span> <span class="n">locks</span><span class="p">.</span><span class="n">GetOrAdd</span><span class="p">(</span><span class="n">cacheKey</span><span class="p">,</span> <span class="n">k</span> <span class="p">=&gt;</span> <span class="k">new</span> <span class="n">SemaphoreSlim</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="m">1</span><span class="p">));</span>
-                <span class="k">await</span> <span class="n">certLock</span><span class="p">.</span><span class="n">WaitAsync</span><span class="p">();</span>
+        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">async</span> Task&lt;Settings&gt; GetSettingsAsync()
+        {
+            <span style="color:#75715e">// Normal lock doesn&#39;t work in async code
+</span><span style="color:#75715e"></span>            <span style="color:#66d9ef">if</span> (!memoryCache.TryGetValue(cacheKey, <span style="color:#66d9ef">out</span> Settings settings))
+            {
+                SemaphoreSlim certLock = locks.GetOrAdd(cacheKey, k =&gt; <span style="color:#66d9ef">new</span> SemaphoreSlim(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>));
+                <span style="color:#66d9ef">await</span> certLock.WaitAsync();
 
-                <span class="k">try</span>
-                <span class="p">{</span>
-                    <span class="k">if</span> <span class="p">(!</span><span class="n">memoryCache</span><span class="p">.</span><span class="n">TryGetValue</span><span class="p">(</span><span class="n">cacheKey</span><span class="p">,</span> <span class="k">out</span> <span class="n">settings</span><span class="p">))</span>
-                    <span class="p">{</span>
-                        <span class="c1">// This method is not implemented because it can be anything.
-</span><span class="c1"></span>                        <span class="c1">// The main part is that you want to cache an object.
-</span><span class="c1"></span>                        <span class="n">settings</span> <span class="p">=</span> <span class="k">await</span> <span class="n">GetSettingsFromRemoteLocation</span><span class="p">();</span>
-                        <span class="n">memoryCache</span><span class="p">.</span><span class="n">Set</span><span class="p">(</span><span class="n">cacheKey</span><span class="p">,</span> <span class="n">settings</span><span class="p">,</span> <span class="n">GetMemoryCacheEntryOptions</span><span class="p">(</span><span class="n">refreshTimeInSeconds</span><span class="p">));</span> <span class="c1">// 1 hour
-</span><span class="c1"></span>                    <span class="p">}</span>
-                <span class="p">}</span>
-                <span class="k">finally</span>
-                <span class="p">{</span>
-                    <span class="n">certLock</span><span class="p">.</span><span class="n">Release</span><span class="p">();</span>
-                <span class="p">}</span>
-            <span class="p">}</span>
-            <span class="k">return</span> <span class="n">settings</span><span class="p">;</span>
-        <span class="p">}</span>
+                <span style="color:#66d9ef">try</span>
+                {
+                    <span style="color:#66d9ef">if</span> (!memoryCache.TryGetValue(cacheKey, <span style="color:#66d9ef">out</span> settings))
+                    {
+                        <span style="color:#75715e">// This method is not implemented because it can be anything.
+</span><span style="color:#75715e"></span>                        <span style="color:#75715e">// The main part is that you want to cache an object.
+</span><span style="color:#75715e"></span>                        settings = <span style="color:#66d9ef">await</span> GetSettingsFromRemoteLocation();
+                        memoryCache.Set(cacheKey, settings, GetMemoryCacheEntryOptions(refreshTimeInSeconds)); <span style="color:#75715e">// 1 hour
+</span><span style="color:#75715e"></span>                    }
+                }
+                <span style="color:#66d9ef">finally</span>
+                {
+                    certLock.Release();
+                }
+            }
+            <span style="color:#66d9ef">return</span> settings;
+        }
 
-        <span class="k">private</span> <span class="n">MemoryCacheEntryOptions</span> <span class="n">GetMemoryCacheEntryOptions</span><span class="p">(</span><span class="kt">int</span> <span class="n">expireInSeconds</span> <span class="p">=</span> <span class="m">3600</span><span class="p">)</span>
-        <span class="p">{</span>
-            <span class="kt">var</span> <span class="n">expirationTime</span> <span class="p">=</span> <span class="n">DateTime</span><span class="p">.</span><span class="n">Now</span><span class="p">.</span><span class="n">AddSeconds</span><span class="p">(</span><span class="n">expireInSeconds</span><span class="p">);</span>
-            <span class="kt">var</span> <span class="n">expirationToken</span> <span class="p">=</span> <span class="k">new</span> <span class="n">CancellationChangeToken</span><span class="p">(</span>
-                <span class="k">new</span> <span class="n">CancellationTokenSource</span><span class="p">(</span><span class="n">TimeSpan</span><span class="p">.</span><span class="n">FromSeconds</span><span class="p">(</span><span class="n">expireInSeconds</span> <span class="p">+</span> <span class="p">.</span><span class="m">01</span><span class="p">)).</span><span class="n">Token</span><span class="p">);</span>
+        <span style="color:#66d9ef">private</span> MemoryCacheEntryOptions GetMemoryCacheEntryOptions(<span style="color:#66d9ef">int</span> expireInSeconds = <span style="color:#ae81ff">3600</span>)
+        {
+            <span style="color:#66d9ef">var</span> expirationTime = DateTime.Now.AddSeconds(expireInSeconds);
+            <span style="color:#66d9ef">var</span> expirationToken = <span style="color:#66d9ef">new</span> CancellationChangeToken(
+                <span style="color:#66d9ef">new</span> CancellationTokenSource(TimeSpan.FromSeconds(expireInSeconds + .<span style="color:#ae81ff">01</span>)).Token);
 
-            <span class="kt">var</span> <span class="n">options</span> <span class="p">=</span> <span class="k">new</span> <span class="n">MemoryCacheEntryOptions</span><span class="p">();</span>
-            <span class="n">options</span><span class="p">.</span><span class="n">SetAbsoluteExpiration</span><span class="p">(</span><span class="n">expirationTime</span><span class="p">);</span>
-            <span class="n">options</span><span class="p">.</span><span class="n">AddExpirationToken</span><span class="p">(</span><span class="n">expirationToken</span><span class="p">);</span>
+            <span style="color:#66d9ef">var</span> options = <span style="color:#66d9ef">new</span> MemoryCacheEntryOptions();
+            options.SetAbsoluteExpiration(expirationTime);
+            options.AddExpirationToken(expirationToken);
 
-            <span class="n">options</span><span class="p">.</span><span class="n">PostEvictionCallbacks</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="k">new</span> <span class="n">PostEvictionCallbackRegistration</span><span class="p">()</span>
-            <span class="p">{</span>
-                <span class="n">EvictionCallback</span> <span class="p">=</span> <span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="k">value</span><span class="p">,</span> <span class="n">reason</span><span class="p">,</span> <span class="n">state</span><span class="p">)</span> <span class="p">=&gt;</span>
-                <span class="p">{</span>
-                    <span class="k">if</span> <span class="p">(</span><span class="n">reason</span> <span class="p">==</span> <span class="n">EvictionReason</span><span class="p">.</span><span class="n">TokenExpired</span> <span class="p">||</span> <span class="n">reason</span> <span class="p">==</span> <span class="n">EvictionReason</span><span class="p">.</span><span class="n">Expired</span><span class="p">)</span>
-                    <span class="p">{</span>
-                        <span class="c1">// If newValue is not null - update, otherwise just refresh the old value
-</span><span class="c1"></span>                        <span class="c1">// The condition by which you decide to update or refresh the data depends entirely on you
-</span><span class="c1"></span>                        <span class="c1">// If you want a cache object that will never expire you can just make the following call:
-</span><span class="c1"></span>                        <span class="c1">// memoryCache.Set(key, value, GetMemoryCacheEntryOptions(expireInSeconds));
-</span><span class="c1"></span>                        <span class="kt">var</span> <span class="n">newValue</span> <span class="p">=</span> <span class="k">await</span> <span class="n">GetSettingsFromRemoteLocation</span><span class="p">();</span>
-                        <span class="k">if</span> <span class="p">(</span><span class="n">newValue</span> <span class="p">!=</span> <span class="k">null</span><span class="p">)</span>
-                        <span class="p">{</span>
-                            <span class="n">memoryCache</span><span class="p">.</span><span class="n">Set</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">newValue</span><span class="p">,</span> <span class="n">GetMemoryCacheEntryOptions</span><span class="p">(</span><span class="n">expireInSeconds</span><span class="p">));</span> <span class="c1">// 1 hour
-</span><span class="c1"></span>                        <span class="p">}</span>
-                        <span class="k">else</span>
-                        <span class="p">{</span>
-                            <span class="n">memoryCache</span><span class="p">.</span><span class="n">Set</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="k">value</span><span class="p">,</span> <span class="n">GetMemoryCacheEntryOptions</span><span class="p">(</span><span class="n">expireInSeconds</span><span class="p">));</span> <span class="c1">// 1 hour
-</span><span class="c1"></span>                        <span class="p">}</span>
-                    <span class="p">}</span>
-                <span class="p">}</span>
-            <span class="p">});</span>
+            options.PostEvictionCallbacks.Add(<span style="color:#66d9ef">new</span> PostEvictionCallbackRegistration()
+            {
+                EvictionCallback = (key, <span style="color:#66d9ef">value</span>, reason, state) =&gt;
+                {
+                    <span style="color:#66d9ef">if</span> (reason == EvictionReason.TokenExpired || reason == EvictionReason.Expired)
+                    {
+                        <span style="color:#75715e">// If newValue is not null - update, otherwise just refresh the old value
+</span><span style="color:#75715e"></span>                        <span style="color:#75715e">// The condition by which you decide to update or refresh the data depends entirely on you
+</span><span style="color:#75715e"></span>                        <span style="color:#75715e">// If you want a cache object that will never expire you can just make the following call:
+</span><span style="color:#75715e"></span>                        <span style="color:#75715e">// memoryCache.Set(key, value, GetMemoryCacheEntryOptions(expireInSeconds));
+</span><span style="color:#75715e"></span>                        <span style="color:#66d9ef">var</span> newValue = <span style="color:#66d9ef">await</span> GetSettingsFromRemoteLocation();
+                        <span style="color:#66d9ef">if</span> (newValue != <span style="color:#66d9ef">null</span>)
+                        {
+                            memoryCache.Set(key, newValue, GetMemoryCacheEntryOptions(expireInSeconds)); <span style="color:#75715e">// 1 hour
+</span><span style="color:#75715e"></span>                        }
+                        <span style="color:#66d9ef">else</span>
+                        {
+                            memoryCache.Set(key, <span style="color:#66d9ef">value</span>, GetMemoryCacheEntryOptions(expireInSeconds)); <span style="color:#75715e">// 1 hour
+</span><span style="color:#75715e"></span>                        }
+                    }
+                }
+            });
 
-            <span class="k">return</span> <span class="n">options</span><span class="p">;</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+            <span style="color:#66d9ef">return</span> options;
+        }
+    }
+}
 </code></pre></div><p>Here we have 2 interesting behaviors we should take into consideration. Why do we need to use a cancellation token, and why won&rsquo;t the <strong><code>EvictionCallback</code></strong> execute after 1 hour without explicitly setting said token.</p>
 <ul>
 <li>
@@ -532,112 +540,112 @@ Auto Refreshing Cache in .NET · _hao
 </li>
 </ul>
 <p>To prove this to you I&rsquo;ll provide another pair of tests</p>
-<div class="highlight"><pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
-<span class="k">using</span> <span class="nn">System.Threading</span><span class="p">;</span>
-<span class="k">using</span> <span class="nn">System.Threading.Tasks</span><span class="p">;</span>
-<span class="k">using</span> <span class="nn">Microsoft.Extensions.Caching.Memory</span><span class="p">;</span>
-<span class="k">using</span> <span class="nn">Microsoft.Extensions.Primitives</span><span class="p">;</span>
-<span class="k">using</span> <span class="nn">Microsoft.VisualStudio.TestTools.UnitTesting</span><span class="p">;</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#66d9ef">using</span> System;
+<span style="color:#66d9ef">using</span> System.Threading;
+<span style="color:#66d9ef">using</span> System.Threading.Tasks;
+<span style="color:#66d9ef">using</span> Microsoft.Extensions.Caching.Memory;
+<span style="color:#66d9ef">using</span> Microsoft.Extensions.Primitives;
+<span style="color:#66d9ef">using</span> Microsoft.VisualStudio.TestTools.UnitTesting;
 
-<span class="k">namespace</span> <span class="nn">FooBar.Tests</span>
-<span class="p">{</span>
-<span class="na">    [TestClass]</span>
-    <span class="k">public</span> <span class="k">class</span> <span class="nc">MemoryCacheTests</span>
-    <span class="p">{</span>
-        <span class="k">private</span> <span class="n">IMemoryCache</span> <span class="n">CreateCache</span><span class="p">()</span>
-        <span class="p">{</span>
-            <span class="k">return</span> <span class="k">new</span> <span class="n">MemoryCache</span><span class="p">(</span><span class="k">new</span> <span class="n">MemoryCacheOptions</span><span class="p">()</span>
-            <span class="p">{</span>
-                <span class="n">ExpirationScanFrequency</span> <span class="p">=</span> <span class="k">new</span> <span class="n">TimeSpan</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">1</span><span class="p">)</span>
-            <span class="p">});</span>
-        <span class="p">}</span>
-<span class="na">
-</span><span class="na">        [TestMethod]</span>
-        <span class="k">public</span> <span class="k">async</span> <span class="n">Task</span> <span class="n">ExpireAndReAddFromCallbackWorks</span><span class="p">()</span>
-        <span class="p">{</span>
-            <span class="kt">var</span> <span class="n">cache</span> <span class="p">=</span> <span class="n">CreateCache</span><span class="p">();</span>
-            <span class="kt">var</span> <span class="n">initialValue</span> <span class="p">=</span> <span class="s">&#34;I&#39;m a value&#34;</span><span class="p">;</span>
-            <span class="kt">var</span> <span class="n">newValue</span> <span class="p">=</span> <span class="s">&#34;I&#39;m the refreshed value&#34;</span><span class="p">;</span>
-            <span class="kt">string</span> <span class="n">key</span> <span class="p">=</span> <span class="s">&#34;myKey&#34;</span><span class="p">;</span>
-            <span class="kt">int</span> <span class="n">refreshCounter</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span>
+<span style="color:#66d9ef">namespace</span> FooBar.Tests
+{
+<span style="color:#a6e22e">    [TestClass]</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MemoryCacheTests</span>
+    {
+        <span style="color:#66d9ef">private</span> IMemoryCache CreateCache()
+        {
+            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> MemoryCache(<span style="color:#66d9ef">new</span> MemoryCacheOptions()
+            {
+                ExpirationScanFrequency = <span style="color:#66d9ef">new</span> TimeSpan(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>)
+            });
+        }
+<span style="color:#a6e22e">
+</span><span style="color:#a6e22e">        [TestMethod]</span>
+        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">async</span> Task ExpireAndReAddFromCallbackWorks()
+        {
+            <span style="color:#66d9ef">var</span> cache = CreateCache();
+            <span style="color:#66d9ef">var</span> initialValue = <span style="color:#e6db74">&#34;I&#39;m a value&#34;</span>;
+            <span style="color:#66d9ef">var</span> newValue = <span style="color:#e6db74">&#34;I&#39;m the refreshed value&#34;</span>;
+            <span style="color:#66d9ef">string</span> key = <span style="color:#e6db74">&#34;myKey&#34;</span>;
+            <span style="color:#66d9ef">int</span> refreshCounter = <span style="color:#ae81ff">0</span>;
 
-            <span class="kt">var</span> <span class="n">options</span> <span class="p">=</span> <span class="k">new</span> <span class="n">MemoryCacheEntryOptions</span><span class="p">();</span>
-            <span class="n">options</span><span class="p">.</span><span class="n">SetAbsoluteExpiration</span><span class="p">(</span><span class="k">new</span> <span class="n">TimeSpan</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">1</span><span class="p">));</span>
-            <span class="n">options</span><span class="p">.</span><span class="n">PostEvictionCallbacks</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="k">new</span> <span class="n">PostEvictionCallbackRegistration</span><span class="p">()</span>
-            <span class="p">{</span>
-                <span class="n">EvictionCallback</span> <span class="p">=</span> <span class="p">(</span><span class="n">subkey</span><span class="p">,</span> <span class="n">subValue</span><span class="p">,</span> <span class="n">reason</span><span class="p">,</span> <span class="n">state</span><span class="p">)</span> <span class="p">=&gt;</span>
-                <span class="p">{</span>
-                    <span class="k">if</span> <span class="p">(</span><span class="n">reason</span> <span class="p">==</span> <span class="n">EvictionReason</span><span class="p">.</span><span class="n">Expired</span><span class="p">)</span>
-                    <span class="p">{</span>
-                        <span class="n">cache</span><span class="p">.</span><span class="n">Set</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">newValue</span><span class="p">);</span>
-                        <span class="n">refreshCounter</span><span class="p">++;</span>
-                    <span class="p">}</span>
-                <span class="p">}</span>
-            <span class="p">});</span>
+            <span style="color:#66d9ef">var</span> options = <span style="color:#66d9ef">new</span> MemoryCacheEntryOptions();
+            options.SetAbsoluteExpiration(<span style="color:#66d9ef">new</span> TimeSpan(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>));
+            options.PostEvictionCallbacks.Add(<span style="color:#66d9ef">new</span> PostEvictionCallbackRegistration()
+            {
+                EvictionCallback = (subkey, subValue, reason, state) =&gt;
+                {
+                    <span style="color:#66d9ef">if</span> (reason == EvictionReason.Expired)
+                    {
+                        cache.Set(key, newValue);
+                        refreshCounter++;
+                    }
+                }
+            });
 
-            <span class="n">cache</span><span class="p">.</span><span class="n">Set</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">initialValue</span><span class="p">,</span> <span class="n">options</span><span class="p">);</span>
+            cache.Set(key, initialValue, options);
 
-            <span class="k">await</span> <span class="n">Task</span><span class="p">.</span><span class="n">Delay</span><span class="p">(</span><span class="n">TimeSpan</span><span class="p">.</span><span class="n">FromSeconds</span><span class="p">(</span><span class="m">6</span><span class="p">));</span>
+            <span style="color:#66d9ef">await</span> Task.Delay(TimeSpan.FromSeconds(<span style="color:#ae81ff">6</span>));
 
-            <span class="c1">// Any activity on the cache (Get, Set, Remove) can trigger a background scan for expired items.
-</span><span class="c1"></span>            <span class="c1">// There&#39;s no background thread that scans the cache for expired times
-</span><span class="c1"></span>            <span class="kt">var</span> <span class="n">result</span> <span class="p">=</span> <span class="n">cache</span><span class="p">.</span><span class="n">Get</span><span class="p">(</span><span class="n">key</span><span class="p">);</span>
+            <span style="color:#75715e">// Any activity on the cache (Get, Set, Remove) can trigger a background scan for expired items.
+</span><span style="color:#75715e"></span>            <span style="color:#75715e">// There&#39;s no background thread that scans the cache for expired times
+</span><span style="color:#75715e"></span>            <span style="color:#66d9ef">var</span> result = cache.Get(key);
 
-            <span class="k">await</span> <span class="n">Task</span><span class="p">.</span><span class="n">Delay</span><span class="p">(</span><span class="n">TimeSpan</span><span class="p">.</span><span class="n">FromSeconds</span><span class="p">(</span><span class="m">1</span><span class="p">));</span>
+            <span style="color:#66d9ef">await</span> Task.Delay(TimeSpan.FromSeconds(<span style="color:#ae81ff">1</span>));
 
-            <span class="n">Assert</span><span class="p">.</span><span class="n">IsTrue</span><span class="p">(</span><span class="n">refreshCounter</span> <span class="p">&gt;=</span> <span class="m">1</span><span class="p">);</span>
-            <span class="n">Assert</span><span class="p">.</span><span class="n">AreEqual</span><span class="p">(</span><span class="n">newValue</span><span class="p">,</span> <span class="n">cache</span><span class="p">.</span><span class="n">Get</span><span class="p">(</span><span class="n">key</span><span class="p">));</span>
-        <span class="p">}</span>
-<span class="na">
-</span><span class="na">        [TestMethod]</span>
-        <span class="k">public</span> <span class="k">async</span> <span class="n">Task</span> <span class="n">TokenExpireAndReAddFromCallbackWorks</span><span class="p">()</span>
-        <span class="p">{</span>
-            <span class="kt">var</span> <span class="n">cache</span> <span class="p">=</span> <span class="n">CreateCache</span><span class="p">();</span>
-            <span class="kt">var</span> <span class="n">initialValue</span> <span class="p">=</span> <span class="s">&#34;I&#39;m a value&#34;</span><span class="p">;</span>
-            <span class="kt">var</span> <span class="n">newValue</span> <span class="p">=</span> <span class="s">&#34;I&#39;m the refreshed value&#34;</span><span class="p">;</span>
-            <span class="kt">string</span> <span class="n">key</span> <span class="p">=</span> <span class="s">&#34;myKey&#34;</span><span class="p">;</span>
-            <span class="kt">int</span> <span class="n">refreshCounter</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span>
+            Assert.IsTrue(refreshCounter &gt;= <span style="color:#ae81ff">1</span>);
+            Assert.AreEqual(newValue, cache.Get(key));
+        }
+<span style="color:#a6e22e">
+</span><span style="color:#a6e22e">        [TestMethod]</span>
+        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">async</span> Task TokenExpireAndReAddFromCallbackWorks()
+        {
+            <span style="color:#66d9ef">var</span> cache = CreateCache();
+            <span style="color:#66d9ef">var</span> initialValue = <span style="color:#e6db74">&#34;I&#39;m a value&#34;</span>;
+            <span style="color:#66d9ef">var</span> newValue = <span style="color:#e6db74">&#34;I&#39;m the refreshed value&#34;</span>;
+            <span style="color:#66d9ef">string</span> key = <span style="color:#e6db74">&#34;myKey&#34;</span>;
+            <span style="color:#66d9ef">int</span> refreshCounter = <span style="color:#ae81ff">0</span>;
 
-            <span class="kt">int</span> <span class="n">expirationSeconds</span> <span class="p">=</span> <span class="m">1</span><span class="p">;</span>
-            <span class="kt">var</span> <span class="n">expirationTime</span> <span class="p">=</span> <span class="n">DateTime</span><span class="p">.</span><span class="n">Now</span><span class="p">.</span><span class="n">AddSeconds</span><span class="p">(</span><span class="n">expirationSeconds</span><span class="p">);</span>
-            <span class="kt">var</span> <span class="n">expirationToken</span> <span class="p">=</span> <span class="k">new</span> <span class="n">CancellationChangeToken</span><span class="p">(</span>
-                <span class="k">new</span> <span class="n">CancellationTokenSource</span><span class="p">(</span><span class="n">TimeSpan</span><span class="p">.</span><span class="n">FromSeconds</span><span class="p">(</span><span class="n">expirationSeconds</span> <span class="p">+</span> <span class="p">.</span><span class="m">01</span><span class="p">)).</span><span class="n">Token</span><span class="p">);</span>
+            <span style="color:#66d9ef">int</span> expirationSeconds = <span style="color:#ae81ff">1</span>;
+            <span style="color:#66d9ef">var</span> expirationTime = DateTime.Now.AddSeconds(expirationSeconds);
+            <span style="color:#66d9ef">var</span> expirationToken = <span style="color:#66d9ef">new</span> CancellationChangeToken(
+                <span style="color:#66d9ef">new</span> CancellationTokenSource(TimeSpan.FromSeconds(expirationSeconds + .<span style="color:#ae81ff">01</span>)).Token);
 
-            <span class="kt">var</span> <span class="n">options</span> <span class="p">=</span> <span class="k">new</span> <span class="n">MemoryCacheEntryOptions</span><span class="p">();</span>
-            <span class="n">options</span><span class="p">.</span><span class="n">SetAbsoluteExpiration</span><span class="p">(</span><span class="n">expirationTime</span><span class="p">);</span>
-            <span class="n">options</span><span class="p">.</span><span class="n">AddExpirationToken</span><span class="p">(</span><span class="n">expirationToken</span><span class="p">);</span>
-            <span class="n">options</span><span class="p">.</span><span class="n">PostEvictionCallbacks</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="k">new</span> <span class="n">PostEvictionCallbackRegistration</span><span class="p">()</span>
-            <span class="p">{</span>
-                <span class="n">EvictionCallback</span> <span class="p">=</span> <span class="p">(</span><span class="n">subkey</span><span class="p">,</span> <span class="n">subValue</span><span class="p">,</span> <span class="n">reason</span><span class="p">,</span> <span class="n">state</span><span class="p">)</span> <span class="p">=&gt;</span>
-                <span class="p">{</span>
-                    <span class="k">if</span> <span class="p">(</span><span class="n">reason</span> <span class="p">==</span> <span class="n">EvictionReason</span><span class="p">.</span><span class="n">TokenExpired</span><span class="p">)</span>
-                    <span class="p">{</span>
-                        <span class="n">cache</span><span class="p">.</span><span class="n">Set</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">newValue</span><span class="p">);</span>
-                        <span class="n">refreshCounter</span><span class="p">++;</span>
-                    <span class="p">}</span>
-                <span class="p">}</span>
-            <span class="p">});</span>
+            <span style="color:#66d9ef">var</span> options = <span style="color:#66d9ef">new</span> MemoryCacheEntryOptions();
+            options.SetAbsoluteExpiration(expirationTime);
+            options.AddExpirationToken(expirationToken);
+            options.PostEvictionCallbacks.Add(<span style="color:#66d9ef">new</span> PostEvictionCallbackRegistration()
+            {
+                EvictionCallback = (subkey, subValue, reason, state) =&gt;
+                {
+                    <span style="color:#66d9ef">if</span> (reason == EvictionReason.TokenExpired)
+                    {
+                        cache.Set(key, newValue);
+                        refreshCounter++;
+                    }
+                }
+            });
 
-            <span class="n">cache</span><span class="p">.</span><span class="n">Set</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">initialValue</span><span class="p">,</span> <span class="n">options</span><span class="p">);</span>
+            cache.Set(key, initialValue, options);
 
-            <span class="k">await</span> <span class="n">Task</span><span class="p">.</span><span class="n">Delay</span><span class="p">(</span><span class="n">TimeSpan</span><span class="p">.</span><span class="n">FromSeconds</span><span class="p">(</span><span class="m">6</span><span class="p">));</span>
+            <span style="color:#66d9ef">await</span> Task.Delay(TimeSpan.FromSeconds(<span style="color:#ae81ff">6</span>));
 
-            <span class="n">Assert</span><span class="p">.</span><span class="n">IsTrue</span><span class="p">(</span><span class="n">refreshCounter</span> <span class="p">&gt;=</span> <span class="m">1</span><span class="p">);</span>
-            <span class="n">Assert</span><span class="p">.</span><span class="n">AreEqual</span><span class="p">(</span><span class="n">newValue</span><span class="p">,</span> <span class="n">cache</span><span class="p">.</span><span class="n">Get</span><span class="p">(</span><span class="n">key</span><span class="p">));</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+            Assert.IsTrue(refreshCounter &gt;= <span style="color:#ae81ff">1</span>);
+            Assert.AreEqual(newValue, cache.Get(key));
+        }
+    }
+}
 </code></pre></div><p>So that&rsquo;s basically it! Now we have our auto refreshing cache! There&rsquo;s a lot that we can improve. You have to be careful who has access to the keys for your specific object and a million other considerations. Caching is a steep hill to climb, but I hope you found this blog post informative in some capacity!</p>
 <p>I&rsquo;ve used both implementations for some heavy objects that don&rsquo;t change often in production environments and they&rsquo;ve been doing their job pretty well so far!</p>
 
-    </div>
+		</div>
 
 
-    <footer>
-      
+		<footer>
+			
 
 
-      <div id="disqus_thread"></div>
+			<div id="disqus_thread"></div>
 <script type="application/javascript">
     var disqus_config = function () {
     
@@ -657,14 +665,14 @@ Auto Refreshing Cache in .NET · _hao
 </script>
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-      
-      
-    </footer>
-  </article>
+			
+			
+		</footer>
+	</article>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script type="text/javascript" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/startup.js" id="MathJax-script"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
   <script>
     MathJax = {
       tex: {
@@ -679,7 +687,7 @@ Auto Refreshing Cache in .NET · _hao
       }
     };
   </script>
-</section>
+  </section>
 
       </div>
 
@@ -689,6 +697,8 @@ Auto Refreshing Cache in .NET · _hao
       
       
         ©
+        
+          2017 -
         
         2021
          Pavel Danov 
@@ -701,7 +711,15 @@ Auto Refreshing Cache in .NET · _hao
     </section>
   </footer>
 
+
     </main>
+
+    
+      
+        
+        <script src="https://underscorehao.net/js/dark-mode.min.0213e1773e6d1c5a644f847c67a6f8abac49a3776e2976f6008038af8c5b76a1.js"></script>
+      
+    
 
     
 
@@ -722,6 +740,11 @@ if (!doNotTrack) {
 
     
 
+    
+
+    
+
+    
   </body>
 
 </html>
