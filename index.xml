@@ -15,7 +15,7 @@
       <guid>https://underscorehao.net/2021-book-list/</guid>
       <description>Last updated on 17/07/2021
 Here I&amp;rsquo;ll be adding books I&amp;rsquo;m currently reading and have read during the year. Usually I read more than one book at the same time. I make a distinction between recreational reading and doing so as part of something I&amp;rsquo;m currently studying. If I&amp;rsquo;m studying from a book I also take notes, pay extra attention etc.
-Currently Reading    Name Author(s)     C++ Primer (5th Edition) Stanley B.</description>
+Currently Reading   Name Author(s)     C++ Primer (5th Edition) Stanley B.</description>
     </item>
     
     <item>
@@ -24,8 +24,8 @@ Currently Reading    Name Author(s)     C++ Primer (5th Edition) Stanley B.</des
       <pubDate>Sat, 10 Jul 2021 07:13:00 +0100</pubDate>
       
       <guid>https://underscorehao.net/about/</guid>
-      <description>Hello there I&amp;rsquo;m Pavel Danov a.k.a. _hao or underscoreHao (on websites that don&amp;rsquo;t support underscores). Welcome to my personal website. Here you can find about things that interest me and occupy my attention most of the time. I&amp;rsquo;m currently residing in
-London, United Kingdom I was born in Bulgaria but moved to London a couple of months ago almost two years ago.
+      <description>Hello thereI&amp;rsquo;m Pavel Danov a.k.a. _hao or underscoreHao (on websites that don&amp;rsquo;t support underscores). Welcome to my personal website. Here you can find about things that interest me and occupy my attention most of the time. I&amp;rsquo;m currently residing in
+London, United KingdomI was born in Bulgaria but moved to London a couple of months ago almost two years ago.
 For the better part of a decade my time has been devoted mainly to Software.</description>
     </item>
     
@@ -35,7 +35,7 @@ For the better part of a decade my time has been devoted mainly to Software.</de
       <pubDate>Thu, 14 May 2020 20:00:00 +0100</pubDate>
       
       <guid>https://underscorehao.net/2020/05/learning-1500-chinese-characters-in-a-month-heisig-method-review/</guid>
-      <description>Introduction Hello dear visitor!
+      <description>IntroductionHello dear visitor!
 Before you stands a very long article in which you&amp;rsquo;ll find my review and results after spending 31 days with a book called Remembering Simplified Hanzi 1: How Not to Forget the Meaning and Writing of Chinese Characters written by James Heisig and Timothy W. Richardson. I think it&amp;rsquo;s a groundbreaking book and an amazing method because it broke down a certain wall that was hindering my desire and drive to learn the Chinese language for a long time.</description>
     </item>
     
@@ -45,7 +45,7 @@ Before you stands a very long article in which you&amp;rsquo;ll find my review a
       <pubDate>Sat, 11 Jan 2020 19:33:48 +0000</pubDate>
       
       <guid>https://underscorehao.net/2020/01/publishing-to-multiple-topics-in-azure-service-bus/</guid>
-      <description>Multiple topics There are two main approaches when it comes to topics in Azure Service Bus. Depending what&amp;rsquo;s your architecture and needs you can have either:
+      <description>Multiple topicsThere are two main approaches when it comes to topics in Azure Service Bus. Depending what&amp;rsquo;s your architecture and needs you can have either:
  Filtered topic - this means you have only one topic for all of your event types. All publishers push messages onto that single topic. Some of the message fields and properties are then used for filtering by the subscribers since in most cases a subscriber will be interested only in certain types of messages.</description>
     </item>
     
@@ -55,7 +55,7 @@ Before you stands a very long article in which you&amp;rsquo;ll find my review a
       <pubDate>Thu, 11 Jul 2019 22:47:02 +0100</pubDate>
       
       <guid>https://underscorehao.net/2019/07/auto-refreshing-cache-in-dotnet/</guid>
-      <description>Caching is hard On a bright sunny day while you&amp;rsquo;re working on your awesome project you catch a glimpse of something. You bring yourself closer to the monitor and begin meticulously examining your code. What you find brings you feelings of disgust and shame! You&amp;rsquo;ve been calling an API retrieving data you need over and over again even though said data hardly changes!
+      <description>Caching is hardOn a bright sunny day while you&amp;rsquo;re working on your awesome project you catch a glimpse of something. You bring yourself closer to the monitor and begin meticulously examining your code. What you find brings you feelings of disgust and shame! You&amp;rsquo;ve been calling an API retrieving data you need over and over again even though said data hardly changes!
 Being the smart and responsible engineer that you are, you decide to rectify your mistake immediately.</description>
     </item>
     
@@ -65,7 +65,7 @@ Being the smart and responsible engineer that you are, you decide to rectify you
       <pubDate>Tue, 13 Mar 2018 22:27:05 +0200</pubDate>
       
       <guid>https://underscorehao.net/2018/03/net-core-api-dynamodb-dependency-injection/</guid>
-      <description>The Problem Today I faced a problem which I knew would come, but didn&amp;rsquo;t have time to implement properly at the time. There were more urgent tasks at hand before, deadlines to be met and this issue remained unresolved.
+      <description>The ProblemToday I faced a problem which I knew would come, but didn&amp;rsquo;t have time to implement properly at the time. There were more urgent tasks at hand before, deadlines to be met and this issue remained unresolved.
 Amazon&amp;rsquo;s .NET Core SDK is very good for the most part. Everything works as it should. But let&amp;rsquo;s say you use the .NET Object Persistence Model for DynamoDB in your service and you have mapped C# classes to DynamoDB tables like this:</description>
     </item>
     
@@ -76,7 +76,7 @@ Amazon&amp;rsquo;s .NET Core SDK is very good for the most part. Everything work
       
       <guid>https://underscorehao.net/contact/</guid>
       <description>If you’re interested in talking with me about a project, idea or something else you can send me an email or use one of the links on the main page to contact me.
-Also you can buy me a beer/coffee if I helped you with something : ) 
+Also you can buy me a beer/coffee if I helped you with something : )
  Bitcoin - bc1qa9u4rwc8whur8ueklq4ya3mmljrm7qk4wgu3k4 Ethereum - 0x56F8584849568D5F7C2BB31DdC8552a1b4515F63 Litecoin - LNWMGeGzy9fDCbfZLvr6swLYxmuA7LTXex  </description>
     </item>
     
