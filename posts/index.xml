@@ -6,7 +6,16 @@
     <description>Recent content in Posts on _hao</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 28 Sep 2021 21:30:00 +0100</lastBuildDate><atom:link href="https://underscorehao.net/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 10 Nov 2021 12:50:00 +0000</lastBuildDate><atom:link href="https://underscorehao.net/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Compiling C&#43;&#43; project using SFML with cl.exe</title>
+      <link>https://underscorehao.net/2021/11/compiling-cpp-sfml-windows-cli/</link>
+      <pubDate>Wed, 10 Nov 2021 12:50:00 +0000</pubDate>
+      
+      <guid>https://underscorehao.net/2021/11/compiling-cpp-sfml-windows-cli/</guid>
+      <description>Why? The usefulness of this approach is debatable, but let me try to offer an answer on why you might want to know how to do that. I think it&amp;rsquo;s the mark of a good engineer to know what&amp;rsquo;s happening under the hood. Simple as that. New or inexperienced developers will benefit from understanding the connection between the user interface in Visual Studio and the actual command line tools used underneath.</description>
+    </item>
+    
     <item>
       <title>In the Pursuit of Knowledge and Mastery</title>
       <link>https://underscorehao.net/2021/09/in-the-pursuit-of-knowledge-and-mastery/</link>
