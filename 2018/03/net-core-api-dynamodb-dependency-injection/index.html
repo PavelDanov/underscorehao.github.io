@@ -5,19 +5,22 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Language" content="en">
+    <meta name="color-scheme" content="light dark">
+
+    
 
     <meta name="author" content="Pavel Danov">
-    <meta name="description" content="The Problem Today I faced a problem which I knew would come, but didn&rsquo;t have time to implement properly at the time. There were more urgent tasks at hand before, deadlines to be met and this issue remained unresolved.
+    <meta name="description" content="The ProblemToday I faced a problem which I knew would come, but didn&rsquo;t have time to implement properly at the time. There were more urgent tasks at hand before, deadlines to be met and this issue remained unresolved.
 Amazon&rsquo;s .NET Core SDK is very good for the most part. Everything works as it should. But let&rsquo;s say you use the .NET Object Persistence Model for DynamoDB in your service and you have mapped C# classes to DynamoDB tables like this:">
     <meta name="keywords" content="blog,developer,personal,back-end,c#,c&#43;&#43;,.net,dotnet,programming,software,tech,backend,fintech,gamedev,games,martial arts,books">
 
     <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content=".NET Core API with DynamoDB Context Dependency Injection"/>
-<meta name="twitter:description" content="The Problem Today I faced a problem which I knew would come, but didn&rsquo;t have time to implement properly at the time. There were more urgent tasks at hand before, deadlines to be met and this issue remained unresolved.
+<meta name="twitter:description" content="The ProblemToday I faced a problem which I knew would come, but didn&rsquo;t have time to implement properly at the time. There were more urgent tasks at hand before, deadlines to be met and this issue remained unresolved.
 Amazon&rsquo;s .NET Core SDK is very good for the most part. Everything works as it should. But let&rsquo;s say you use the .NET Object Persistence Model for DynamoDB in your service and you have mapped C# classes to DynamoDB tables like this:"/>
 
     <meta property="og:title" content=".NET Core API with DynamoDB Context Dependency Injection" />
-<meta property="og:description" content="The Problem Today I faced a problem which I knew would come, but didn&rsquo;t have time to implement properly at the time. There were more urgent tasks at hand before, deadlines to be met and this issue remained unresolved.
+<meta property="og:description" content="The ProblemToday I faced a problem which I knew would come, but didn&rsquo;t have time to implement properly at the time. There were more urgent tasks at hand before, deadlines to be met and this issue remained unresolved.
 Amazon&rsquo;s .NET Core SDK is very good for the most part. Everything works as it should. But let&rsquo;s say you use the .NET Object Persistence Model for DynamoDB in your service and you have mapped C# classes to DynamoDB tables like this:" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://underscorehao.net/2018/03/net-core-api-dynamodb-dependency-injection/" />
@@ -26,22 +29,19 @@ Amazon&rsquo;s .NET Core SDK is very good for the most part. Everything works as
 
 
     <title>
-.NET Core API with DynamoDB Context Dependency Injection · _hao
+  .NET Core API with DynamoDB Context Dependency Injection · _hao
 </title>
 
     
       <link rel="canonical" href="https://underscorehao.net/2018/03/net-core-api-dynamodb-dependency-injection/">
     
 
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Lato:400,700%7CMerriweather:300,700%7CSource+Code+Pro:400,700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css"
-      integrity="sha256-gsmEoJAws/Kd3CjuOQzLie5Q3yshhvmo7YNtBG7aaEY=" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8/normalize.min.css">
+    <link rel="preload" href="https://underscorehao.net/fonts/forkawesome-webfont.woff2?v=1.2.0" as="font" type="font/woff2" crossorigin>
+
     
       
       
-      <link rel="stylesheet" href="https://underscorehao.net/css/coder.min.3219ef62ae52679b7a9c19043171c3cd9f523628c2a65f3ef247ee18836bc90b.css" integrity="sha256-MhnvYq5SZ5t6nBkEMXHDzZ9SNijCpl8&#43;8kfuGINryQs=" crossorigin="anonymous" media="screen" />
+      <link rel="stylesheet" href="https://underscorehao.net/css/coder.min.d9fddbffe6f27e69985dc5fe0471cdb0e57fbf4775714bc3d847accb08f4a1f6.css" integrity="sha256-2f3b/&#43;byfmmYXcX&#43;BHHNsOV/v0d1cUvD2Eesywj0ofY=" crossorigin="anonymous" media="screen" />
     
 
     
@@ -50,7 +50,7 @@ Amazon&rsquo;s .NET Core SDK is very good for the most part. Everything works as
       
         
         
-        <link rel="stylesheet" href="https://underscorehao.net/css/coder-dark.min.e78e80fc3a585a4d1c8fc7f58623b6ff852411e38431a9cd1792877ecaa160f6.css" integrity="sha256-546A/DpYWk0cj8f1hiO2/4UkEeOEManNF5KHfsqhYPY=" crossorigin="anonymous" media="screen" />
+        <link rel="stylesheet" href="https://underscorehao.net/css/coder-dark.min.002ee2378e14c7a68f1f0a53d9694ed252090987c4e768023fac694a4fc5f793.css" integrity="sha256-AC7iN44Ux6aPHwpT2WlO0lIJCYfE52gCP6xpSk/F95M=" crossorigin="anonymous" media="screen" />
       
     
 
@@ -64,8 +64,6 @@ Amazon&rsquo;s .NET Core SDK is very good for the most part. Everything works as
     <link rel="apple-touch-icon" href="https://underscorehao.net/images/apple-touch-icon.png">
     <link rel="apple-touch-icon" sizes="180x180" href="https://underscorehao.net/images/apple-touch-icon.png">
 
-    
-
     <meta name="generator" content="Hugo 0.80.0" />
   </head>
 
@@ -73,9 +71,7 @@ Amazon&rsquo;s .NET Core SDK is very good for the most part. Everything works as
   
     
   
-  <body class="colorscheme-dark"
-        onload=""
-  >
+  <body class="preload-transitions colorscheme-dark">
     
 <div class="float-container">
     <a id="dark-mode-toggle" class="colorscheme-toggle">
@@ -124,35 +120,44 @@ Amazon&rsquo;s .NET Core SDK is very good for the most part. Everything works as
 
       <div class="content">
         
-<section class="container post">
-	<article>
-		<header>
-			<div class="post-title">
-				<h1 class="title">.NET Core API with DynamoDB Context Dependency Injection</h1>
-			</div>
-			<div class="post-meta">
-				<div class="date">
-					<span class="posted-on">
-						<i class="fa fa-calendar" aria-hidden="true"></i>
-						<time datetime='2018-03-13T22:27:05&#43;02:00'>
-							March 13, 2018
-						</time>
-					</span>
-					<span class="reading-time">
-						<i class="fa fa-clock-o" aria-hidden="true"></i>
-						5-minute read
-					</span>
-				</div>
-				
-				
-				
-			</div>
-		</header>
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">
+            <a class="title-link" href="https://underscorehao.net/2018/03/net-core-api-dynamodb-dependency-injection/">
+              .NET Core API with DynamoDB Context Dependency Injection
+            </a>
+          </h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fa fa-calendar" aria-hidden="true"></i>
+              <time datetime='2018-03-13T22:27:05&#43;02:00'>
+                March 13, 2018
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fa fa-clock-o" aria-hidden="true"></i>
+              5-minute read
+            </span>
+          </div>
+          
+          
+          
+        </div>
+      </header>
 
-		<div>
-			
-			
-			<h2 id="the-problem">The Problem</h2>
+      <div>
+        
+		
+        <h2 id="the-problem">
+  The Problem
+  <a class="heading-link" href="#the-problem">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h2>
 <p>Today I faced a problem which I knew would come, but didn&rsquo;t have time to implement properly at the time. There were more urgent tasks at hand before, deadlines to be met and this issue remained unresolved.</p>
 <p>Amazon&rsquo;s .NET Core SDK is very good for the most part. Everything works as it should. But let&rsquo;s say you use the <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DotNetSDKHighLevel.html">.NET Object Persistence Model</a> for <a href="https://aws.amazon.com/dynamodb/">DynamoDB</a> in your service and you have mapped C# classes to DynamoDB tables like this:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#66d9ef">namespace</span> Models
@@ -239,7 +244,12 @@ Amazon&rsquo;s .NET Core SDK is very good for the most part. Everything works as
 }
 </code></pre></div><p>It&rsquo;s all fun and games until you have to use different databases for different environments! Of course you can use the <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DotNetSDKMidLevel.html">Document Model</a>, but then you lose the nice mapping to C# classes and have to work with generic documents.</p>
 <p>C# attributes are not meant to change at runtime, so we&rsquo;re in a tough spot! What can we do to tell our build pipeline which tables we&rsquo;d like to use?</p>
-<h2 id="the-solution">The Solution</h2>
+<h2 id="the-solution">
+  The Solution
+  <a class="heading-link" href="#the-solution">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h2>
 <p>.NET Core&rsquo;s powerful dependency injection comes to our rescue! First we create the same section (with the respective databases for our environments) in our <strong><code>appsettings.Development.json</code></strong></p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#e6db74">&#34;DynamoDbTables&#34;</span><span style="color:#960050;background-color:#1e0010">:</span> {
     <span style="color:#f92672">&#34;Player&#34;</span>: <span style="color:#e6db74">&#34;DevPlayer&#34;</span>,
@@ -382,52 +392,43 @@ services.AddScoped&lt;IDynamoDbContext&lt;Location&gt;&gt;(provider =&gt; <span 
 </code></pre></div><p>Depending on your case you can use different services for different tables or other requirements. This solution might seem a bit more cumbersome than the original, but it makes us flexible in case we need to work with multiple databases and different build environments. The only thing you have to do is to tell your build tool/pipeline to change the table names in your <strong><code>appsettings.json</code></strong> files.</p>
 <p>This method also is more robust when it comes to testing because it&rsquo;ll be much easier to mock! All in all I&rsquo;m really happy with how it all turned out!</p>
 
-		</div>
+      </div>
 
 
-		<footer>
-			
+      <footer>
+        
 
 
-			
-			
-			
-		</footer>
-	</article>
+        
+        
+        
+      </footer>
+    </article>
 
     
   </section>
 
       </div>
 
-      
-  <footer class="footer">
-    <section class="container">
-      
-      
-        ©
-        
-          2017 -
-        
-        2021
-         Pavel Danov 
-      
-      
-         · 
-        Powered by <a href="https://gohugo.io/">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/">Coder</a>.
-      
-      
-    </section>
-  </footer>
-
+      <footer class="footer">
+  <section class="container">
+    ©
+    
+      2017 -
+    
+    2022
+     Pavel Danov 
+    ·
+    Powered by <a href="https://gohugo.io/">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/">Coder</a>.
+    
+  </section>
+</footer>
 
     </main>
 
     
       
-        
-        <script src="https://underscorehao.net/js/dark-mode.min.0213e1773e6d1c5a644f847c67a6f8abac49a3776e2976f6008038af8c5b76a1.js"></script>
-      
+      <script src="https://underscorehao.net/js/coder.min.8ddd58e878760346f67d56a123af8e6fd8dde1bc0903de1fc025ae84b4cf686f.js" integrity="sha256-jd1Y6Hh2A0b2fVahI6&#43;Ob9jd4bwJA94fwCWuhLTPaG8="></script>
     
 
     
@@ -446,6 +447,10 @@ if (!doNotTrack) {
 }
 </script>
 
+
+    
+
+    
 
     
 
