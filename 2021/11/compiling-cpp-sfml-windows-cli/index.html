@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html
+  dir="ltr"
+  lang="en"
+  data-theme=""
+><head>
+  <title>
+    
+      
+        Compiling C&#43;&#43; project using SFML with cl.exe |
+
+      
+      _hao
+
+
+    
+  </title>
+
+  
+  <meta charset="utf-8" /><meta name="generator" content="Hugo 0.80.0" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta
+    name="description"
+    content="
+      Life and Tech
+
+
+    "
+  />
+  
+  
+  
+  <link
+    rel="stylesheet"
+    href="https://underscorehao.net/css/main.min.12d773253f877f9142c19e60bce96350408821d5e4fbf86768a737186ce79ea7.css"
+    integrity="sha256-EtdzJT&#43;Hf5FCwZ5gvOljUECIIdXk&#43;/hnaKc3GGznnqc="
+    crossorigin="anonymous"
+    type="text/css"
+  />
+  
+  
+  <link
+    rel="stylesheet"
+    href="https://underscorehao.net/css/markupHighlight.min.8f07fad4abedfd5eb1396c6fef85ba7ec00ec867a79fb545c9db18df87f6760a.css"
+    integrity="sha256-jwf61Kvt/V6xOWxv74W6fsAOyGenn7VFydsY34f2dgo="
+    crossorigin="anonymous"
+    type="text/css"
+  />
+  
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+    integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
+    crossorigin="anonymous"
+  />
+  
+  <link rel="shortcut icon" href="https://underscorehao.net/favicons/favicon.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" sizes="180x180" href="https://underscorehao.net/favicons/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="https://underscorehao.net/favicons/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="https://underscorehao.net/favicons/favicon-16x16.png" />
+
+  <link rel="canonical" href="https://underscorehao.net/2021/11/compiling-cpp-sfml-windows-cli/" />
+
+  
+  
+  
+  
+  <script
+    type="text/javascript"
+    src="https://underscorehao.net/js/anatole-header.min.413f798d8aa82610bef17a5ca1d7e962ec185be395f1aeb3f45d1891af568b65.js"
+    integrity="sha256-QT95jYqoJhC&#43;8XpcodfpYuwYW&#43;OV8a6z9F0Yka9Wi2U="
+    crossorigin="anonymous"
+  ></script>
+
+  
+    
+    
+    <script
+      type="text/javascript"
+      src="https://underscorehao.net/js/anatole-theme-switcher.min.fcf9526f15b3b4e08472de192969ab28a4cdcb32ac94f83e85a8b84e9b45acd2.js"
+      integrity="sha256-/PlSbxWztOCEct4ZKWmrKKTNyzKslPg&#43;hai4TptFrNI="
+      crossorigin="anonymous"
+    ></script>
+
+  
+  <meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://underscorehao.net/images/site-feature-image.png"/>
+
+<meta name="twitter:title" content="Compiling C&#43;&#43; project using SFML with cl.exe"/>
+<meta name="twitter:description" content="Why? The usefulness of this approach is debatable, but let me try to offer an answer on why you might want to know how to do that."/>
+
+
+
+  
+
+
+  
+  
+  
+  
+  <script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "articleSection": "posts",
+        "name": "Compiling C\u002b\u002b project using SFML with cl.exe",
+        "headline": "Compiling C\u002b\u002b project using SFML with cl.exe",
+        "alternativeHeadline": "",
+        "description": "
+      
+        Why? The usefulness of this approach is debatable, but let me try to offer an answer on why you might want to know how to do that.
+
+
+      
+
+
+    ",
+        "inLanguage": "en",
+        "isFamilyFriendly": "true",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/underscorehao.net\/2021\/11\/compiling-cpp-sfml-windows-cli\/"
+        },
+        "author" : {
+            "@type": "Person",
+            "name": "_hao"
+        },
+        "creator" : {
+            "@type": "Person",
+            "name": "_hao"
+        },
+        "accountablePerson" : {
+            "@type": "Person",
+            "name": "_hao"
+        },
+        "copyrightHolder" : {
+            "@type": "Person",
+            "name": "_hao"
+        },
+        "copyrightYear" : "2021",
+        "dateCreated": "2021-11-10T12:50:00.00Z",
+        "datePublished": "2021-11-10T12:50:00.00Z",
+        "dateModified": "2021-11-10T12:50:00.00Z",
+        "publisher":{
+            "@type":"Organization",
+            "name": "_hao",
+            "url": "https://underscorehao.net/",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https:\/\/underscorehao.net\/favicons\/favicon-32x32.png",
+                "width":"32",
+                "height":"32"
+            }
+        },
+        "image": 
+      [
+        
+        "https://underscorehao.net/images/site-feature-image.png"
+
+
+      
+      ]
+
+    ,
+        "url" : "https:\/\/underscorehao.net\/2021\/11\/compiling-cpp-sfml-windows-cli\/",
+        "wordCount" : "417",
+        "genre" : [ 
+      
+      "Software Development"
+
+    ],
+        "keywords" : [ 
+      
+      "C\u002b\u002b"
+
+    
+      
+        ,
+
+      
+      "Windows"
+
+    
+      
+        ,
+
+      
+      "SFML"
+
+    ]
+    }
+  </script>
+
+
+
+</head>
+<body>
+    <header><div
+  class="page-top 
+    animated fadeInDown
+
+  "
+>
+  <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
+    <span aria-hidden="true"></span>
+    <span aria-hidden="true"></span>
+    <span aria-hidden="true"></span>
+  </a>
+  <nav>
+    <ul class="nav__list" id="navMenu">
+      <div class="nav__links">
+        
+        
+          
+          <li>
+            <a
+              
+              href="https://underscorehao.net/"
+              
+              title=""
+              >Home</a
+            >
+          </li>
+
+        
+          
+          <li>
+            <a
+              
+              href="https://underscorehao.net/posts/"
+              
+              title=""
+              >Blog</a
+            >
+          </li>
+
+        
+          
+          <li>
+            <a
+              
+              href="https://underscorehao.net/about/"
+              
+              title=""
+              >About</a
+            >
+          </li>
+
+        
+          
+          <li>
+            <a
+              
+              href="https://underscorehao.net/contact/"
+              
+              title=""
+              >Contact</a
+            >
+          </li>
+
+        
+      </div>
+      <ul>
+        
+        
+          <li>
+            <a class="theme-switch" title="Switch Theme">
+              <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a>
+          </li>
+
+        
+      </ul>
+    </ul>
+  </nav>
+</div>
+</header>
+    <div class="wrapper">
+      <aside><div
+  class="sidebar
+    animated fadeInDown
+
+  "
+>
+  <div class="sidebar__content">
+    <div class="logo-title">
+      <div class="title">
+        <img src="https://underscorehao.net/images/avatar.jpg" alt="profile picture" />
+        <h3 title=""><a href="https://underscorehao.net/">Pavel Danov</a></h3>
+        <div class="description">
+          <p>Life and Tech</p>
+        </div>
+      </div>
+    </div>
+    <ul class="social-links">
+      
+        <li>
+          <a href="https://twitter.com/underscoreHao/" rel="me" aria-label="Twitter" title="Twitter">
+            <i class="fab fa-twitter fa-2x" aria-hidden="true"></i>
+          </a>
+        </li>
+
+      
+        <li>
+          <a href="https://github.com/underscoreHao/" rel="me" aria-label="GitHub" title="GitHub">
+            <i class="fab fa-github fa-2x" aria-hidden="true"></i>
+          </a>
+        </li>
+
+      
+        <li>
+          <a href="https://stackoverflow.com/users/2265179/underscorehao" rel="me" aria-label="Stack Overflow" title="Stack Overflow">
+            <i class="fab fa-stack-overflow fa-2x" aria-hidden="true"></i>
+          </a>
+        </li>
+
+      
+        <li>
+          <a href="https://news.ycombinator.com/user?id=_hao" rel="me" aria-label="Hacker News" title="Hacker News">
+            <i class="fab fa-hacker-news fa-2x" aria-hidden="true"></i>
+          </a>
+        </li>
+
+      
+        <li>
+          <a href="mailto:underscorehao@gmail.com" rel="me" aria-label="e-mail" title="e-mail">
+            <i class="fas fa-envelope fa-2x" aria-hidden="true"></i>
+          </a>
+        </li>
+
+      
+        <li>
+          <a href="https://underscorehao.net/index.xml" rel="me" aria-label="RSS" title="RSS">
+            <i class="fas fa-rss fa-2x" aria-hidden="true"></i>
+          </a>
+        </li>
+
+      
+    </ul>
+  </div><footer class="footer footer--sidebar">
+  <div class="by_farbox">
+    <ul class="footer__list">
+      <li class="footer__item">
+        &copy;
+        
+          2017-2022
+
+        
+      </li>
+      
+    </ul>
+  </div>
+</footer>
+  
+  <script
+    type="text/javascript"
+    src="https://underscorehao.net/js/medium-zoom.min.bdc7b23aff63497a79433b3920b03e2473399d90ad4c2d87cf7c08d33d61966f.js"
+    integrity="sha256-vceyOv9jSXp5Qzs5ILA&#43;JHM5nZCtTC2Hz3wI0z1hlm8="
+    crossorigin="anonymous"
+  ></script>
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-106583563-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+</div>
+</aside>
+      <main>
+        <div class="autopagerize_page_element">
+          <div class="content">
+  <div
+    class="post 
+      animated fadeInDown
+
+    "
+  >
+    <div class="post-content">
+      
+      <div class="post-title">
+        <h1>Compiling C&#43;&#43; project using SFML with cl.exe</h1>
+        
+      </div><h2 id="why">Why?</h2>
+<p>The usefulness of this approach is debatable, but let me try to offer an answer on why you might want to know how to do that. I think it&rsquo;s the mark of a good engineer to know what&rsquo;s happening under the hood. Simple as that. New or inexperienced developers will benefit from understanding the connection between the user interface in Visual Studio and the actual command line tools used underneath.</p>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>Imagine that you&rsquo;re on Windows and want to use the <a href="https://docs.microsoft.com/en-us/cpp/build/building-on-the-command-line?view=msvc-170">MSVC</a> compiler toolset from the command line to build a project with <a href="https://www.sfml-dev.org/index.php">SFML</a>. In a nutshell you&rsquo;re going to replicate the documentation given for <a href="https://www.sfml-dev.org/tutorials/2.5/start-vc.php">SFML and Visual Studio</a>, but from the terminal.</p>
+<p>Assuming you have installed all the necessarry tooling and you have SFML in the <code>C:\libs\SFML-2.5.1</code> directory you can just do the following.</p>
+<h2 id="dynamic-linking">Dynamic Linking</h2>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># For DEBUG builds -d is part of the lib names. See SFML docs on that.</span>
+cl Main.cpp Game.cpp Window.cpp <span class="s2">&#34;sfml-graphics-d.lib&#34;</span> <span class="s2">&#34;sfml-window-d.lib&#34;</span> <span class="s2">&#34;sfml-system-d.lib&#34;</span> <span class="s2">&#34;sfml-audio-d.lib&#34;</span> <span class="s2">&#34;sfml-network-d.lib&#34;</span> /I <span class="s2">&#34;C:\libs\SFML-2.5.1\include&#34;</span> /MDd /link /LIBPATH:<span class="s2">&#34;C:\libs\SFML-2.5.1\lib&#34;</span> /DEBUG
+</code></pre></div><p>Let&rsquo;s quickly break that down.</p>
+<ul>
+<li>After <code>cl</code> put your <code>.cpp</code> files, then add all <code>.lib</code> files because the linker will look for those.</li>
+<li>With <a href="https://docs.microsoft.com/en-us/cpp/build/reference/i-additional-include-directories?view=msvc-170">/I</a> you include the path to the SFML headers.</li>
+<li>Next is <a href="https://docs.microsoft.com/en-us/cpp/build/reference/md-mt-ld-use-run-time-library?view=msvc-170">/MDd</a> which is dealing with the runtime and adding additional debug information.</li>
+<li>We also need <a href="https://docs.microsoft.com/en-us/cpp/build/reference/link-pass-options-to-linker?view=msvc-170">/link</a> which is used to pass options to the linker and in this case we&rsquo;re passing <a href="https://docs.microsoft.com/en-us/cpp/build/reference/libpath-additional-libpath?view=msvc-170">/LIBPATH</a> which contains the path to the SFML libraries.</li>
+<li>Finally we pass <a href="https://docs.microsoft.com/en-us/cpp/build/reference/debug-generate-debug-info?view=msvc-170">/DEBUG</a> to the linker because we&rsquo;re doing a debug build in this case.</li>
+</ul>
+<p>This will create a <code>Main.exe</code> in your current folder. You&rsquo;ll need to add the appropriate SFML <code>.dll</code> files to that folder in order to execute your program successfully.</p>
+<h2 id="static-linking">Static Linking</h2>
+<p>For static linking the process is almost the same with some slight differences.</p>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># Note -s-d as part of the lib names. See SFML docs on that.</span>
+cl Main.cpp Game.cpp Window.cpp <span class="s2">&#34;sfml-graphics-s-d.lib&#34;</span> <span class="s2">&#34;sfml-window-s-d.lib&#34;</span> <span class="s2">&#34;sfml-system-s-d.lib&#34;</span> <span class="s2">&#34;sfml-audio-s-d.lib&#34;</span> <span class="s2">&#34;sfml-network-s-d.lib&#34;</span> opengl32.lib freetype.lib winmm.lib gdi32.lib user32.lib Advapi32.lib /I <span class="s2">&#34;C:\libs\SFML-2.5.1\include&#34;</span> /D SFML_STATIC /MDd /link /LIBPATH:<span class="s2">&#34;C:\libs\SFML-2.5.1\lib&#34;</span> /DEBUG
+</code></pre></div><ul>
+<li>This time we&rsquo;re including the static version of the SFML libraries.</li>
+<li>We have to pass the extra dependencies needed by SFML in order for the build to be successful and not blow up with a lot of link errors.</li>
+<li>We use the <a href="https://docs.microsoft.com/en-us/cpp/build/reference/d-preprocessor-definitions?view=msvc-170">/D</a> flag to define the <code>SFML_STATIC</code> macro.</li>
+</ul>
+<p>If all is well you&rsquo;ll be able to just run your <code>Main.exe</code> straight away.</p>
+<figure>
+    <img src="https://underscorehao.net/images/sfml-compile.gif"
+         alt="Compiling a project with SFML in Vim"/> <figcaption>
+            <p>Compiling a project with SFML in Vim</p>
+        </figcaption>
+</figure>
+
+<h2 id="final-words">Final Words</h2>
+<p>Learn to use CMake :)</p>
+</div>
+    <div class="post-footer">
+      <div class="info">
+        
+          <span class="separator"><a class="category" href="https://underscorehao.net/categories/software-development/">Software Development</a></span>
+
+
+
+
+        
+
+        
+          <span class="separator"><a class="tag" href="https://underscorehao.net/tags/c&#43;&#43;/">C&#43;&#43;</a><a class="tag" href="https://underscorehao.net/tags/windows/">Windows</a><a class="tag" href="https://underscorehao.net/tags/sfml/">SFML</a></span>
+
+
+
+
+        
+      </div>
+    </div>
+
+    
+  </div>
+
+
+          </div>
+        </div>
+      </main>
+    </div><footer class="footer footer--base">
+  <div class="by_farbox">
+    <ul class="footer__list">
+      <li class="footer__item">
+        &copy;
+        
+          2017-2022
+
+        
+      </li>
+      
+    </ul>
+  </div>
+</footer>
+  
+  <script
+    type="text/javascript"
+    src="https://underscorehao.net/js/medium-zoom.min.bdc7b23aff63497a79433b3920b03e2473399d90ad4c2d87cf7c08d33d61966f.js"
+    integrity="sha256-vceyOv9jSXp5Qzs5ILA&#43;JHM5nZCtTC2Hz3wI0z1hlm8="
+    crossorigin="anonymous"
+  ></script>
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-106583563-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+</body>
+</html>

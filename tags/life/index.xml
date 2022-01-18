@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>life on Pavel Danov</title>
+    <link>https://underscorehao.net/tags/life/</link>
+    <description>Recent content in life on Pavel Danov</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 29 Nov 2021 20:00:00 +0000</lastBuildDate><atom:link href="https://underscorehao.net/tags/life/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>2021 Book List</title>
+      <link>https://underscorehao.net/2021/11/2021-book-list/</link>
+      <pubDate>Mon, 29 Nov 2021 20:00:00 +0000</pubDate>
+      
+      <guid>https://underscorehao.net/2021/11/2021-book-list/</guid>
+      
+        <description>Here I&amp;rsquo;ll be adding books I&amp;rsquo;m currently reading and have read during the year.</description>
+      
+    </item>
+    
+    <item>
+      <title>In the Pursuit of Knowledge and Mastery</title>
+      <link>https://underscorehao.net/2021/09/in-the-pursuit-of-knowledge-and-mastery/</link>
+      <pubDate>Tue, 28 Sep 2021 21:30:00 +0100</pubDate>
+      
+      <guid>https://underscorehao.net/2021/09/in-the-pursuit-of-knowledge-and-mastery/</guid>
+      
+        <description>The Pursuit Last year has been interesting on a multitude of levels.</description>
+      
+    </item>
+    
+  </channel>
+</rss>
