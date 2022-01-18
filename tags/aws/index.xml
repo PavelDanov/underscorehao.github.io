@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>AWS on Pavel Danov</title>
+    <link>https://underscorehao.net/tags/aws/</link>
+    <description>Recent content in AWS on Pavel Danov</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Tue, 13 Mar 2018 22:27:05 +0200</lastBuildDate><atom:link href="https://underscorehao.net/tags/aws/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>.NET Core API with DynamoDB Context Dependency Injection</title>
+      <link>https://underscorehao.net/2018/03/net-core-api-dynamodb-dependency-injection/</link>
+      <pubDate>Tue, 13 Mar 2018 22:27:05 +0200</pubDate>
+      
+      <guid>https://underscorehao.net/2018/03/net-core-api-dynamodb-dependency-injection/</guid>
+      
+        <description>The Problem Today I faced a problem which I knew would come, but didn&amp;rsquo;t have time to implement properly at the time.</description>
+      
+    </item>
+    
+  </channel>
+</rss>
