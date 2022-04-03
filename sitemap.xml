@@ -3,37 +3,62 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://underscorehao.net/categories/</loc>
+    <lastmod>2022-04-03T13:00:00+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://underscorehao.net/tags/discipline/</loc>
+    <lastmod>2022-04-03T13:00:00+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://underscorehao.net/series/knowledge-mastery/</loc>
+    <lastmod>2022-04-03T13:00:00+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://underscorehao.net/tags/life/</loc>
+    <lastmod>2022-04-03T13:00:00+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://underscorehao.net/2022/04/new-year-new-process/</loc>
+    <lastmod>2022-04-03T13:00:00+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://underscorehao.net/</loc>
+    <lastmod>2022-04-03T13:00:00+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://underscorehao.net/posts/</loc>
+    <lastmod>2022-04-03T13:00:00+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://underscorehao.net/series/</loc>
+    <lastmod>2022-04-03T13:00:00+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://underscorehao.net/tags/</loc>
+    <lastmod>2022-04-03T13:00:00+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://underscorehao.net/categories/thoughts/</loc>
+    <lastmod>2022-04-03T13:00:00+01:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://underscorehao.net/2021/11/2021-book-list/</loc>
     <lastmod>2021-11-29T20:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://underscorehao.net/tags/life/</loc>
-    <lastmod>2021-11-29T20:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://underscorehao.net/</loc>
-    <lastmod>2021-11-29T20:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://underscorehao.net/posts/</loc>
-    <lastmod>2021-11-29T20:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://underscorehao.net/tags/</loc>
-    <lastmod>2021-11-29T20:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://underscorehao.net/tags/c&#43;&#43;/</loc>
-    <lastmod>2021-11-10T12:50:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://underscorehao.net/categories/</loc>
     <lastmod>2021-11-10T12:50:00+00:00</lastmod>
   </url>
   
@@ -58,17 +83,7 @@
   </url>
   
   <url>
-    <loc>https://underscorehao.net/tags/discipline/</loc>
-    <lastmod>2021-09-28T21:30:00+01:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://underscorehao.net/2021/09/in-the-pursuit-of-knowledge-and-mastery/</loc>
-    <lastmod>2021-09-28T21:30:00+01:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://underscorehao.net/categories/thoughts/</loc>
     <lastmod>2021-09-28T21:30:00+01:00</lastmod>
   </url>
   
@@ -135,10 +150,6 @@
   <url>
     <loc>https://underscorehao.net/contact/</loc>
     <lastmod>2018-03-03T10:54:07+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://underscorehao.net/series/</loc>
   </url>
   
 </urlset>

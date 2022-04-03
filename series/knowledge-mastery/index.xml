@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>life on Pavel Danov</title>
-    <link>https://underscorehao.net/tags/life/</link>
-    <description>Recent content in life on Pavel Danov</description>
+    <title>knowledge-mastery on Pavel Danov</title>
+    <link>https://underscorehao.net/series/knowledge-mastery/</link>
+    <description>Recent content in knowledge-mastery on Pavel Danov</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 03 Apr 2022 13:00:00 +0100</lastBuildDate><atom:link href="https://underscorehao.net/tags/life/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 03 Apr 2022 13:00:00 +0100</lastBuildDate><atom:link href="https://underscorehao.net/series/knowledge-mastery/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>New Year, New Process</title>
       <link>https://underscorehao.net/2022/04/new-year-new-process/</link>
@@ -15,17 +15,6 @@
       <guid>https://underscorehao.net/2022/04/new-year-new-process/</guid>
       
         <description>At the start of 2022 I decided to start journaling. I&amp;rsquo;ve tried both digital and physical approaches in the past, but neither stuck.</description>
-      
-    </item>
-    
-    <item>
-      <title>2021 Book List</title>
-      <link>https://underscorehao.net/2021/11/2021-book-list/</link>
-      <pubDate>Mon, 29 Nov 2021 20:00:00 +0000</pubDate>
-      
-      <guid>https://underscorehao.net/2021/11/2021-book-list/</guid>
-      
-        <description>Here I&amp;rsquo;ll be adding books I&amp;rsquo;m currently reading and have read during the year.</description>
       
     </item>
     
