@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Windows on Pavel Danov</title>
+    <title>windows on Pavel Danov</title>
     <link>https://underscorehao.net/tags/windows/</link>
-    <description>Recent content in Windows on Pavel Danov</description>
+    <description>Recent content in windows on Pavel Danov</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en</language>
+    <language>en-us</language>
     <lastBuildDate>Wed, 10 Nov 2021 12:50:00 +0000</lastBuildDate><atom:link href="https://underscorehao.net/tags/windows/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Compiling C&#43;&#43; project using SFML with cl.exe</title>
@@ -13,9 +13,7 @@
       <pubDate>Wed, 10 Nov 2021 12:50:00 +0000</pubDate>
       
       <guid>https://underscorehao.net/2021/11/compiling-cpp-sfml-windows-cli/</guid>
-      
-        <description>Why? The usefulness of this approach is debatable, but let me try to offer an answer on why you might want to know how to do that.</description>
-      
+      <description>Why? The usefulness of this approach is debatable, but let me try to offer an answer on why you might want to know how to do that. I think it&amp;rsquo;s the mark of a good engineer to know what&amp;rsquo;s happening under the hood. Simple as that. New or inexperienced developers will benefit from understanding the connection between the user interface in Visual Studio and the actual command line tools used underneath.</description>
     </item>
     
   </channel>

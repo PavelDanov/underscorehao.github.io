@@ -5,7 +5,7 @@
     <link>https://underscorehao.net/tags/</link>
     <description>Recent content in Tags on Pavel Danov</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en</language>
+    <language>en-us</language>
     <lastBuildDate>Sun, 03 Apr 2022 13:00:00 +0100</lastBuildDate><atom:link href="https://underscorehao.net/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>discipline</title>
@@ -13,9 +13,7 @@
       <pubDate>Sun, 03 Apr 2022 13:00:00 +0100</pubDate>
       
       <guid>https://underscorehao.net/tags/discipline/</guid>
-      
-        <description></description>
-      
+      <description></description>
     </item>
     
     <item>
@@ -24,53 +22,43 @@
       <pubDate>Sun, 03 Apr 2022 13:00:00 +0100</pubDate>
       
       <guid>https://underscorehao.net/tags/life/</guid>
-      
-        <description></description>
-      
+      <description></description>
     </item>
     
     <item>
-      <title>C&#43;&#43;</title>
+      <title>c&#43;&#43;</title>
       <link>https://underscorehao.net/tags/c&#43;&#43;/</link>
       <pubDate>Wed, 10 Nov 2021 12:50:00 +0000</pubDate>
       
       <guid>https://underscorehao.net/tags/c&#43;&#43;/</guid>
-      
-        <description></description>
-      
+      <description></description>
     </item>
     
     <item>
-      <title>SFML</title>
+      <title>sfml</title>
       <link>https://underscorehao.net/tags/sfml/</link>
       <pubDate>Wed, 10 Nov 2021 12:50:00 +0000</pubDate>
       
       <guid>https://underscorehao.net/tags/sfml/</guid>
-      
-        <description></description>
-      
+      <description></description>
     </item>
     
     <item>
-      <title>Windows</title>
+      <title>windows</title>
       <link>https://underscorehao.net/tags/windows/</link>
       <pubDate>Wed, 10 Nov 2021 12:50:00 +0000</pubDate>
       
       <guid>https://underscorehao.net/tags/windows/</guid>
-      
-        <description></description>
-      
+      <description></description>
     </item>
     
     <item>
-      <title>Chinese</title>
+      <title>chinese</title>
       <link>https://underscorehao.net/tags/chinese/</link>
       <pubDate>Thu, 14 May 2020 20:00:00 +0100</pubDate>
       
       <guid>https://underscorehao.net/tags/chinese/</guid>
-      
-        <description></description>
-      
+      <description></description>
     </item>
     
     <item>
@@ -79,53 +67,43 @@
       <pubDate>Thu, 14 May 2020 20:00:00 +0100</pubDate>
       
       <guid>https://underscorehao.net/tags/%E4%B8%AD%E6%96%87/</guid>
-      
-        <description></description>
-      
+      <description></description>
     </item>
     
     <item>
-      <title>.NET</title>
+      <title>.net</title>
       <link>https://underscorehao.net/tags/.net/</link>
       <pubDate>Sat, 11 Jan 2020 19:33:48 +0000</pubDate>
       
       <guid>https://underscorehao.net/tags/.net/</guid>
-      
-        <description></description>
-      
+      <description></description>
     </item>
     
     <item>
-      <title>Azure</title>
+      <title>azure</title>
       <link>https://underscorehao.net/tags/azure/</link>
       <pubDate>Sat, 11 Jan 2020 19:33:48 +0000</pubDate>
       
       <guid>https://underscorehao.net/tags/azure/</guid>
-      
-        <description></description>
-      
+      <description></description>
     </item>
     
     <item>
-      <title>C#</title>
+      <title>c#</title>
       <link>https://underscorehao.net/tags/c#/</link>
       <pubDate>Sat, 11 Jan 2020 19:33:48 +0000</pubDate>
       
       <guid>https://underscorehao.net/tags/c#/</guid>
-      
-        <description></description>
-      
+      <description></description>
     </item>
     
     <item>
-      <title>AWS</title>
+      <title>aws</title>
       <link>https://underscorehao.net/tags/aws/</link>
       <pubDate>Tue, 13 Mar 2018 22:27:05 +0200</pubDate>
       
       <guid>https://underscorehao.net/tags/aws/</guid>
-      
-        <description></description>
-      
+      <description></description>
     </item>
     
   </channel>

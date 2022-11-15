@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>AWS on Pavel Danov</title>
+    <title>aws on Pavel Danov</title>
     <link>https://underscorehao.net/tags/aws/</link>
-    <description>Recent content in AWS on Pavel Danov</description>
+    <description>Recent content in aws on Pavel Danov</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en</language>
+    <language>en-us</language>
     <lastBuildDate>Tue, 13 Mar 2018 22:27:05 +0200</lastBuildDate><atom:link href="https://underscorehao.net/tags/aws/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>.NET Core API with DynamoDB Context Dependency Injection</title>
@@ -13,9 +13,8 @@
       <pubDate>Tue, 13 Mar 2018 22:27:05 +0200</pubDate>
       
       <guid>https://underscorehao.net/2018/03/net-core-api-dynamodb-dependency-injection/</guid>
-      
-        <description>The Problem Today I faced a problem which I knew would come, but didn&amp;rsquo;t have time to implement properly at the time.</description>
-      
+      <description>The Problem Today I faced a problem which I knew would come, but didn&amp;rsquo;t have time to implement properly at the time. There were more urgent tasks at hand before, deadlines to be met and this issue remained unresolved.
+Amazon&amp;rsquo;s .NET Core SDK is very good for the most part. Everything works as it should. But let&amp;rsquo;s say you use the .NET Object Persistence Model for DynamoDB in your service and you have mapped C# classes to DynamoDB tables like this:</description>
     </item>
     
   </channel>
