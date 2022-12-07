@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Notes on Pavel Danov</title>
+    <link>https://underscorehao.net/note/</link>
+    <description>Recent content in Notes on Pavel Danov</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 07 Dec 2022 16:15:13 +0000</lastBuildDate><atom:link href="https://underscorehao.net/note/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Digital Decluttering</title>
+      <link>https://underscorehao.net/note/2022/12/07/digital-decluttering/</link>
+      <pubDate>Wed, 07 Dec 2022 16:15:13 +0000</pubDate>
+      
+      <guid>https://underscorehao.net/note/2022/12/07/digital-decluttering/</guid>
+      <description>Today I started looking at all of my digital data in an effort to remove anything that I don&amp;rsquo;t need anymore. I&amp;rsquo;m going through service by service and folder by folder.
+I have thousands of links saved in Pocket, around a hundred in my reading list in Chrome and that’s not mentioning the thousands and thousands of folders filled with documents, code repos and other stuff I have on my drives and personal cloud.</description>
+    </item>
+    
+  </channel>
+</rss>

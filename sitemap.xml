@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://underscorehao.net/note/2022/12/07/digital-decluttering/</loc>
+    <lastmod>2022-12-07T16:15:13+00:00</lastmod>
+  </url><url>
+    <loc>https://underscorehao.net/</loc>
+    <lastmod>2022-12-07T16:15:13+00:00</lastmod>
+  </url><url>
+    <loc>https://underscorehao.net/note/</loc>
+    <lastmod>2022-12-07T16:15:13+00:00</lastmod>
+  </url><url>
     <loc>https://underscorehao.net/tags/c&#43;&#43;/</loc>
     <lastmod>2021-11-10T12:50:00+00:00</lastmod>
   </url><url>
@@ -9,9 +18,6 @@
     <lastmod>2021-11-10T12:50:00+00:00</lastmod>
   </url><url>
     <loc>https://underscorehao.net/2021/11/compiling-cpp-sfml-windows-cli/</loc>
-    <lastmod>2021-11-10T12:50:00+00:00</lastmod>
-  </url><url>
-    <loc>https://underscorehao.net/</loc>
     <lastmod>2021-11-10T12:50:00+00:00</lastmod>
   </url><url>
     <loc>https://underscorehao.net/post/</loc>
