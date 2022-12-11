@@ -1,53 +1,204 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
-<html lang="en-us">
-  <head>
+<html lang='en'><head>
     <meta charset="utf-8">
+    <link rel="shortcut icon" href='/favicon.ico' type="image/x-icon">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Auto Refreshing Cache in .NET | Pavel Danov</title>
-    <link rel="stylesheet" href="https://underscorehao.net/css/style.css" />
-    <link rel="stylesheet" href="https://underscorehao.net/css/fonts.css" />
-    <link href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/styles/github.min.css" rel="stylesheet">
+    <title>Auto Refreshing Cache in .NET - Pavel Danov</title>
 
-  </head>
+    
 
-  <body>
-    <nav>
-    <ul class="menu">
-      
-      <li><a href="https://underscorehao.net/">Home</a></li>
-      
-      <li><a href="https://underscorehao.net/categories/">Categories</a></li>
-      
-      <li><a href="https://underscorehao.net/tags/">Tags</a></li>
-      
-      <li><a href="https://underscorehao.net/about/">About</a></li>
-      
-      <li><a href="https://underscorehao.net/index.xml">Subscribe</a></li>
-      
-    </ul>
-    <hr/>
-    </nav>
+    
 
-<div class="article-meta">
-<h1><span class="title">Auto Refreshing Cache in .NET</span></h1>
+    
+    <meta name="author" content="Pavel Danov" />
+    
 
-<h2 class="date">2019/07/11</h2>
+    
+        <meta property="og:title" content="Auto Refreshing Cache in .NET" />
+<meta property="og:description" content="Caching is hard On a bright sunny day while you&rsquo;re working on your awesome project you catch a glimpse of something. You bring yourself closer to the monitor and begin meticulously examining your code. What you find brings you feelings of disgust and shame! You&rsquo;ve been calling an API retrieving data you need over and over again even though said data hardly changes!
+Being the smart and responsible engineer that you are, you decide to rectify your mistake immediately." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://underscorehao.net/2019/07/auto-refreshing-cache-in-dotnet/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2019-07-11T22:47:02+01:00" />
+<meta property="article:modified_time" content="2019-07-11T22:47:02+01:00" />
 
-<p class="terms">
 
-  
-  Categories: <a href="https://underscorehao.net/categories/software-development">Software Development</a> 
-  
-  
-  
-  Tags: <a href="https://underscorehao.net/tags/c">c#</a> <a href="https://underscorehao.net/tags/.net">.net</a> 
-  
-  
-</p>
+    
+
+    
+        <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Auto Refreshing Cache in .NET"/>
+<meta name="twitter:description" content="Caching is hard On a bright sunny day while you&rsquo;re working on your awesome project you catch a glimpse of something. You bring yourself closer to the monitor and begin meticulously examining your code. What you find brings you feelings of disgust and shame! You&rsquo;ve been calling an API retrieving data you need over and over again even though said data hardly changes!
+Being the smart and responsible engineer that you are, you decide to rectify your mistake immediately."/>
+
+    <link rel="stylesheet" href="/style.min.5297c96c59a52afaa5bcda4a6cedf3813081f64025c209b25b2ee6d0c8f74d462b625ad3404a92a14d7a51b4ec0a420337ae70f426fa4bce2d5f7459a3ca7274.css" integrity="sha512-UpfJbFmlKvqlvNpKbO3zgTCB9kAlwgmyWy7m0Mj3TUYrYlrTQEqSoU16UbTsCkIDN65w9Cb6S84tX3RZo8pydA==">
+
+
+
+    <link rel="stylesheet" href="/lib/css/prism.min.6226f06f992e0d6166b0e26724efd050dcc381202a752892ba523b1b865de2ea5e427f8f7d10de682fc35d6e7444018247d1f25db5e1e3bab17068ce191c5886.css" integrity="sha512-Yibwb5kuDWFmsOJnJO/QUNzDgSAqdSiSulI7G4Zd4upeQn&#43;PfRDeaC/DXW50RAGCR9HyXbXh47qxcGjOGRxYhg==">
+
+
+        
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-106583563-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+    
+
+    
+    <script>
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.setAttribute("data-theme", "dark");
+        } else {
+            document.documentElement.setAttribute("data-theme", "light");
+        }
+    </script>
+<script defer src="/js/header.7a2a109ec3782c57bad0332b662f8a5f41765505936b69868eb8bd5241de9daf23c388e82ca1831f6d09935013dcb9f71bfa7face3975880c1076028b7b0a6e1.js" integrity="sha512-eioQnsN4LFe60DMrZi&#43;KX0F2VQWTa2mGjri9UkHena8jw4joLKGDH20Jk1AT3Ln3G/p/rOOXWIDBB2Aot7Cm4Q=="></script>
+
+
+
+    <script defer src="/js/zooming.fc76b730bcba24949cb337c58c5e935f727dbea8418e918e3b1794f0707d130aadf4ead341e9305a2c6045f7bc66700d73cc5c7f5d8f6ae2c7631e095f4e18ae.js" integrity="sha512-/Ha3MLy6JJScszfFjF6TX3J9vqhBjpGOOxeU8HB9Ewqt9OrTQekwWixgRfe8ZnANc8xcf12PauLHYx4JX04Yrg=="></script>
+
+
+
+
+    <script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script defer src="/js/math.d7efde37b2eb8879651e1f4489bcd4d8203b8c2bf8ca12c9e1b8cd11bfd6395b172f4999fff43ce0d047889a2bdb71ee74aebbae5327590192d1144e790fcd7b.js" integrity="sha512-1&#43;/eN7LriHllHh9EibzU2CA7jCv4yhLJ4bjNEb/WOVsXL0mZ//Q84NBHiJor23HudK67rlMnWQGS0RROeQ/New=="></script>
+
+
+
+
+    
+        
+
+        
+        
+
+        
+        
+            
+        
+
+        <script defer src="/js/prism.3113e52d215fde553c8747fb87544cc26ae5ab9b25e8ab7e7ab767824138bca8c0edb05a3c2d6dbcda075db565c7025817f6f6eea26a5d14c4e53397ae7748e2.js" integrity="sha512-MRPlLSFf3lU8h0f7h1RMwmrlq5sl6Kt&#43;erdngkE4vKjA7bBaPC1tvNoHXbVlxwJYF/b27qJqXRTE5TOXrndI4g==" data-manual></script>
+    
+
+
+
+    
+    
+    
+    <script defer src="/js/search-en.677e05c714f837051483647d736c45051126c22a2696ca5f981b59da962d48962f3ea71150f559ba84884fd1aadf1c7aadce55bb31a3e5b75c0f173b763c109a.js" integrity="sha512-Z34FxxT4NwUUg2R9c2xFBREmwiomlspfmBtZ2pYtSJYvPqcRUPVZuoSIT9Gq3xx6rc5VuzGj5bdcDxc7djwQmg=="></script>
+
+
+
+
+</head><body>
+        <main><header>
+    <div class="brand">
+        <div id="sidebar_btn">
+            <svg id="menu_icon" width="26px" height="26px" viewBox="0 0 24 24"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></svg>
+        </div>
+
+        <div>
+            <a href="/">Pavel Danov</a>
+        </div>
+    </div>
+
+    <div class="toolbox">
+        <div id="theme_tool">
+            <svg id="dark_mode_btn" class="hidden toolbox-btn" width="18px" height="18px" viewBox="0 0 24 24"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-sun"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg></svg>
+            <svg id="light_mode_btn" class="hidden toolbox-btn" width="18px" height="18px" viewBox="0 0 24 24"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-moon"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg></svg>
+        </div>
+
+        
+            <div id="search_tool">
+                <svg id="search_btn" class="toolbox-btn" width="18px" height="18px" viewBox="0 0 24 24"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></svg><div id="search_menu_wrapper" class="hidden">
+    <div id="search_menu">
+        <div id="search_menu_toolbar">
+            <div id="search_menu_input_wrapper">
+                <input id="search_menu_input" type="text" placeholder='Search Posts'>
+            </div>
+            <div id="search_menu_close_btn">
+                <svg width="18px" height="18px" viewBox="0 0 24 24"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></svg>
+            </div>
+        </div>
+        <div id="search_menu_results">
+        </div>
+    </div>
 </div>
+</div>
+        
 
-
-<nav id="TableOfContents">
+        
+            <div id="translation_tool" class="dropdown-wrapper pure-menu pure-menu-horizontal toolbox-btn">
+                <ul class="pure-menu-list">
+                    <li class="pure-menu-item pure-menu-has-children pure-menu-allow-hover">
+                        <div class="dropdown-btn pure-menu-link">
+                            <svg width="18px" height="18px" viewBox="0 0 24 24"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-globe"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg></svg>
+                            <span class="dropdown-desc">English</span>
+                        </div>
+                        <ul class="pure-menu-children">
+                            
+                            <li class="pure-menu-item">
+                                <a href="https://underscorehao.net/" class="pure-menu-link">English</a>
+                            </li>
+                            
+                            <li class="pure-menu-item">
+                                <a href="https://underscorehao.net/bg/" class="pure-menu-link">Български</a>
+                            </li>
+                            
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        
+    </div>
+</header>
+<nav id="navbar" class="pure-menu"><ul class="pure-menu-list"><li class="navbar-item pure-menu-item ">
+                    
+                        <a href="/posts/" class="pure-menu-link">Blog</a>
+                    
+                </li><li class="navbar-item pure-menu-item ">
+                    
+                        <a href="/notes/" class="pure-menu-link">Notes</a>
+                    
+                </li></ul>
+</nav>
+<div id="sidebar_canvas_overlay" class="hidden"></div>
+<div id="sidebar" class="close">
+    <ul><li>
+                    <a href="/posts/">Blog</a>
+                </li><li>
+                    <a href="/notes/">Notes</a>
+                </li></ul>
+</div><div id="content" class="content-margin">
+                
+    
+    <div class="collapsible-menu-wrapper"><div class="collapsible-menu-type"><span>Table of contents</span></div><div class="collapsible-menu">
+        
+            <nav id="TableOfContents">
   <ul>
     <li><a href="#caching-is-hard">Caching is hard</a></li>
     <li><a href="#caching-in-net">Caching in .NET</a></li>
@@ -59,10 +210,20 @@
     <li><a href="#implementation-with-imemorycache-in-net-core">Implementation with IMemoryCache in .NET Core</a></li>
   </ul>
 </nav>
+        
+    </div></div>
 
 
-<main>
-<h2 id="caching-is-hard">Caching is hard</h2>
+
+    <div class="content-margin">
+
+<article >
+    
+    
+        
+        
+    
+    <h2 id="caching-is-hard">Caching is hard</h2>
 <p>On a bright sunny day while you&rsquo;re working on your awesome project you catch a glimpse of something. You bring yourself closer to the monitor and begin meticulously examining your code. What you find brings you feelings of disgust and shame! You&rsquo;ve been calling an API retrieving data you need over and over again even though said data hardly changes!</p>
 <p>Being the smart and responsible engineer that you are, you decide to rectify your mistake immediately. You think to yourself</p>
 <blockquote>
@@ -80,7 +241,7 @@
 <p>If that&rsquo;s what you need, keep on reading!</p>
 <h2 id="implementation-with-memorycache-in-net-framework">Implementation with MemoryCache in .NET Framework</h2>
 <p>Let&rsquo;s start with the simple stuff. We want to perform some basic CRUD operations on our cache - saving data to it, getting our cached objects and potentially deleting our data. The best way to do it is to define an interface.</p>
-<pre><code class="language-csharp">using System.Runtime.Caching;
+<pre  class="mc-prism hide language-text" ><code class="language-csharp">using System.Runtime.Caching;
 
 namespace FooBar.Caching
 {
@@ -94,7 +255,7 @@ namespace FooBar.Caching
 </code></pre>
 <p>These are the methods I&rsquo;m going to use to illustrate my example. Depending on your use case you can have a lot more of them doing various things to your cache, but for my case those are enough. The point I want you to focus on here is the <strong><code>CacheItemPolicy</code></strong> we can set during the Save.</p>
 <p>Now that we have our interface we can also implement it in a new class</p>
-<pre><code class="language-csharp">using System.Runtime.Caching;
+<pre  class="mc-prism hide language-text" ><code class="language-csharp">using System.Runtime.Caching;
 
 namespace FooBar.Caching
 {
@@ -138,7 +299,7 @@ namespace FooBar.Caching
 </ul>
 <p>As you can imagine we&rsquo;ll use the <strong><code>UpdateCallback</code></strong> in our case.</p>
 <p>So let&rsquo;s see how an implementation of this auto refreshing cache will look like!</p>
-<pre><code class="language-csharp">using System;
+<pre  class="mc-prism hide language-text" ><code class="language-csharp">using System;
 using System.Runtime.Caching;
 using System.Threading;
 using FooBar.Caching;
@@ -224,7 +385,7 @@ namespace FooBar.Services.Configuration
 <h3 id="bonus">Bonus</h3>
 <p>As a bonus you can read on the interesting thing that happens when you put <strong><code>AbsoluteExpiration</code></strong> below 20 seconds <a href="https://stackoverflow.com/questions/12630168/memorycache-absoluteexpiration-acting-strange">here</a>.</p>
 <p>Also it&rsquo;s important to note that items can expire some time after the AbsoluteExpiration, there&rsquo;s no guarantee that they&rsquo;ll expire right on the spot. Here are two tests confirming that (I know we shouldn&rsquo;t test code that isn&rsquo;t ours, but it&rsquo;s fun!)</p>
-<pre><code class="language-csharp">using FooBar.Caching;
+<pre  class="mc-prism hide language-text" ><code class="language-csharp">using FooBar.Caching;
 using NUnit.Framework;
 using System;
 using System.Runtime.Caching;
@@ -368,7 +529,7 @@ namespace FooBar.Caching.UnitTests
 <p>I&rsquo;d be lying if I didn&rsquo;t say that I prefer the .NET Core implementation. But I digress. Let&rsquo;s stay on the issue at hand - implementing an auto refreshing cache.</p>
 <p>We still have access to <strong><code>MemoryCache</code></strong> in .NET Core. However it only provides a callback which will execute <strong><em>after</em></strong> an item has been <a href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.extensions.caching.memory.memorycacheentryoptions.postevictioncallbacks?view=aspnetcore-2.2#Microsoft_Extensions_Caching_Memory_MemoryCacheEntryOptions_PostEvictionCallbacks">removed</a>. That doesn&rsquo;t matter for our use case. Remember what we said at the start. We don&rsquo;t care if we get stale data as long as there are no cache misses! To achieve the same thing we did in the previous section we are going to use a shiny new interface called <a href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.extensions.caching.memory.imemorycache?view=aspnetcore-2.2"><strong><code>IMemoryCache</code></strong></a>. And guess what! It&rsquo;s provided by Microsoft too!</p>
 <p>The code is more or less the same with some differences when it comes to the locking. This time we&rsquo;re performing operations inside an async method so we can&rsquo;t use a regular lock. For the sake of completeness I&rsquo;ll provide the full implementation + tests and gotchas after.</p>
-<pre><code class="language-csharp">using System;
+<pre  class="mc-prism hide language-text" ><code class="language-csharp">using System;
 using System.Collections.Concurrent;
 using System.Threading;
 using System.Threading.Tasks;
@@ -459,7 +620,7 @@ namespace FooBar.Providers
 </li>
 </ul>
 <p>To prove this to you I&rsquo;ll provide another pair of tests</p>
-<pre><code class="language-csharp">using System;
+<pre  class="mc-prism hide language-text" ><code class="language-csharp">using System;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Caching.Memory;
@@ -558,40 +719,18 @@ namespace FooBar.Tests
 <p>So that&rsquo;s basically it! Now we have our auto refreshing cache! There&rsquo;s a lot that we can improve. You have to be careful who has access to the keys for your specific object and a million other considerations. Caching is a steep hill to climb, but I hope you found this blog post informative in some capacity!</p>
 <p>I&rsquo;ve used both implementations for some heavy objects that don&rsquo;t change often in production environments and they&rsquo;ve been doing their job pretty well so far!</p>
 
+</article>
+</div>
+
+
+                
+                    
+                
+            </div>
+<footer>
+    <article>Copyright © 2017-2022 by Pavel Danov</article>
+</footer>
+
 </main>
-
-  <footer>
-  <script defer src="//yihui.org/js/math-code.js"></script>
-<script defer src="//mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-
-<script defer src="//yihui.org/js/center-img.js"></script>
-
-
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-	ga('create', 'UA-106583563-1', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/highlight.min.js" integrity="sha512-gU7kztaQEl7SHJyraPfZLQCNnrKdaQi5ndOyt4L4UPL/FHDd/uB9Je6KDARIqwnNNE27hnqoWLBq+Kpe4iHfeQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
-<script>
-hljs.configure({languages: []});
-hljs.initHighlightingOnLoad();
-</script>
-
-  
-  <hr/>
-  © <a href="mailto:underscorehao@gmail.com">Pavel Danov</a> 2017 &ndash; 2022 | <a href="https://github.com/underscoreHao/">Github</a> | <a href="https://twitter.com/underscoreHao">Twitter</a> | <a href="https://stackoverflow.com/users/2265179/underscorehao">StackOverflow</a> | <a href="https://www.linkedin.com/in/pavel-danov/">LinkedIn</a>
-  
-  </footer>
-  </body>
+    </body>
 </html>
-

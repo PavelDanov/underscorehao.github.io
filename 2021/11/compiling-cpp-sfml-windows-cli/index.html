@@ -1,61 +1,230 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
-<html lang="en-us">
-  <head>
+<html lang='en'><head>
     <meta charset="utf-8">
+    <link rel="shortcut icon" href='/favicon.ico' type="image/x-icon">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Compiling C&#43;&#43; project using SFML with cl.exe | Pavel Danov</title>
-    <link rel="stylesheet" href="https://underscorehao.net/css/style.css" />
-    <link rel="stylesheet" href="https://underscorehao.net/css/fonts.css" />
-    <link href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/styles/github.min.css" rel="stylesheet">
+    <title>Compiling C&#43;&#43; project using SFML with cl.exe - Pavel Danov</title>
 
-  </head>
+    
 
-  <body>
-    <nav>
-    <ul class="menu">
-      
-      <li><a href="https://underscorehao.net/">Home</a></li>
-      
-      <li><a href="https://underscorehao.net/categories/">Categories</a></li>
-      
-      <li><a href="https://underscorehao.net/tags/">Tags</a></li>
-      
-      <li><a href="https://underscorehao.net/about/">About</a></li>
-      
-      <li><a href="https://underscorehao.net/index.xml">Subscribe</a></li>
-      
-    </ul>
-    <hr/>
-    </nav>
+    
 
-<div class="article-meta">
-<h1><span class="title">Compiling C++ project using SFML with cl.exe</span></h1>
+    
+    <meta name="author" content="Pavel Danov" />
+    
 
-<h2 class="date">2021/11/10</h2>
+    
+        <meta property="og:title" content="Compiling C&#43;&#43; project using SFML with cl.exe" />
+<meta property="og:description" content="Why? The usefulness of this approach is debatable, but let me try to offer an answer on why you might want to know how to do that. I think it&rsquo;s the mark of a good engineer to know what&rsquo;s happening under the hood. Simple as that. New or inexperienced developers will benefit from understanding the connection between the user interface in Visual Studio and the actual command line tools used underneath." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://underscorehao.net/2021/11/compiling-cpp-sfml-windows-cli/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-11-10T12:50:00+00:00" />
+<meta property="article:modified_time" content="2021-11-10T12:50:00+00:00" />
 
-<p class="terms">
 
-  
-  Categories: <a href="https://underscorehao.net/categories/software-development">Software Development</a> 
-  
-  
-  
-  Tags: <a href="https://underscorehao.net/tags/c&#43;&#43;">c&#43;&#43;</a> <a href="https://underscorehao.net/tags/windows">windows</a> <a href="https://underscorehao.net/tags/sfml">sfml</a> 
-  
-  
-</p>
+    
+
+    
+        <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Compiling C&#43;&#43; project using SFML with cl.exe"/>
+<meta name="twitter:description" content="Why? The usefulness of this approach is debatable, but let me try to offer an answer on why you might want to know how to do that. I think it&rsquo;s the mark of a good engineer to know what&rsquo;s happening under the hood. Simple as that. New or inexperienced developers will benefit from understanding the connection between the user interface in Visual Studio and the actual command line tools used underneath."/>
+
+    <link rel="stylesheet" href="/style.min.5297c96c59a52afaa5bcda4a6cedf3813081f64025c209b25b2ee6d0c8f74d462b625ad3404a92a14d7a51b4ec0a420337ae70f426fa4bce2d5f7459a3ca7274.css" integrity="sha512-UpfJbFmlKvqlvNpKbO3zgTCB9kAlwgmyWy7m0Mj3TUYrYlrTQEqSoU16UbTsCkIDN65w9Cb6S84tX3RZo8pydA==">
+
+
+
+    <link rel="stylesheet" href="/lib/css/prism.min.6226f06f992e0d6166b0e26724efd050dcc381202a752892ba523b1b865de2ea5e427f8f7d10de682fc35d6e7444018247d1f25db5e1e3bab17068ce191c5886.css" integrity="sha512-Yibwb5kuDWFmsOJnJO/QUNzDgSAqdSiSulI7G4Zd4upeQn&#43;PfRDeaC/DXW50RAGCR9HyXbXh47qxcGjOGRxYhg==">
+
+
+        
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-106583563-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+    
+
+    
+    <script>
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.setAttribute("data-theme", "dark");
+        } else {
+            document.documentElement.setAttribute("data-theme", "light");
+        }
+    </script>
+<script defer src="/js/header.7a2a109ec3782c57bad0332b662f8a5f41765505936b69868eb8bd5241de9daf23c388e82ca1831f6d09935013dcb9f71bfa7face3975880c1076028b7b0a6e1.js" integrity="sha512-eioQnsN4LFe60DMrZi&#43;KX0F2VQWTa2mGjri9UkHena8jw4joLKGDH20Jk1AT3Ln3G/p/rOOXWIDBB2Aot7Cm4Q=="></script>
+
+
+
+    <script defer src="/js/zooming.fc76b730bcba24949cb337c58c5e935f727dbea8418e918e3b1794f0707d130aadf4ead341e9305a2c6045f7bc66700d73cc5c7f5d8f6ae2c7631e095f4e18ae.js" integrity="sha512-/Ha3MLy6JJScszfFjF6TX3J9vqhBjpGOOxeU8HB9Ewqt9OrTQekwWixgRfe8ZnANc8xcf12PauLHYx4JX04Yrg=="></script>
+
+
+
+
+    <script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script defer src="/js/math.d7efde37b2eb8879651e1f4489bcd4d8203b8c2bf8ca12c9e1b8cd11bfd6395b172f4999fff43ce0d047889a2bdb71ee74aebbae5327590192d1144e790fcd7b.js" integrity="sha512-1&#43;/eN7LriHllHh9EibzU2CA7jCv4yhLJ4bjNEb/WOVsXL0mZ//Q84NBHiJor23HudK67rlMnWQGS0RROeQ/New=="></script>
+
+
+
+
+    
+        
+
+        
+        
+
+        
+        
+            
+        
+
+        <script defer src="/js/prism.3113e52d215fde553c8747fb87544cc26ae5ab9b25e8ab7e7ab767824138bca8c0edb05a3c2d6dbcda075db565c7025817f6f6eea26a5d14c4e53397ae7748e2.js" integrity="sha512-MRPlLSFf3lU8h0f7h1RMwmrlq5sl6Kt&#43;erdngkE4vKjA7bBaPC1tvNoHXbVlxwJYF/b27qJqXRTE5TOXrndI4g==" data-manual></script>
+    
+
+
+
+    
+    
+    
+    <script defer src="/js/search-en.677e05c714f837051483647d736c45051126c22a2696ca5f981b59da962d48962f3ea71150f559ba84884fd1aadf1c7aadce55bb31a3e5b75c0f173b763c109a.js" integrity="sha512-Z34FxxT4NwUUg2R9c2xFBREmwiomlspfmBtZ2pYtSJYvPqcRUPVZuoSIT9Gq3xx6rc5VuzGj5bdcDxc7djwQmg=="></script>
+
+
+
+
+</head><body>
+        <main><header>
+    <div class="brand">
+        <div id="sidebar_btn">
+            <svg id="menu_icon" width="26px" height="26px" viewBox="0 0 24 24"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></svg>
+        </div>
+
+        <div>
+            <a href="/">Pavel Danov</a>
+        </div>
+    </div>
+
+    <div class="toolbox">
+        <div id="theme_tool">
+            <svg id="dark_mode_btn" class="hidden toolbox-btn" width="18px" height="18px" viewBox="0 0 24 24"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-sun"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg></svg>
+            <svg id="light_mode_btn" class="hidden toolbox-btn" width="18px" height="18px" viewBox="0 0 24 24"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-moon"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg></svg>
+        </div>
+
+        
+            <div id="search_tool">
+                <svg id="search_btn" class="toolbox-btn" width="18px" height="18px" viewBox="0 0 24 24"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></svg><div id="search_menu_wrapper" class="hidden">
+    <div id="search_menu">
+        <div id="search_menu_toolbar">
+            <div id="search_menu_input_wrapper">
+                <input id="search_menu_input" type="text" placeholder='Search Posts'>
+            </div>
+            <div id="search_menu_close_btn">
+                <svg width="18px" height="18px" viewBox="0 0 24 24"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></svg>
+            </div>
+        </div>
+        <div id="search_menu_results">
+        </div>
+    </div>
 </div>
+</div>
+        
+
+        
+            <div id="translation_tool" class="dropdown-wrapper pure-menu pure-menu-horizontal toolbox-btn">
+                <ul class="pure-menu-list">
+                    <li class="pure-menu-item pure-menu-has-children pure-menu-allow-hover">
+                        <div class="dropdown-btn pure-menu-link">
+                            <svg width="18px" height="18px" viewBox="0 0 24 24"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-globe"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg></svg>
+                            <span class="dropdown-desc">English</span>
+                        </div>
+                        <ul class="pure-menu-children">
+                            
+                            <li class="pure-menu-item">
+                                <a href="https://underscorehao.net/" class="pure-menu-link">English</a>
+                            </li>
+                            
+                            <li class="pure-menu-item">
+                                <a href="https://underscorehao.net/bg/" class="pure-menu-link">Български</a>
+                            </li>
+                            
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        
+    </div>
+</header>
+<nav id="navbar" class="pure-menu"><ul class="pure-menu-list"><li class="navbar-item pure-menu-item ">
+                    
+                        <a href="/posts/" class="pure-menu-link">Blog</a>
+                    
+                </li><li class="navbar-item pure-menu-item ">
+                    
+                        <a href="/notes/" class="pure-menu-link">Notes</a>
+                    
+                </li></ul>
+</nav>
+<div id="sidebar_canvas_overlay" class="hidden"></div>
+<div id="sidebar" class="close">
+    <ul><li>
+                    <a href="/posts/">Blog</a>
+                </li><li>
+                    <a href="/notes/">Notes</a>
+                </li></ul>
+</div><div id="content" class="content-margin">
+                
+    
+    <div class="collapsible-menu-wrapper"><div class="collapsible-menu-type"><span>Table of contents</span></div><div class="collapsible-menu">
+        
+            <nav id="TableOfContents">
+  <ul>
+    <li><a href="#why">Why?</a></li>
+    <li><a href="#prerequisites">Prerequisites</a></li>
+    <li><a href="#dynamic-linking">Dynamic Linking</a></li>
+    <li><a href="#static-linking">Static Linking</a></li>
+    <li><a href="#final-words">Final Words</a></li>
+  </ul>
+</nav>
+        
+    </div></div>
 
 
 
-<main>
-<h2 id="why">Why?</h2>
+    <div class="content-margin">
+
+<article >
+    
+    
+        
+        
+    
+    <h2 id="why">Why?</h2>
 <p>The usefulness of this approach is debatable, but let me try to offer an answer on why you might want to know how to do that. I think it&rsquo;s the mark of a good engineer to know what&rsquo;s happening under the hood. Simple as that. New or inexperienced developers will benefit from understanding the connection between the user interface in Visual Studio and the actual command line tools used underneath.</p>
 <h2 id="prerequisites">Prerequisites</h2>
 <p>Imagine that you&rsquo;re on Windows and want to use the <a href="https://docs.microsoft.com/en-us/cpp/build/building-on-the-command-line?view=msvc-170">MSVC</a> compiler toolset from the command line to build a project with <a href="https://www.sfml-dev.org/index.php">SFML</a>. In a nutshell you&rsquo;re going to replicate the documentation given for <a href="https://www.sfml-dev.org/tutorials/2.5/start-vc.php">SFML and Visual Studio</a>, but from the terminal.</p>
 <p>Assuming you have installed all the necessarry tooling and you have SFML in the <code>C:\libs\SFML-2.5.1</code> directory you can just do the following.</p>
 <h2 id="dynamic-linking">Dynamic Linking</h2>
-<pre><code class="language-shell"># For DEBUG builds -d is part of the lib names. See SFML docs on that.
+<pre  class="mc-prism hide language-text" ><code class="language-shell"># For DEBUG builds -d is part of the lib names. See SFML docs on that.
 cl Main.cpp Game.cpp Window.cpp &quot;sfml-graphics-d.lib&quot; &quot;sfml-window-d.lib&quot; &quot;sfml-system-d.lib&quot; &quot;sfml-audio-d.lib&quot; &quot;sfml-network-d.lib&quot; /I &quot;C:\libs\SFML-2.5.1\include&quot; /MDd /link /LIBPATH:&quot;C:\libs\SFML-2.5.1\lib&quot; /DEBUG
 </code></pre>
 <p>Let&rsquo;s quickly break that down.</p>
@@ -69,7 +238,7 @@ cl Main.cpp Game.cpp Window.cpp &quot;sfml-graphics-d.lib&quot; &quot;sfml-windo
 <p>This will create a <code>Main.exe</code> in your current folder. You&rsquo;ll need to add the appropriate SFML <code>.dll</code> files to that folder in order to execute your program successfully.</p>
 <h2 id="static-linking">Static Linking</h2>
 <p>For static linking the process is almost the same with some slight differences.</p>
-<pre><code class="language-shell"># Note -s-d as part of the lib names. See SFML docs on that.
+<pre  class="mc-prism hide language-text" ><code class="language-shell"># Note -s-d as part of the lib names. See SFML docs on that.
 cl Main.cpp Game.cpp Window.cpp &quot;sfml-graphics-s-d.lib&quot; &quot;sfml-window-s-d.lib&quot; &quot;sfml-system-s-d.lib&quot; &quot;sfml-audio-s-d.lib&quot; &quot;sfml-network-s-d.lib&quot; opengl32.lib freetype.lib winmm.lib gdi32.lib user32.lib Advapi32.lib /I &quot;C:\libs\SFML-2.5.1\include&quot; /D SFML_STATIC /MDd /link /LIBPATH:&quot;C:\libs\SFML-2.5.1\lib&quot; /DEBUG
 </code></pre>
 <ul>
@@ -78,7 +247,7 @@ cl Main.cpp Game.cpp Window.cpp &quot;sfml-graphics-s-d.lib&quot; &quot;sfml-win
 <li>We use the <a href="https://docs.microsoft.com/en-us/cpp/build/reference/d-preprocessor-definitions?view=msvc-170">/D</a> flag to define the <code>SFML_STATIC</code> macro.</li>
 </ul>
 <p>If all is well you&rsquo;ll be able to just run your <code>Main.exe</code> straight away.</p>
-<figure><img src="https://underscorehao.net/images/sfml-compile.gif"
+<figure><img src="/images/sfml-compile.gif"
          alt="Compiling a project with SFML in Vim"/><figcaption>
             <p>Compiling a project with SFML in Vim</p>
         </figcaption>
@@ -87,40 +256,18 @@ cl Main.cpp Game.cpp Window.cpp &quot;sfml-graphics-s-d.lib&quot; &quot;sfml-win
 <h2 id="final-words">Final Words</h2>
 <p>Learn to use CMake :)</p>
 
+</article>
+</div>
+
+
+                
+                    
+                
+            </div>
+<footer>
+    <article>Copyright © 2017-2022 by Pavel Danov</article>
+</footer>
+
 </main>
-
-  <footer>
-  <script defer src="//yihui.org/js/math-code.js"></script>
-<script defer src="//mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-
-<script defer src="//yihui.org/js/center-img.js"></script>
-
-
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-	ga('create', 'UA-106583563-1', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/highlight.min.js" integrity="sha512-gU7kztaQEl7SHJyraPfZLQCNnrKdaQi5ndOyt4L4UPL/FHDd/uB9Je6KDARIqwnNNE27hnqoWLBq+Kpe4iHfeQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
-<script>
-hljs.configure({languages: []});
-hljs.initHighlightingOnLoad();
-</script>
-
-  
-  <hr/>
-  © <a href="mailto:underscorehao@gmail.com">Pavel Danov</a> 2017 &ndash; 2022 | <a href="https://github.com/underscoreHao/">Github</a> | <a href="https://twitter.com/underscoreHao">Twitter</a> | <a href="https://stackoverflow.com/users/2265179/underscorehao">StackOverflow</a> | <a href="https://www.linkedin.com/in/pavel-danov/">LinkedIn</a>
-  
-  </footer>
-  </body>
+    </body>
 </html>
-

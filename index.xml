@@ -1,22 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Home on Pavel Danov</title>
+    <title>Pavel Danov</title>
     <link>https://underscorehao.net/</link>
-    <description>Recent content in Home on Pavel Danov</description>
+    <description>Recent content on Pavel Danov</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Wed, 07 Dec 2022 16:15:13 +0000</lastBuildDate><atom:link href="https://underscorehao.net/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Digital Decluttering</title>
-      <link>https://underscorehao.net/note/2022/12/07/digital-decluttering/</link>
-      <pubDate>Wed, 07 Dec 2022 16:15:13 +0000</pubDate>
-      
-      <guid>https://underscorehao.net/note/2022/12/07/digital-decluttering/</guid>
-      <description>Today I started looking at all of my digital data in an effort to remove anything that I don&amp;rsquo;t need anymore. I&amp;rsquo;m going through service by service and folder by folder.
-I have thousands of links saved in Pocket, around a hundred in my reading list in Chrome and that’s not mentioning the thousands and thousands of folders filled with documents, code repos and other stuff I have on my drives and personal cloud.</description>
-    </item>
-    
+    <language>en</language>
+    <lastBuildDate>Wed, 10 Nov 2021 12:50:00 +0000</lastBuildDate><atom:link href="https://underscorehao.net/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Compiling C&#43;&#43; project using SFML with cl.exe</title>
       <link>https://underscorehao.net/2021/11/compiling-cpp-sfml-windows-cli/</link>
@@ -64,15 +54,6 @@ Being the smart and responsible engineer that you are, you decide to rectify you
       <guid>https://underscorehao.net/2018/03/net-core-api-dynamodb-dependency-injection/</guid>
       <description>The Problem Today I faced a problem which I knew would come, but didn&amp;rsquo;t have time to implement properly at the time. There were more urgent tasks at hand before, deadlines to be met and this issue remained unresolved.
 Amazon&amp;rsquo;s .NET Core SDK is very good for the most part. Everything works as it should. But let&amp;rsquo;s say you use the .NET Object Persistence Model for DynamoDB in your service and you have mapped C# classes to DynamoDB tables like this:</description>
-    </item>
-    
-    <item>
-      <title>About This Site</title>
-      <link>https://underscorehao.net/about/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://underscorehao.net/about/</guid>
-      <description> Generated using Hugo, a fast and modern static website engine Base theme hugo-xmin created by Yihui Xie and modified by me Hosted on Github Pages  </description>
     </item>
     
   </channel>
