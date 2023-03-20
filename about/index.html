@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html><head>
+<title>About me</title>
+
+
+
+
+<meta charset="utf-8">
+<meta name="X-UA-Compatible" content="IE=edge">
+<meta name="google-site-verification" content="">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+<meta content="telephone=no" name="format-detection">
+<meta name="description" content="">
+<meta name="renderer" content="webkit">
+<meta name="theme-color" content="#ffffff">
+
+
+
+<meta property="og:title" content="About me" />
+<meta property="og:description" content="Hey there, I&rsquo;m Pavel Danov a.k.a. _hao or underscoreHao (on websites that don&rsquo;t support underscores). Welcome to my personal website. Here you can find about things that interest me and occupy my attention most of the time.
+I&rsquo;m originally from Bulgaria but moved to London in 2018.
+My interests are too broad to list, but some honorable mentions - martial arts (been practicing for more than 20 years), film, reading books (a lot of history, politics and science)." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://underscorehao.net/about/" /><meta property="article:section" content="" />
+<meta property="article:published_time" content="2020-03-20T16:45:00+01:00" />
+<meta property="article:modified_time" content="2020-03-20T16:45:00+01:00" /><meta property="og:site_name" content="Pavel Danov" />
+
+
+
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="About me"/>
+<meta name="twitter:description" content="Hey there, I&rsquo;m Pavel Danov a.k.a. _hao or underscoreHao (on websites that don&rsquo;t support underscores). Welcome to my personal website. Here you can find about things that interest me and occupy my attention most of the time.
+I&rsquo;m originally from Bulgaria but moved to London in 2018.
+My interests are too broad to list, but some honorable mentions - martial arts (been practicing for more than 20 years), film, reading books (a lot of history, politics and science)."/>
+
+
+
+
+
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-106583563-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+
+
+
+
+  
+
+
+
+
+<link rel="icon" href="https://underscorehao.net/favicons/favicon.ico">
+
+
+
+      <script src="/js/toc.js"></script>
+    
+    <link type="text/css" rel="stylesheet" href="/vendor/css/bootstrap.min.css">
+<link rel="stylesheet" href="/scss/journal.min.7c01e9f6fb2f6083d79d2f3a32ec6b7901e262e94a52a64a542aef98bc5bda64.css" integrity="sha256-fAHp9vsvYIPXnS86MuxreQHiYulKUqZKVCrvmLxb2mQ=" media="screen">
+
+
+
+<link rel="stylesheet" href="/scss/dark-mode.min.cb53f1bee2b8900cb4f082afbf00175d6618f281cf9a2fe8619e3b52d20b5721.css" integrity="sha256-y1PxvuK4kAy08IKvvwAXXWYY8oHPmi/oYZ47UtILVyE=" media="screen">
+
+
+<link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Material+Icons">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+<body>
+    	<div id="app"><div class="single-column-drawer-container" id="drawer"
+     v-bind:class="{ 'single-column-drawer-container-active': isDrawerOpen }">
+    <div class="drawer-content">
+        <div class="drawer-menu">
+            
+            
+            
+                
+                
+                
+                    
+                
+                
+                
+                <a class="a-block drawer-menu-item active" href="/about">
+                    About
+                </a>
+                
+            
+                
+                
+                
+                
+                
+                <a class="a-block drawer-menu-item false" href="/posts">
+                    Archive
+                </a>
+                
+            
+                
+                
+                
+                
+                
+                <a class="a-block drawer-menu-item false" href="/categories">
+                    Categories
+                </a>
+                
+            
+                
+                
+                
+                
+                
+                <a class="a-block drawer-menu-item false" href="/tags">
+                    Tags
+                </a>
+                
+            
+                
+                
+                
+                
+                
+                <a class="a-block drawer-menu-item false" href="/index.xml">
+                    RSS Feed
+                </a>
+                
+            
+            
+            <div class="toc">
+
+
+	<div class="toc-content">
+	
+		
+		
+		
+		<center>- CATALOG -</center>
+		
+		
+		<ul>
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								
+									<ul>
+								
+							
+						
+						
+							<li>
+								<a href="#software-engineer" class="nav-software-engineer">
+									Software Engineer
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#about-this-site" class="nav-about-this-site">
+									About this site
+								</a>
+							</li>
+						
+						
+					
+				
+			
+		</ul>
+	</div>
+
+</div>
+            
+        </div>
+    </div>
+</div>
+<transition name="fade">
+    <div id="drawer-mask" v-bind:class="{ 'single-column-drawer-mask': mounted }" v-if="isDrawerOpen" v-on:click="toggleDrawer"></div>
+</transition>
+<nav id="navBar" class="navbar sticky-top navbar-light single-column-nav-container">
+    <div id="navBackground" class="nav-background"></div>
+    <div class="container container-narrow nav-content">
+        <button id="nav_dropdown_btn" class="nav-dropdown-toggle" type="button" v-on:click="toggleDrawer">
+            <i class="material-icons">
+                menu
+            </i>
+        </button>
+        <a id="navTitle" class="navbar-brand" href="https://underscorehao.net/">
+            Pavel Danov
+        </a>
+        
+        <button type="button" class="nav-darkmode-toggle" id="darkModeToggleButton2">
+            <i class="material-icons" id="darkModeToggleIcon2">
+                dark_mode
+            </i>
+        </button>
+        
+    </div>
+</nav>
+<div class="single-column-header-container" id="pageHead"
+     v-bind:style="{ transform: 'translateZ(0px) translateY('+.3*scrollY+'px)', opacity: 1-navOpacity }">
+    <a href="https://underscorehao.net/">
+        <div class="single-column-header-title">Pavel Danov</div>
+        
+        <div class="single-column-header-subtitle">Life and Tech</div>
+        
+
+    </a>
+</div>
+
+            <div id="content">
+                <div id="streamContainer" class="stream-container">
+
+    <div class="post-list-container post-list-container-shadow">
+        <div class="post">
+            
+            
+            
+                
+            
+
+            <div class="post-head-wrapper"
+                
+                    
+                    
+                    style="background-image: url('https://underscorehao.net/images/London-wallpaper.jpg')"
+                    
+                
+            >
+                <div class="post-title">
+                    About me
+                    
+                    <div class="post-meta">
+                        
+                        <time itemprop="datePublished">
+                            2020-03-20 16:45
+                        </time>
+                        
+
+                        
+
+                        
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="post-body-wrapper">
+                
+                <div class="post-body" v-pre>
+                
+                    <p>Hey there, I&rsquo;m Pavel Danov a.k.a. <strong>_hao</strong> or <strong>underscoreHao</strong> (on websites that don&rsquo;t support underscores). Welcome to my personal website. Here you can find about things that interest me and occupy my attention most of the time.</p>
+<p>I&rsquo;m originally from Bulgaria but moved to London in 2018.</p>
+<p>My interests are too broad to list, but some honorable mentions - martial arts (been practicing for more than 20 years), film, reading books (a lot of history, politics and science).</p>
+<p>Most people that know me are aware of my love for languages, having studied to varying degrees of success - English, German, Russian and now learning Chinese. 我认识你很高兴！</p>
+<h2 id="software-engineer">Software Engineer</h2>
+<p>I&rsquo;ve been occupied in the software industry professionally for a decade and I&rsquo;ve been dabbling with computers since I was a child.</p>
+<p>I like to play games and I am also fond of bashing my head against the wall when trying to make them. I&rsquo;m the founder of a small <a href="https://vermilion.digital/">game development studio</a> and have a couple of projects in the pipeline including creating my own game engine.</p>
+<p>I&rsquo;m also available on a contract basis. If you think I can help you with a project you can use the contact methods above to get in touch with me.</p>
+<h2 id="about-this-site">About this site</h2>
+<ul>
+<li>Generated using <a href="http://gohugo.io">Hugo</a>, a fast and modern static website engine</li>
+<li>Base theme <a href="https://github.com/AmazingRise/hugo-theme-diary">hugo-theme-diary</a> created by <a href="https://github.com/AmazingRise">Rise</a></li>
+<li>Hosted on <a href="http://github.com/underscorehao/underscorehao.github.io/">Github Pages</a></li>
+</ul>
+
+                    
+                    <HR width="100%" id="EOF">
+		    <p style="color:#777;">Last modified on 2020-03-20</p>
+                    
+                </div>
+            </div>
+            
+            
+            <nav class="post-pagination">
+
+                
+                <a class="newer-posts" href="/2020/05/learning-1500-chinese-characters-in-a-month-heisig-method-review/">
+			Next<br>How I learned 1500 Chinese Characters in a Month - Heisig Method Review
+                </a>
+                
+                
+                
+                <a class="older-posts" href="/2020/01/publishing-to-multiple-topics-in-azure-service-bus/">
+			Previous<br>Publishing to Multiple Topics in Azure Service Bus
+                </a>
+                
+            </nav>
+            <div class="post-comment-wrapper">
+                
+
+
+
+
+
+
+
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+
+
+                    </div>
+            </div><div id="sideContainer" class="side-container">
+    
+    <a class="a-block nav-head false" href="https://underscorehao.net/">
+    
+        <div class="nav-title">
+            Pavel Danov
+        </div>
+        
+        <div class="nav-subtitle">
+            Life and Tech
+        </div>
+        
+    </a>
+
+    <div class="nav-link-list">
+        
+        
+            
+            
+            
+                
+            
+            
+            
+            <a class="a-block nav-link-item active" href="/about">
+                About
+            </a>
+            
+        
+            
+            
+            
+            
+            
+            <a class="a-block nav-link-item false" href="/posts">
+                Archive
+            </a>
+            
+        
+            
+            
+            
+            
+            
+            <a class="a-block nav-link-item false" href="/categories">
+                Categories
+            </a>
+            
+        
+            
+            
+            
+            
+            
+            <a class="a-block nav-link-item false" href="/tags">
+                Tags
+            </a>
+            
+        
+            
+            
+            
+            
+            
+            <a class="a-block nav-link-item false" href="/index.xml">
+                RSS Feed
+            </a>
+            
+        
+    </div>
+
+    
+
+    <div class="nav-footer">
+        
+Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> by <a href="https://risehere.net/">Rise</a>
+<br>
+Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a>'s <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> <br>
+<br>
+
+&copy;
+	
+	Copyright 2017-2023 by Pavel Danov
+	
+
+    </div>
+    
+</div><div id="extraContainer" class="extra-container">
+    <div class="toc-wrapper">
+        
+
+        
+        <div class="toc">
+
+
+	<div class="toc-content">
+	
+		
+		
+		
+		<center>- CATALOG -</center>
+		
+		
+		<ul>
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								
+									<ul>
+								
+							
+						
+						
+							<li>
+								<a href="#software-engineer" class="nav-software-engineer">
+									Software Engineer
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#about-this-site" class="nav-about-this-site">
+									About this site
+								</a>
+							</li>
+						
+						
+					
+				
+			
+		</ul>
+	</div>
+
+</div>
+        
+    </div>
+    <div class="pagination">
+        <a id="globalBackToTop" class="pagination-action animated-visibility" href="#top"
+            :class="{ invisible: scrollY == 0 }">
+            <i class="material-icons pagination-action-icon">
+                keyboard_arrow_up
+            </i>
+        </a>
+        
+        <a type="button" class="pagination-action" id="darkModeToggleButton">
+            <span class="material-icons pagination-action-icon" id="darkModeToggleIcon">
+                dark_mode
+            </span>
+        </a>
+        
+        
+    </div>
+</div><div id="single-column-footer">
+Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> by <a href="https://risehere.net/">Rise</a>
+<br>
+Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a>'s <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> <br>
+<br>
+
+&copy;
+	
+	Copyright 2017-2023 by Pavel Danov
+	
+</div>
+            </div>
+    
+    <script src="/js/journal.js"></script></body>
+</html>

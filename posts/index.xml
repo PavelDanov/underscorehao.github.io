@@ -5,7 +5,8 @@
     <link>https://underscorehao.net/posts/</link>
     <description>Recent content in Posts on Pavel Danov</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en</language>
+    <language>en-us</language>
+    <copyright>Copyright 2017-2023 by Pavel Danov</copyright>
     <lastBuildDate>Wed, 10 Nov 2021 12:50:00 +0000</lastBuildDate><atom:link href="https://underscorehao.net/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Compiling C&#43;&#43; project using SFML with cl.exe</title>
@@ -33,7 +34,7 @@ Before you stands a very long article in which you&amp;rsquo;ll find my review a
       
       <guid>https://underscorehao.net/2020/01/publishing-to-multiple-topics-in-azure-service-bus/</guid>
       <description>Multiple topics There are two main approaches when it comes to topics in Azure Service Bus. Depending what&amp;rsquo;s your architecture and needs you can have either:
- Filtered topic - this means you have only one topic for all of your event types. All publishers push messages onto that single topic. Some of the message fields and properties are then used for filtering by the subscribers since in most cases a subscriber will be interested only in certain types of messages.</description>
+Filtered topic - this means you have only one topic for all of your event types. All publishers push messages onto that single topic. Some of the message fields and properties are then used for filtering by the subscribers since in most cases a subscriber will be interested only in certain types of messages.</description>
     </item>
     
     <item>
