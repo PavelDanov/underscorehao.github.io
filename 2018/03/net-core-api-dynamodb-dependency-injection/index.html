@@ -1,271 +1,256 @@
-<!DOCTYPE html>
-<html lang=""><head>
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-   <meta name="description" content="The Problem Today I faced a problem which I knew would come, but didn&rsquo;t have time to implement properly at the time. There were more urgent tasks at hand before, deadlines to be met and this issue remained unresolved.
-Amazon&rsquo;s .NET Core SDK is very good for the most part. Everything works as it should. But let&rsquo;s say you use the .NET Object Persistence Model for DynamoDB in your service and you have mapped C# classes to DynamoDB tables like this:">  
-
-  <title>
-    
-      .NET Core API with DynamoDB Context Dependency Injection
-    
-  </title>
-
-
-  <link rel="shortcut icon" type="image/x-icon" href="/" />
-  
-  
-  
-  <link rel="stylesheet" href="/css/main.26ce895efbc9df460bf30dc5e7309178501280634938b0d7f89417ce9980ecf02b981e101b4e3572f97c3f38336c57a0f20ca8c0a233b582b06b6361229fa3dd.css" integrity="sha512-Js6JXvvJ30YL8w3F5zCReFASgGNJOLDX&#43;JQXzpmA7PArmB4QG041cvl8PzgzbFeg8gyowKIztYKwa2NhIp&#43;j3Q==" />
-  
+<!doctype html><html lang><head>
+<meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge">
+<meta name=viewport content="width=device-width,initial-scale=1">
+<meta name=description content="The Problem Today I faced a problem which I knew would come, but didn&rsquo;t have time to implement properly at the time. There were more urgent tasks at hand before, deadlines to be met and this issue remained unresolved.
+Amazon&rsquo;s .NET Core SDK is very good for the most part. Everything works as it should. But let&rsquo;s say you use the .NET Object Persistence Model for DynamoDB in your service and you have mapped C# classes to DynamoDB tables like this:">
+<title>
+.NET Core API with DynamoDB Context Dependency Injection
+</title>
+<link rel="shortcut icon" type=image/x-icon href=/>
+<link rel=stylesheet href=/css/main.26ce895efbc9df460bf30dc5e7309178501280634938b0d7f89417ce9980ecf02b981e101b4e3572f97c3f38336c57a0f20ca8c0a233b582b06b6361229fa3dd.css integrity="sha512-Js6JXvvJ30YL8w3F5zCReFASgGNJOLDX+JQXzpmA7PArmB4QG041cvl8PzgzbFeg8gyowKIztYKwa2NhIp+j3Q==">
 </head>
-<body a="light">
-        <main class="page-content" aria-label="Content">
-            <div class="w">
-<a href="/">..</a>
-
+<body a=light>
+<main class=page-content aria-label=Content>
+<div class=w>
+<a href=/>..</a>
 <article>
-    <p class="post-meta">
-        <time datetime="2018-03-13 22:27:05 &#43;0200 &#43;0200">
-            2018-03-13
-        </time>
-    </p>
-
-    <h1>.NET Core API with DynamoDB Context Dependency Injection</h1>
-
-    <h2 id="the-problem">The Problem</h2>
+<p class=post-meta>
+<time datetime="2018-03-13 22:27:05 +0200 +0200">
+2018-03-13
+</time>
+</p>
+<h1>.NET Core API with DynamoDB Context Dependency Injection</h1>
+<h2 id=the-problem>The Problem</h2>
 <p>Today I faced a problem which I knew would come, but didn&rsquo;t have time to implement properly at the time. There were more urgent tasks at hand before, deadlines to be met and this issue remained unresolved.</p>
-<p>Amazon&rsquo;s .NET Core SDK is very good for the most part. Everything works as it should. But let&rsquo;s say you use the <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DotNetSDKHighLevel.html">.NET Object Persistence Model</a> for <a href="https://aws.amazon.com/dynamodb/">DynamoDB</a> in your service and you have mapped C# classes to DynamoDB tables like this:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#f00">namespace</span> Models
+<p>Amazon&rsquo;s .NET Core SDK is very good for the most part. Everything works as it should. But let&rsquo;s say you use the <a href=https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DotNetSDKHighLevel.html>.NET Object Persistence Model</a> for <a href=https://aws.amazon.com/dynamodb/>DynamoDB</a> in your service and you have mapped C# classes to DynamoDB tables like this:</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-csharp data-lang=csharp><span style=color:red>namespace</span> Models
 {
     [DynamoDBTable(&#34;Player&#34;)]
-    <span style="color:#f00">public</span> <span style="color:#f00">class</span> Player
+    <span style=color:red>public</span> <span style=color:red>class</span> Player
     {
         [DynamoDBHashKey]
-        <span style="color:#f00">public</span> <span style="color:#ee82ee">int</span> Id { <span style="color:#f00">get</span>; <span style="color:#f00">set</span>; }
+        <span style=color:red>public</span> <span style=color:violet>int</span> Id { <span style=color:red>get</span>; <span style=color:red>set</span>; }
 
         [DynamoDBProperty]
-        <span style="color:#f00">public</span> <span style="color:#ee82ee">string</span> Name { <span style="color:#f00">get</span>; <span style="color:#f00">set</span>; }
+        <span style=color:red>public</span> <span style=color:violet>string</span> Name { <span style=color:red>get</span>; <span style=color:red>set</span>; }
 
         [DynamoDBProperty]
-        <span style="color:#f00">public</span> <span style="color:#ee82ee">int</span> HitPoints { <span style="color:#f00">get</span>; <span style="color:#f00">set</span>; }
+        <span style=color:red>public</span> <span style=color:violet>int</span> HitPoints { <span style=color:red>get</span>; <span style=color:red>set</span>; }
 
         [DynamoDBProperty]
-        <span style="color:#f00">public</span> <span style="color:#ee82ee">int</span> Gold { <span style="color:#f00">get</span>; <span style="color:#f00">set</span>; }
+        <span style=color:red>public</span> <span style=color:violet>int</span> Gold { <span style=color:red>get</span>; <span style=color:red>set</span>; }
 
         [DynamoDBProperty]
-        <span style="color:#f00">public</span> <span style="color:#ee82ee">int</span> Level { <span style="color:#f00">get</span>; <span style="color:#f00">set</span>; }
+        <span style=color:red>public</span> <span style=color:violet>int</span> Level { <span style=color:red>get</span>; <span style=color:red>set</span>; }
 
         [DynamoDBProperty]
-        <span style="color:#f00">public</span> List&lt;<span style="color:#ee82ee">string</span>&gt; Items { <span style="color:#f00">get</span>; <span style="color:#f00">set</span>; }
+        <span style=color:red>public</span> List&lt;<span style=color:violet>string</span>&gt; Items { <span style=color:red>get</span>; <span style=color:red>set</span>; }
     }
 
     [DynamoDBTable(&#34;Location&#34;)]
-    <span style="color:#f00">public</span> <span style="color:#f00">class</span> Location
+    <span style=color:red>public</span> <span style=color:red>class</span> Location
     {
         [DynamoDBHashKey]
-        <span style="color:#f00">public</span> <span style="color:#ee82ee">int</span> Id { <span style="color:#f00">get</span>; <span style="color:#f00">set</span>; }
+        <span style=color:red>public</span> <span style=color:violet>int</span> Id { <span style=color:red>get</span>; <span style=color:red>set</span>; }
 
         [DynamoDBProperty]
-        <span style="color:#f00">public</span> <span style="color:#ee82ee">string</span> Name { <span style="color:#f00">get</span>; <span style="color:#f00">set</span>; }
+        <span style=color:red>public</span> <span style=color:violet>string</span> Name { <span style=color:red>get</span>; <span style=color:red>set</span>; }
 
         [DynamoDBProperty]
-        <span style="color:#f00">public</span> <span style="color:#ee82ee">string</span> Description { <span style="color:#f00">get</span>; <span style="color:#f00">set</span>; }
+        <span style=color:red>public</span> <span style=color:violet>string</span> Description { <span style=color:red>get</span>; <span style=color:red>set</span>; }
     }
 }
 </code></pre></div><p>It works well. Everything is mapped as it should. You have a service that calls the .NET SDK so you can write, read and delete data from the context like this:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#f00">namespace</span> Services
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-csharp data-lang=csharp><span style=color:red>namespace</span> Services
 {
-    <span style="color:#f00">public</span> <span style="color:#f00">class</span> DynamoDbService
+    <span style=color:red>public</span> <span style=color:red>class</span> DynamoDbService
     {
-        <span style="color:#f00">public</span> <span style="color:#f00">async</span> Task&lt;T&gt; GetAsync&lt;T&gt;(<span style="color:#ee82ee">string</span> id)
+        <span style=color:red>public</span> <span style=color:red>async</span> Task&lt;T&gt; GetAsync&lt;T&gt;(<span style=color:violet>string</span> id)
         {
-            <span style="color:#f00">try</span>
+            <span style=color:red>try</span>
             {
-                DynamoDBContext context = <span style="color:#f00">new</span> DynamoDBContext(<span style="color:#f60">_d</span>ynamoDbClient);
-                <span style="color:#f00">return</span> <span style="color:#f00">await</span> context.LoadAsync&lt;T&gt;(id);
+                DynamoDBContext context = <span style=color:red>new</span> DynamoDBContext(<span style=color:#f60>_d</span>ynamoDbClient);
+                <span style=color:red>return</span> <span style=color:red>await</span> context.LoadAsync&lt;T&gt;(id);
             }
-            <span style="color:#f00">catch</span> (Exception ex)
+            <span style=color:red>catch</span> (Exception ex)
             {
-                <span style="color:#f00">throw</span> <span style="color:#f00">new</span> Exception(<span style="color:#87ceeb">$&#34;Amazon error in Get operation! Error: {ex}&#34;</span>);
+                <span style=color:red>throw</span> <span style=color:red>new</span> Exception(<span style=color:#87ceeb>$&#34;Amazon error in Get operation! Error: {ex}&#34;</span>);
             }
         }
 
-        <span style="color:#f00">public</span> <span style="color:#f00">async</span> Task WriteAsync&lt;T&gt;(T item)
+        <span style=color:red>public</span> <span style=color:red>async</span> Task WriteAsync&lt;T&gt;(T item)
         {
-            <span style="color:#f00">try</span>
+            <span style=color:red>try</span>
             {
-                DynamoDBContext context = <span style="color:#f00">new</span> DynamoDBContext(<span style="color:#f60">_d</span>ynamoDbClient);
-                <span style="color:#f00">await</span> context.SaveAsync(item);
+                DynamoDBContext context = <span style=color:red>new</span> DynamoDBContext(<span style=color:#f60>_d</span>ynamoDbClient);
+                <span style=color:red>await</span> context.SaveAsync(item);
             }
-            <span style="color:#f00">catch</span> (Exception ex)
+            <span style=color:red>catch</span> (Exception ex)
             {
-                <span style="color:#f00">throw</span> <span style="color:#f00">new</span> Exception(<span style="color:#87ceeb">$&#34;Amazon error in Write operation! Error: {ex}&#34;</span>);
+                <span style=color:red>throw</span> <span style=color:red>new</span> Exception(<span style=color:#87ceeb>$&#34;Amazon error in Write operation! Error: {ex}&#34;</span>);
             }
         }
 
-        <span style="color:#f00">public</span> <span style="color:#f00">async</span> Task DeleteAsync&lt;T&gt;(T item)
+        <span style=color:red>public</span> <span style=color:red>async</span> Task DeleteAsync&lt;T&gt;(T item)
         {
-            <span style="color:#f00">try</span>
+            <span style=color:red>try</span>
             {
-                DynamoDBContext context = <span style="color:#f00">new</span> DynamoDBContext(<span style="color:#f60">_d</span>ynamoDbClient);
-                <span style="color:#f00">await</span> context.DeleteAsync(item)
+                DynamoDBContext context = <span style=color:red>new</span> DynamoDBContext(<span style=color:#f60>_d</span>ynamoDbClient);
+                <span style=color:red>await</span> context.DeleteAsync(item)
             }
-            <span style="color:#f00">catch</span> (Exception ex)
+            <span style=color:red>catch</span> (Exception ex)
             {
-                <span style="color:#f00">throw</span> <span style="color:#f00">new</span> Exception(<span style="color:#87ceeb">$&#34;Amazon error in Delete operation! Error: {ex}&#34;</span>);
+                <span style=color:red>throw</span> <span style=color:red>new</span> Exception(<span style=color:#87ceeb>$&#34;Amazon error in Delete operation! Error: {ex}&#34;</span>);
             }
         }
     }
 }
-</code></pre></div><p>It&rsquo;s all fun and games until you have to use different databases for different environments! Of course you can use the <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DotNetSDKMidLevel.html">Document Model</a>, but then you lose the nice mapping to C# classes and have to work with generic documents.</p>
+</code></pre></div><p>It&rsquo;s all fun and games until you have to use different databases for different environments! Of course you can use the <a href=https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DotNetSDKMidLevel.html>Document Model</a>, but then you lose the nice mapping to C# classes and have to work with generic documents.</p>
 <p>C# attributes are not meant to change at runtime, so we&rsquo;re in a tough spot! What can we do to tell our build pipeline which tables we&rsquo;d like to use?</p>
-<h2 id="the-solution">The Solution</h2>
+<h2 id=the-solution>The Solution</h2>
 <p>.NET Core&rsquo;s powerful dependency injection comes to our rescue! First we create the same section (with the respective databases for our environments) in our <strong><code>appsettings.Development.json</code></strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#87ceeb">&#34;DynamoDbTables&#34;</span>: {
-    &#34;Player&#34;: <span style="color:#87ceeb">&#34;DevPlayer&#34;</span>,
-    &#34;Location&#34;: <span style="color:#87ceeb">&#34;DevLocation&#34;</span>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-json data-lang=json><span style=color:#87ceeb>&#34;DynamoDbTables&#34;</span>: {
+    &#34;Player&#34;: <span style=color:#87ceeb>&#34;DevPlayer&#34;</span>,
+    &#34;Location&#34;: <span style=color:#87ceeb>&#34;DevLocation&#34;</span>
 }
 </code></pre></div><p>and <strong><code>appsettings.json</code></strong> file</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#87ceeb">&#34;DynamoDbTables&#34;</span>: {
-    &#34;Player&#34;: <span style="color:#87ceeb">&#34;ProdPlayer&#34;</span>,
-    &#34;Location&#34;: <span style="color:#87ceeb">&#34;ProdLocation&#34;</span>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-json data-lang=json><span style=color:#87ceeb>&#34;DynamoDbTables&#34;</span>: {
+    &#34;Player&#34;: <span style=color:#87ceeb>&#34;ProdPlayer&#34;</span>,
+    &#34;Location&#34;: <span style=color:#87ceeb>&#34;ProdLocation&#34;</span>
 }
 </code></pre></div><p>Then we head up and create a simple configuration class which we&rsquo;ll bind to our DynamoDbTables JSON object later</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#f00">public</span> <span style="color:#f00">class</span> DynamoDbOptions
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-csharp data-lang=csharp><span style=color:red>public</span> <span style=color:red>class</span> DynamoDbOptions
 {
-    <span style="color:#f00">public</span> <span style="color:#ee82ee">string</span> Player { <span style="color:#f00">get</span>; <span style="color:#f00">set</span>; }
-    <span style="color:#f00">public</span> <span style="color:#ee82ee">string</span> Location { <span style="color:#f00">get</span>; <span style="color:#f00">set</span>; }
+    <span style=color:red>public</span> <span style=color:violet>string</span> Player { <span style=color:red>get</span>; <span style=color:red>set</span>; }
+    <span style=color:red>public</span> <span style=color:violet>string</span> Location { <span style=color:red>get</span>; <span style=color:red>set</span>; }
 }
 </code></pre></div><p>After that we have to create our custom DynamoDb context interface</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#f00">public</span> <span style="color:#f00">interface</span> IDynamoDbContext&lt;T&gt; : IDisposable <span style="color:#f00">where</span> T : <span style="color:#f00">class</span>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-csharp data-lang=csharp><span style=color:red>public</span> <span style=color:red>interface</span> IDynamoDbContext&lt;T&gt; : IDisposable <span style=color:red>where</span> T : <span style=color:red>class</span>
 {
-    Task&lt;T&gt; GetByIdAsync(<span style="color:#ee82ee">string</span> id);
+    Task&lt;T&gt; GetByIdAsync(<span style=color:violet>string</span> id);
     Task SaveAsync(T item);
     Task DeleteByIdAsync(T item);
 }
 </code></pre></div><p>and the context class which we&rsquo;ll inject in our services</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#f00">public</span> <span style="color:#f00">class</span> DynamoDbContext&lt;T&gt; : DynamoDBContext, IDynamoDbContext&lt;T&gt;
-    <span style="color:#f00">where</span> T : <span style="color:#f00">class</span>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-csharp data-lang=csharp><span style=color:red>public</span> <span style=color:red>class</span> DynamoDbContext&lt;T&gt; : DynamoDBContext, IDynamoDbContext&lt;T&gt;
+    <span style=color:red>where</span> T : <span style=color:red>class</span>
 {
-    <span style="color:#f00">private</span> DynamoDBOperationConfig <span style="color:#f60">_</span>config;
+    <span style=color:red>private</span> DynamoDBOperationConfig <span style=color:#f60>_</span>config;
 
-    <span style="color:#f00">public</span> DynamoDbContext(IAmazonDynamoDB client, <span style="color:#ee82ee">string</span> tableName)
-        : <span style="color:#f00">base</span>(client)
+    <span style=color:red>public</span> DynamoDbContext(IAmazonDynamoDB client, <span style=color:violet>string</span> tableName)
+        : <span style=color:red>base</span>(client)
     {
-        <span style="color:#f60">_</span>config = <span style="color:#f00">new</span> DynamoDBOperationConfig()
+        <span style=color:#f60>_</span>config = <span style=color:red>new</span> DynamoDBOperationConfig()
         {
             OverrideTableName = tableName
         };
     }
 
-    <span style="color:#f00">public</span> <span style="color:#f00">async</span> Task&lt;T&gt; GetByIdAsync(<span style="color:#ee82ee">string</span> id)
+    <span style=color:red>public</span> <span style=color:red>async</span> Task&lt;T&gt; GetByIdAsync(<span style=color:violet>string</span> id)
     {
-        <span style="color:#f00">return</span> <span style="color:#f00">await</span> <span style="color:#f00">base</span>.LoadAsync&lt;T&gt;(id, <span style="color:#f60">_</span>config);
+        <span style=color:red>return</span> <span style=color:red>await</span> <span style=color:red>base</span>.LoadAsync&lt;T&gt;(id, <span style=color:#f60>_</span>config);
     }
 
-    <span style="color:#f00">public</span> <span style="color:#f00">async</span> Task SaveAsync(T item)
+    <span style=color:red>public</span> <span style=color:red>async</span> Task SaveAsync(T item)
     {
-        <span style="color:#f00">await</span> <span style="color:#f00">base</span>.SaveAsync(item, <span style="color:#f60">_</span>config);
+        <span style=color:red>await</span> <span style=color:red>base</span>.SaveAsync(item, <span style=color:#f60>_</span>config);
     }
 
-    <span style="color:#f00">public</span> <span style="color:#f00">async</span> Task DeleteByIdAsync(T item)
+    <span style=color:red>public</span> <span style=color:red>async</span> Task DeleteByIdAsync(T item)
     {
-        <span style="color:#f00">await</span> <span style="color:#f00">base</span>.DeleteAsync(item, <span style="color:#f60">_</span>config);
+        <span style=color:red>await</span> <span style=color:red>base</span>.DeleteAsync(item, <span style=color:#f60>_</span>config);
     }
 }
 </code></pre></div><p>Then we go to our <strong><code>Startup.cs</code></strong> and add a couple of lines to our <strong><code>ConfigureServices()</code></strong> method</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#0f0">// AWS Options
-</span><span style="color:#0f0"></span><span style="color:#ee82ee">var</span> awsOptions = Configuration.GetAWSOptions();
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-csharp data-lang=csharp><span style=color:#0f0>// AWS Options
+</span><span style=color:#0f0></span><span style=color:violet>var</span> awsOptions = Configuration.GetAWSOptions();
 services.AddDefaultAWSOptions(awsOptions);
 
-<span style="color:#ee82ee">var</span> client = awsOptions.CreateServiceClient&lt;IAmazonDynamoDB&gt;();
-<span style="color:#ee82ee">var</span> dynamoDbOptions = <span style="color:#f00">new</span> DynamoDbOptions();
-ConfigurationBinder.Bind(Configuration.GetSection(<span style="color:#87ceeb">&#34;DynamoDbTables&#34;</span>), dynamoDbOptions);
+<span style=color:violet>var</span> client = awsOptions.CreateServiceClient&lt;IAmazonDynamoDB&gt;();
+<span style=color:violet>var</span> dynamoDbOptions = <span style=color:red>new</span> DynamoDbOptions();
+ConfigurationBinder.Bind(Configuration.GetSection(<span style=color:#87ceeb>&#34;DynamoDbTables&#34;</span>), dynamoDbOptions);
 
-<span style="color:#0f0">// This is where the magic happens
-</span><span style="color:#0f0"></span>services.AddScoped&lt;IDynamoDbContext&lt;Player&gt;&gt;(provider =&gt; <span style="color:#f00">new</span> DynamoDbContext&lt;Player&gt;(client, dynamoDbOptions.Player));
-services.AddScoped&lt;IDynamoDbContext&lt;Location&gt;&gt;(provider =&gt; <span style="color:#f00">new</span> DynamoDbContext&lt;Location&gt;(client, dynamoDbOptions.Location));
-</code></pre></div><p>And voilà! We can now remove the <strong><code>[DynamoDBTable(&quot;SomeTableName&quot;)]</code></strong> attributes from our classes. We can keep both <strong><code>[DynamoDBHashKey]</code></strong> and <strong><code>[DynamoDBProperty]</code></strong> attributes. If we need custom converters we can just add <strong><code>[DynamoDBProperty(typeof(SomeConverter))]</code></strong> attribute to our property.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#0f0">// No table name attribute needed!
-</span><span style="color:#0f0"></span><span style="color:#f00">public</span> <span style="color:#f00">class</span> Player
+<span style=color:#0f0>// This is where the magic happens
+</span><span style=color:#0f0></span>services.AddScoped&lt;IDynamoDbContext&lt;Player&gt;&gt;(provider =&gt; <span style=color:red>new</span> DynamoDbContext&lt;Player&gt;(client, dynamoDbOptions.Player));
+services.AddScoped&lt;IDynamoDbContext&lt;Location&gt;&gt;(provider =&gt; <span style=color:red>new</span> DynamoDbContext&lt;Location&gt;(client, dynamoDbOptions.Location));
+</code></pre></div><p>And voilà! We can now remove the <strong><code>[DynamoDBTable("SomeTableName")]</code></strong> attributes from our classes. We can keep both <strong><code>[DynamoDBHashKey]</code></strong> and <strong><code>[DynamoDBProperty]</code></strong> attributes. If we need custom converters we can just add <strong><code>[DynamoDBProperty(typeof(SomeConverter))]</code></strong> attribute to our property.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-csharp data-lang=csharp><span style=color:#0f0>// No table name attribute needed!
+</span><span style=color:#0f0></span><span style=color:red>public</span> <span style=color:red>class</span> Player
 {
     [DynamoDBHashKey]
-    <span style="color:#f00">public</span> <span style="color:#ee82ee">int</span> Id { <span style="color:#f00">get</span>; <span style="color:#f00">set</span>; }
+    <span style=color:red>public</span> <span style=color:violet>int</span> Id { <span style=color:red>get</span>; <span style=color:red>set</span>; }
 
     [DynamoDBProperty]
-    <span style="color:#f00">public</span> <span style="color:#ee82ee">string</span> Name { <span style="color:#f00">get</span>; <span style="color:#f00">set</span>; }
+    <span style=color:red>public</span> <span style=color:violet>string</span> Name { <span style=color:red>get</span>; <span style=color:red>set</span>; }
 
     [DynamoDBProperty]
-    <span style="color:#f00">public</span> <span style="color:#ee82ee">int</span> HitPoints { <span style="color:#f00">get</span>; <span style="color:#f00">set</span>; }
+    <span style=color:red>public</span> <span style=color:violet>int</span> HitPoints { <span style=color:red>get</span>; <span style=color:red>set</span>; }
 
     [DynamoDBProperty]
-    <span style="color:#f00">public</span> <span style="color:#ee82ee">int</span> Gold { <span style="color:#f00">get</span>; <span style="color:#f00">set</span>; }
+    <span style=color:red>public</span> <span style=color:violet>int</span> Gold { <span style=color:red>get</span>; <span style=color:red>set</span>; }
 
     [DynamoDBProperty]
-    <span style="color:#f00">public</span> <span style="color:#ee82ee">int</span> Level { <span style="color:#f00">get</span>; <span style="color:#f00">set</span>; }
+    <span style=color:red>public</span> <span style=color:violet>int</span> Level { <span style=color:red>get</span>; <span style=color:red>set</span>; }
 
     [DynamoDBProperty]
-    <span style="color:#f00">public</span> List&lt;<span style="color:#ee82ee">string</span>&gt; Items { <span style="color:#f00">get</span>; <span style="color:#f00">set</span>; }
+    <span style=color:red>public</span> List&lt;<span style=color:violet>string</span>&gt; Items { <span style=color:red>get</span>; <span style=color:red>set</span>; }
 }
 
-<span style="color:#0f0">// No table name attribute needed!
-</span><span style="color:#0f0"></span><span style="color:#f00">public</span> <span style="color:#f00">class</span> Location
+<span style=color:#0f0>// No table name attribute needed!
+</span><span style=color:#0f0></span><span style=color:red>public</span> <span style=color:red>class</span> Location
 {
     [DynamoDBHashKey]
-    <span style="color:#f00">public</span> <span style="color:#ee82ee">int</span> Id { <span style="color:#f00">get</span>; <span style="color:#f00">set</span>; }
+    <span style=color:red>public</span> <span style=color:violet>int</span> Id { <span style=color:red>get</span>; <span style=color:red>set</span>; }
 
     [DynamoDBProperty]
-    <span style="color:#f00">public</span> <span style="color:#ee82ee">string</span> Name { <span style="color:#f00">get</span>; <span style="color:#f00">set</span>; }
+    <span style=color:red>public</span> <span style=color:violet>string</span> Name { <span style=color:red>get</span>; <span style=color:red>set</span>; }
 
     [DynamoDBProperty]
-    <span style="color:#f00">public</span> <span style="color:#ee82ee">string</span> Description { <span style="color:#f00">get</span>; <span style="color:#f00">set</span>; }
+    <span style=color:red>public</span> <span style=color:violet>string</span> Description { <span style=color:red>get</span>; <span style=color:red>set</span>; }
 }
 </code></pre></div><p>and we can use the desired context with their respective tables in our services!</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#f00">namespace</span> Services
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-csharp data-lang=csharp><span style=color:red>namespace</span> Services
 {
-    <span style="color:#f00">public</span> <span style="color:#f00">class</span> AwesomeDynamoDbService
+    <span style=color:red>public</span> <span style=color:red>class</span> AwesomeDynamoDbService
     {
-        <span style="color:#f00">private</span> IDynamoDbContext&lt;Player&gt; <span style="color:#f60">_</span>playerContext;
-        <span style="color:#f00">private</span> IDynamoDbContext&lt;Location&gt; <span style="color:#f60">_l</span>ocationContext;
+        <span style=color:red>private</span> IDynamoDbContext&lt;Player&gt; <span style=color:#f60>_</span>playerContext;
+        <span style=color:red>private</span> IDynamoDbContext&lt;Location&gt; <span style=color:#f60>_l</span>ocationContext;
 
-        <span style="color:#f00">public</span> AwesomeDynamoDbService(IDynamoDbContext&lt;Player&gt; playerContext, IDynamoDbContext&lt;Location&gt; locationContext)
+        <span style=color:red>public</span> AwesomeDynamoDbService(IDynamoDbContext&lt;Player&gt; playerContext, IDynamoDbContext&lt;Location&gt; locationContext)
         {
-            <span style="color:#f60">_</span>playerContext = playerContext;
-            <span style="color:#f60">_l</span>ocationContext = locationContext;
+            <span style=color:#f60>_</span>playerContext = playerContext;
+            <span style=color:#f60>_l</span>ocationContext = locationContext;
         }
 
-        <span style="color:#f00">public</span> <span style="color:#f00">async</span> Task&lt;User&gt; GetUserAsync(<span style="color:#ee82ee">string</span> id)
+        <span style=color:red>public</span> <span style=color:red>async</span> Task&lt;User&gt; GetUserAsync(<span style=color:violet>string</span> id)
         {
-            <span style="color:#f00">try</span>
+            <span style=color:red>try</span>
             {
-                <span style="color:#f00">return</span> <span style="color:#f00">await</span> <span style="color:#f60">_</span>playerContext.GetByIdAsync(id);
+                <span style=color:red>return</span> <span style=color:red>await</span> <span style=color:#f60>_</span>playerContext.GetByIdAsync(id);
             }
-            <span style="color:#f00">catch</span> (Exception ex)
+            <span style=color:red>catch</span> (Exception ex)
             {
-                <span style="color:#f00">throw</span> <span style="color:#f00">new</span> Exception(<span style="color:#87ceeb">$&#34;Amazon error in GetUser table operation! Error: {ex}&#34;</span>);
+                <span style=color:red>throw</span> <span style=color:red>new</span> Exception(<span style=color:#87ceeb>$&#34;Amazon error in GetUser table operation! Error: {ex}&#34;</span>);
             }
         }
 
-        <span style="color:#f00">public</span> <span style="color:#f00">async</span> Task&lt;Location&gt; GetLocationAsync(<span style="color:#ee82ee">string</span> id)
+        <span style=color:red>public</span> <span style=color:red>async</span> Task&lt;Location&gt; GetLocationAsync(<span style=color:violet>string</span> id)
         {
-            <span style="color:#f00">try</span>
+            <span style=color:red>try</span>
             {
-                <span style="color:#f00">return</span> <span style="color:#f00">await</span> <span style="color:#f60">_l</span>ocationContext.GetByIdAsync(id);
+                <span style=color:red>return</span> <span style=color:red>await</span> <span style=color:#f60>_l</span>ocationContext.GetByIdAsync(id);
             }
-            <span style="color:#f00">catch</span> (Exception ex)
+            <span style=color:red>catch</span> (Exception ex)
             {
-                <span style="color:#f00">throw</span> <span style="color:#f00">new</span> Exception(<span style="color:#87ceeb">$&#34;Amazon error in GetLocation table operation! Error: {ex}&#34;</span>);
+                <span style=color:red>throw</span> <span style=color:red>new</span> Exception(<span style=color:#87ceeb>$&#34;Amazon error in GetLocation table operation! Error: {ex}&#34;</span>);
             }
         }
     }
 }
 </code></pre></div><p>Depending on your case you can use different services for different tables or other requirements. This solution might seem a bit more cumbersome than the original, but it makes us flexible in case we need to work with multiple databases and different build environments. The only thing you have to do is to tell your build tool/pipeline to change the table names in your <strong><code>appsettings.json</code></strong> files.</p>
 <p>This method also is more robust when it comes to testing because it&rsquo;ll be much easier to mock! All in all I&rsquo;m really happy with how it all turned out!</p>
-
 </article>
-
-            </div>
-        </main>
-    </body></html>
+</div>
+</main>
+</body></html>
