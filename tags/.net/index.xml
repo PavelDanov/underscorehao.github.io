@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>.net on Pavel Danov</title>
+    <title>.net on </title>
     <link>https://underscorehao.net/tags/.net/</link>
-    <description>Recent content in .net on Pavel Danov</description>
+    <description>Recent content in .net on </description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <copyright>Copyright 2017-2023 by Pavel Danov</copyright>
     <lastBuildDate>Sat, 11 Jan 2020 19:33:48 +0000</lastBuildDate><atom:link href="https://underscorehao.net/tags/.net/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Publishing to Multiple Topics in Azure Service Bus</title>
@@ -15,7 +13,7 @@
       
       <guid>https://underscorehao.net/2020/01/publishing-to-multiple-topics-in-azure-service-bus/</guid>
       <description>Multiple topics There are two main approaches when it comes to topics in Azure Service Bus. Depending what&amp;rsquo;s your architecture and needs you can have either:
-Filtered topic - this means you have only one topic for all of your event types. All publishers push messages onto that single topic. Some of the message fields and properties are then used for filtering by the subscribers since in most cases a subscriber will be interested only in certain types of messages.</description>
+ Filtered topic - this means you have only one topic for all of your event types. All publishers push messages onto that single topic. Some of the message fields and properties are then used for filtering by the subscribers since in most cases a subscriber will be interested only in certain types of messages.</description>
     </item>
     
     <item>
