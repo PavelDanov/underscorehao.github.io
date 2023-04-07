@@ -1,352 +1,40 @@
 <!DOCTYPE html>
-<html><head>
-<title>Publishing to Multiple Topics in Azure Service Bus</title>
+<html lang=""><head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+   <meta name="description" content="Multiple topics There are two main approaches when it comes to topics in Azure Service Bus. Depending what&rsquo;s your architecture and needs you can have either:
+ Filtered topic - this means you have only one topic for all of your event types. All publishers push messages onto that single topic. Some of the message fields and properties are then used for filtering by the subscribers since in most cases a subscriber will be interested only in certain types of messages.">  
 
-
-
-
-<meta charset="utf-8">
-<meta name="X-UA-Compatible" content="IE=edge">
-<meta name="google-site-verification" content="">
-<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
-<meta content="telephone=no" name="format-detection">
-<meta name="description" content="">
-<meta name="renderer" content="webkit">
-<meta name="theme-color" content="#ffffff">
-
-
-
-<meta property="og:title" content="Publishing to Multiple Topics in Azure Service Bus" />
-<meta property="og:description" content="Multiple topics There are two main approaches when it comes to topics in Azure Service Bus. Depending what&rsquo;s your architecture and needs you can have either:
-Filtered topic - this means you have only one topic for all of your event types. All publishers push messages onto that single topic. Some of the message fields and properties are then used for filtering by the subscribers since in most cases a subscriber will be interested only in certain types of messages." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://underscorehao.net/2020/01/publishing-to-multiple-topics-in-azure-service-bus/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2020-01-11T19:33:48+00:00" />
-<meta property="article:modified_time" content="2020-01-11T19:33:48+00:00" /><meta property="og:site_name" content="Pavel Danov" />
-
-
-
-
-
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Publishing to Multiple Topics in Azure Service Bus"/>
-<meta name="twitter:description" content="Multiple topics There are two main approaches when it comes to topics in Azure Service Bus. Depending what&rsquo;s your architecture and needs you can have either:
-Filtered topic - this means you have only one topic for all of your event types. All publishers push messages onto that single topic. Some of the message fields and properties are then used for filtering by the subscribers since in most cases a subscriber will be interested only in certain types of messages."/>
-
-
-
-
-
-
-
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-	ga('create', 'UA-106583563-1', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script>
-
-
-
-
-
-  
-
-
-
-
-<link rel="icon" href="https://underscorehao.net/favicons/favicon.ico">
-
-
-
-      <script src="/js/toc.js"></script>
+  <title>
     
-    <link type="text/css" rel="stylesheet" href="/vendor/css/bootstrap.min.css">
-<link rel="stylesheet" href="/scss/journal.min.7c01e9f6fb2f6083d79d2f3a32ec6b7901e262e94a52a64a542aef98bc5bda64.css" integrity="sha256-fAHp9vsvYIPXnS86MuxreQHiYulKUqZKVCrvmLxb2mQ=" media="screen">
+      Publishing to Multiple Topics in Azure Service Bus
+    
+  </title>
 
 
-
-<link rel="stylesheet" href="/scss/dark-mode.min.cb53f1bee2b8900cb4f082afbf00175d6618f281cf9a2fe8619e3b52d20b5721.css" integrity="sha256-y1PxvuK4kAy08IKvvwAXXWYY8oHPmi/oYZ47UtILVyE=" media="screen">
-
-
-<link rel="stylesheet"
-          href="https://fonts.googleapis.com/css?family=Material+Icons">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  <link rel="shortcut icon" type="image/x-icon" href="/" />
+  
+  
+  
+  <link rel="stylesheet" href="/css/main.26ce895efbc9df460bf30dc5e7309178501280634938b0d7f89417ce9980ecf02b981e101b4e3572f97c3f38336c57a0f20ca8c0a233b582b06b6361229fa3dd.css" integrity="sha512-Js6JXvvJ30YL8w3F5zCReFASgGNJOLDX&#43;JQXzpmA7PArmB4QG041cvl8PzgzbFeg8gyowKIztYKwa2NhIp&#43;j3Q==" />
+  
 </head>
-<body>
-    	<div id="app"><div class="single-column-drawer-container" id="drawer"
-     v-bind:class="{ 'single-column-drawer-container-active': isDrawerOpen }">
-    <div class="drawer-content">
-        <div class="drawer-menu">
-            
-            
-            
-                
-                
-                
-                
-                
-                <a class="a-block drawer-menu-item false" href="/about">
-                    About
-                </a>
-                
-            
-                
-                
-                
-                
-                
-                <a class="a-block drawer-menu-item false" href="/posts">
-                    Archive
-                </a>
-                
-            
-                
-                
-                
-                
-                
-                <a class="a-block drawer-menu-item false" href="/categories">
-                    Categories
-                </a>
-                
-            
-                
-                
-                
-                
-                
-                <a class="a-block drawer-menu-item false" href="/tags">
-                    Tags
-                </a>
-                
-            
-                
-                
-                
-                
-                
-                <a class="a-block drawer-menu-item false" href="/index.xml">
-                    RSS Feed
-                </a>
-                
-            
-            
-            <div class="toc">
+<body a="light">
+        <main class="page-content" aria-label="Content">
+            <div class="w">
+<a href="/">..</a>
 
+<article>
+    <p class="post-meta">
+        <time datetime="2020-01-11 19:33:48 &#43;0000 UTC">
+            2020-01-11
+        </time>
+    </p>
 
-	<div class="toc-content">
-	
-		
-		
-		
-		<center>- CATALOG -</center>
-		
-		
-		<ul>
-			
-				
-				
-					
-						
-						
-						
-						
-							
-								
-									<ul>
-								
-							
-						
-						
-							<li>
-								<a href="#multiple-topics" class="nav-multiple-topics">
-									Multiple topics
-								</a>
-							</li>
-						
-						
-					
-				
-			
-				
-				
-					
-						
-						
-						
-						
-						
-							<li>
-								<a href="#basic-setup" class="nav-basic-setup">
-									Basic Setup
-								</a>
-							</li>
-						
-						
-					
-				
-			
-				
-				
-					
-						
-						
-						
-						
-						
-							<li>
-								<a href="#the-na%c3%afve-approach" class="nav-the-naïve-approach">
-									The naïve approach
-								</a>
-							</li>
-						
-						
-					
-				
-			
-				
-				
-					
-						
-						
-						
-						
-						
-							<li>
-								<a href="#introducing-the-itopicclient-resolver" class="nav-introducing-the-itopicclient-resolver">
-									Introducing the ITopicClient resolver
-								</a>
-							</li>
-						
-						
-					
-				
-			
-		</ul>
-	</div>
+    <h1>Publishing to Multiple Topics in Azure Service Bus</h1>
 
-</div>
-            
-        </div>
-    </div>
-</div>
-<transition name="fade">
-    <div id="drawer-mask" v-bind:class="{ 'single-column-drawer-mask': mounted }" v-if="isDrawerOpen" v-on:click="toggleDrawer"></div>
-</transition>
-<nav id="navBar" class="navbar sticky-top navbar-light single-column-nav-container">
-    <div id="navBackground" class="nav-background"></div>
-    <div class="container container-narrow nav-content">
-        <button id="nav_dropdown_btn" class="nav-dropdown-toggle" type="button" v-on:click="toggleDrawer">
-            <i class="material-icons">
-                menu
-            </i>
-        </button>
-        <a id="navTitle" class="navbar-brand" href="https://underscorehao.net/">
-            Pavel Danov
-        </a>
-        
-        <button type="button" class="nav-darkmode-toggle" id="darkModeToggleButton2">
-            <i class="material-icons" id="darkModeToggleIcon2">
-                dark_mode
-            </i>
-        </button>
-        
-    </div>
-</nav>
-<div class="single-column-header-container" id="pageHead"
-     v-bind:style="{ transform: 'translateZ(0px) translateY('+.3*scrollY+'px)', opacity: 1-navOpacity }">
-    <a href="https://underscorehao.net/">
-        <div class="single-column-header-title">Pavel Danov</div>
-        
-        <div class="single-column-header-subtitle">Life and Tech</div>
-        
-
-    </a>
-</div>
-
-            <div id="content">
-                <div id="streamContainer" class="stream-container">
-
-    <div class="post-list-container post-list-container-shadow">
-        <div class="post">
-            
-            
-            
-                
-            
-
-            <div class="post-head-wrapper"
-                
-                    
-                    
-                    style="background-image: url('https://underscorehao.net/images/az-service-bus.png')"
-                    
-                
-            >
-                <div class="post-title">
-                    Publishing to Multiple Topics in Azure Service Bus
-                    
-                    <div class="post-meta">
-                        
-                        <time itemprop="datePublished">
-                            2020-01-11 19:33
-                        </time>
-                        
-
-                        
-                            <i class="material-icons" style="">folder</i>
-                                <a href="/categories/">[Software Development]</a>
-                                &nbsp;
-                        
-
-                        
-                            <i class="material-icons" style="">label</i>
-                            
-                                <a href="/tags/c">c#</a>
-                                &nbsp;
-                            
-                                <a href="/tags/.net">.net</a>
-                                &nbsp;
-                            
-                                <a href="/tags/azure">azure</a>
-                                &nbsp;
-                            
-                        
-                        
-                    </div>
-                </div>
-            </div>
-            
-            <div class="post-body-wrapper">
-                
-                <div class="post-body" v-pre>
-                
-                    <h2 id="multiple-topics">Multiple topics</h2>
+    <h2 id="multiple-topics">Multiple topics</h2>
 <p>There are two main approaches when it comes to topics in Azure Service Bus. Depending what&rsquo;s your architecture and needs you can have either:</p>
 <ul>
 <li><strong>Filtered topic</strong> - this means you have only one topic for all of your event types. All publishers push messages onto that single topic. Some of the message fields and properties are then used for filtering by the subscribers since in most cases a subscriber will be interested only in certain types of messages.</li>
@@ -360,476 +48,221 @@ if (!doNotTrack) {
 <li><a href="https://docs.microsoft.com/en-us/azure/service-bus-messaging/service-bus-dotnet-how-to-use-topics-subscriptions">Getting started with Service Bus topics</a></li>
 </ul>
 <p>Now that we know what libraries we&rsquo;ll be using we can start building our solution. The first step is to create our TopicClient which is easy enough</p>
-<div class="highlight"><pre tabindex="0" style="color:#c9d1d9;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#ff7b72">var</span> topicClient = <span style="color:#ff7b72">new</span> TopicClient(<span style="color:#a5d6ff">&#34;AzureServiceBusConnectionString&#34;</span>, <span style="color:#a5d6ff">&#34;TopicName&#34;</span>);
-</span></span></code></pre></div><p>The two things we need are the ASB connection string and the topic to which we would like to publish messages.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#ee82ee">var</span> topicClient = <span style="color:#f00">new</span> TopicClient(<span style="color:#87ceeb">&#34;AzureServiceBusConnectionString&#34;</span>, <span style="color:#87ceeb">&#34;TopicName&#34;</span>);
+</code></pre></div><p>The two things we need are the ASB connection string and the topic to which we would like to publish messages.</p>
 <p>Let&rsquo;s get the boilerplate code that is going to be used onward out of the way first. You&rsquo;ll need to have something like that in your <code>appsettings.json</code> file</p>
-<div class="highlight"><pre tabindex="0" style="color:#c9d1d9;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span>    <span style="color:#7ee787">&#34;ServiceBus&#34;</span>: {
-</span></span><span style="display:flex;"><span>        <span style="color:#7ee787">&#34;Endpoint&#34;</span>: <span style="color:#a5d6ff">&#34;AsbFooBarEndpoint&#34;</span>,
-</span></span><span style="display:flex;"><span>        <span style="color:#7ee787">&#34;FooTopic&#34;</span>: <span style="color:#a5d6ff">&#34;foo&#34;</span>,
-</span></span><span style="display:flex;"><span>        <span style="color:#7ee787">&#34;BarTopic&#34;</span>: <span style="color:#a5d6ff">&#34;bar&#34;</span>
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p>And a simple POCO that you can map it to</p>
-<div class="highlight"><pre tabindex="0" style="color:#c9d1d9;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#ff7b72">public</span> <span style="color:#ff7b72">class</span> <span style="color:#f0883e;font-weight:bold">ServiceBusOptions</span>
-</span></span><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">public</span> <span style="color:#ff7b72">string</span> Endpoint { <span style="color:#ff7b72">get</span>; <span style="color:#ff7b72">set</span>; }
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">public</span> <span style="color:#ff7b72">string</span> FooTopic { <span style="color:#ff7b72">get</span>; <span style="color:#ff7b72">set</span>; }
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">public</span> <span style="color:#ff7b72">string</span> BarTopic { <span style="color:#ff7b72">get</span>; <span style="color:#ff7b72">set</span>; }
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p>Then you register your options in the startup</p>
-<div class="highlight"><pre tabindex="0" style="color:#c9d1d9;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#ff7b72">private</span> <span style="color:#ff7b72">void</span> BindConfigurationOptions(IServiceCollection services)
-</span></span><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span>    services.Configure&lt;ServiceBusOptions&gt;(options =&gt;
-</span></span><span style="display:flex;"><span>        Configuration.GetSection(<span style="color:#a5d6ff">&#34;ServiceBus&#34;</span>)
-</span></span><span style="display:flex;"><span>            .Bind(options));
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><h2 id="the-naïve-approach">The naïve approach</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
+    &#34;ServiceBus&#34;: {
+        &#34;Endpoint&#34;: <span style="color:#87ceeb">&#34;AsbFooBarEndpoint&#34;</span>,
+        &#34;FooTopic&#34;: <span style="color:#87ceeb">&#34;foo&#34;</span>,
+        &#34;BarTopic&#34;: <span style="color:#87ceeb">&#34;bar&#34;</span>
+    }
+}
+</code></pre></div><p>And a simple POCO that you can map it to</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#f00">public</span> <span style="color:#f00">class</span> ServiceBusOptions
+{
+    <span style="color:#f00">public</span> <span style="color:#ee82ee">string</span> Endpoint { <span style="color:#f00">get</span>; <span style="color:#f00">set</span>; }
+
+    <span style="color:#f00">public</span> <span style="color:#ee82ee">string</span> FooTopic { <span style="color:#f00">get</span>; <span style="color:#f00">set</span>; }
+
+    <span style="color:#f00">public</span> <span style="color:#ee82ee">string</span> BarTopic { <span style="color:#f00">get</span>; <span style="color:#f00">set</span>; }
+}
+</code></pre></div><p>Then you register your options in the startup</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#f00">private</span> <span style="color:#f00">void</span> BindConfigurationOptions(IServiceCollection services)
+{
+    services.Configure&lt;ServiceBusOptions&gt;(options =&gt;
+        Configuration.GetSection(<span style="color:#87ceeb">&#34;ServiceBus&#34;</span>)
+            .Bind(options));
+}
+</code></pre></div><h2 id="the-naïve-approach">The naïve approach</h2>
 <p>If we were doing the first example (filtered topic) we are pretty much done. You can register your <a href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.azure.servicebus.topicclient?view=azure-dotnet"><strong><code>ITopicClient</code></strong></a> as a <a href="https://docs.microsoft.com/en-us/azure/service-bus-messaging/service-bus-performance-improvements#reusing-factories-and-clients"><strong>singleton</strong></a> and inject it in your DI container.</p>
-<div class="highlight"><pre tabindex="0" style="color:#c9d1d9;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic">// This is the Azure Functions host builder</span>
-</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic">// In a web service you&#39;ll have the IServiceCollection</span>
-</span></span><span style="display:flex;"><span><span style="color:#ff7b72">public</span> <span style="color:#ff7b72">static</span> <span style="color:#ff7b72">void</span> Configure(IFunctionsHostBuilder builder)
-</span></span><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span>    builder.Services.AddSingleton&lt;ITopicClient&gt;(x =&gt;
-</span></span><span style="display:flex;"><span>    {
-</span></span><span style="display:flex;"><span>        <span style="color:#ff7b72">var</span> options = x.GetRequiredService&lt;IOptions&lt;ServiceBusOptions&gt;&gt;();
-</span></span><span style="display:flex;"><span>        <span style="color:#ff7b72">return</span> <span style="color:#ff7b72">new</span> <span style="color:#ff7b72">new</span> TopicClient(options.Value.Endpoint, options.Value.FooTopic);
-</span></span><span style="display:flex;"><span>    });
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p>Finally you just use the injected client to send messages to the <code>Foo</code> topic</p>
-<div class="highlight"><pre tabindex="0" style="color:#c9d1d9;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic">// Code below uses a MediatR handler as an example</span>
-</span></span><span style="display:flex;"><span><span style="color:#ff7b72">public</span> <span style="color:#ff7b72">class</span> <span style="color:#f0883e;font-weight:bold">FooHandler</span> : IRequestHandler&lt;Foo, <span style="color:#ff7b72">bool</span>&gt;
-</span></span><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">private</span> <span style="color:#ff7b72">readonly</span> ITopicClient topicClient;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">public</span> FooHandler(ITopicClient topicClient)
-</span></span><span style="display:flex;"><span>    {
-</span></span><span style="display:flex;"><span>        <span style="color:#ff7b72">this</span>.topicClient = topicClient ?? <span style="color:#ff7b72">throw</span> <span style="color:#ff7b72">new</span> ArgumentNullException(nameof(topicClient));
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">public</span> <span style="color:#ff7b72">async</span> Task&lt;<span style="color:#ff7b72">bool</span>&gt; Handle(Foo request, CancellationToken cancellationToken)
-</span></span><span style="display:flex;"><span>    {
-</span></span><span style="display:flex;"><span>        <span style="color:#ff7b72">if</span> (request == <span style="color:#ff7b72">null</span>) <span style="color:#ff7b72">throw</span> <span style="color:#ff7b72">new</span> ArgumentNullException(nameof(request));
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        <span style="color:#ff7b72">try</span>
-</span></span><span style="display:flex;"><span>        {
-</span></span><span style="display:flex;"><span>            <span style="color:#ff7b72">await</span> topicClient.SendAsync(request.Message);
-</span></span><span style="display:flex;"><span>            <span style="color:#ff7b72">return</span> <span style="color:#ff7b72">true</span>;
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>        <span style="color:#ff7b72">catch</span> (Exception ex)
-</span></span><span style="display:flex;"><span>        {
-</span></span><span style="display:flex;"><span>            <span style="color:#ff7b72">return</span> <span style="color:#ff7b72">false</span>;
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p>And that&rsquo;s that. We&rsquo;re done.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#0f0">// This is the Azure Functions host builder
+</span><span style="color:#0f0">// In a web service you&#39;ll have the IServiceCollection
+</span><span style="color:#0f0"></span><span style="color:#f00">public</span> <span style="color:#f00">static</span> <span style="color:#f00">void</span> Configure(IFunctionsHostBuilder builder)
+{
+    builder.Services.AddSingleton&lt;ITopicClient&gt;(x =&gt;
+    {
+        <span style="color:#ee82ee">var</span> options = x.GetRequiredService&lt;IOptions&lt;ServiceBusOptions&gt;&gt;();
+        <span style="color:#f00">return</span> <span style="color:#f00">new</span> <span style="color:#f00">new</span> TopicClient(options.Value.Endpoint, options.Value.FooTopic);
+    });
+}
+</code></pre></div><p>Finally you just use the injected client to send messages to the <code>Foo</code> topic</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#0f0">// Code below uses a MediatR handler as an example
+</span><span style="color:#0f0"></span><span style="color:#f00">public</span> <span style="color:#f00">class</span> FooHandler : IRequestHandler&lt;Foo, <span style="color:#ee82ee">bool</span>&gt;
+{
+    <span style="color:#f00">private</span> <span style="color:#f00">readonly</span> ITopicClient topicClient;
+
+    <span style="color:#f00">public</span> FooHandler(ITopicClient topicClient)
+    {
+        <span style="color:#f00">this</span>.topicClient = topicClient ?? <span style="color:#f00">throw</span> <span style="color:#f00">new</span> ArgumentNullException(nameof(topicClient));
+    }
+
+    <span style="color:#f00">public</span> <span style="color:#f00">async</span> Task&lt;<span style="color:#ee82ee">bool</span>&gt; Handle(Foo request, CancellationToken cancellationToken)
+    {
+        <span style="color:#f00">if</span> (request == <span style="color:#f00">null</span>) <span style="color:#f00">throw</span> <span style="color:#f00">new</span> ArgumentNullException(nameof(request));
+
+        <span style="color:#f00">try</span>
+        {
+            <span style="color:#f00">await</span> topicClient.SendAsync(request.Message);
+            <span style="color:#f00">return</span> <span style="color:#f00">true</span>;
+        }
+        <span style="color:#f00">catch</span> (Exception ex)
+        {
+            <span style="color:#f00">return</span> <span style="color:#f00">false</span>;
+        }
+    }
+}
+</code></pre></div><p>And that&rsquo;s that. We&rsquo;re done.</p>
 <p>What happens however if we have to accommodate multiple topics? Do we inject multiple topics in the service/handler? Depending on your DI container are you even able to put multiple implementations of the same interface? Do we use a bunch of if statements and introduce cyclomatic complexity for deciding which topic client we want? These are all viable questions and solutions, but one elegant answer is hidden in the next section.</p>
 <h2 id="introducing-the-itopicclient-resolver">Introducing the ITopicClient resolver</h2>
 <p>In order to solve the problem at hand I want to minimize the complexity of dealing with multiple topics. I want the usage to be as simple as when using only one just like in the previous example. So how do we do that?</p>
 <p>The first part of the problem is how to differentiate between the topic clients for each topic. We can do that by creating small wrapper classes around each client we have.</p>
-<div class="highlight"><pre tabindex="0" style="color:#c9d1d9;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#ff7b72">public</span> <span style="color:#ff7b72">class</span> <span style="color:#f0883e;font-weight:bold">FooClient</span>
-</span></span><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">public</span> <span style="color:#ff7b72">readonly</span> ITopicClient TopicClient;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">public</span> FooClient(IOptions&lt;ServiceBusOptions&gt; options)
-</span></span><span style="display:flex;"><span>    {
-</span></span><span style="display:flex;"><span>        TopicClient = <span style="color:#ff7b72">new</span> TopicClient(options.Value.Endpoint, options.Value.FooTopic);
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>}
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#ff7b72">public</span> <span style="color:#ff7b72">class</span> <span style="color:#f0883e;font-weight:bold">BarClient</span>
-</span></span><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">public</span> <span style="color:#ff7b72">readonly</span> ITopicClient TopicClient;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">public</span> BarClient(IOptions&lt;ServiceBusOptions&gt; options)
-</span></span><span style="display:flex;"><span>    {
-</span></span><span style="display:flex;"><span>        TopicClient = <span style="color:#ff7b72">new</span> TopicClient(options.Value.Endpoint, options.Value.BarTopic);
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p>Now that we have our clients we are going to create a factory with the help of a <code>delegate</code>. Based on a <code>key</code> we&rsquo;ll return the exact topic client we want when we want it!</p>
-<div class="highlight"><pre tabindex="0" style="color:#c9d1d9;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#ff7b72">using</span> <span style="color:#ff7b72">Microsoft.Azure.ServiceBus</span>;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#ff7b72">namespace</span> <span style="color:#ff7b72">FooBarApp.Clients</span>
-</span></span><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span>    <span style="color:#8b949e;font-style:italic">// The key can be a string, Type, enum, int - whatever you need really</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">public</span> <span style="color:#ff7b72">delegate</span> ITopicClient TopicResolver(<span style="color:#ff7b72">string</span> key);
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p>The step where the magic happens is in our DI registration.</p>
-<div class="highlight"><pre tabindex="0" style="color:#c9d1d9;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic">// This is the Azure Functions host builder</span>
-</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic">// In a web service you&#39;ll have the IServiceCollection</span>
-</span></span><span style="display:flex;"><span><span style="color:#ff7b72">public</span> <span style="color:#ff7b72">static</span> <span style="color:#ff7b72">void</span> Configure(IFunctionsHostBuilder builder)
-</span></span><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span>    builder.Services.AddSingleton&lt;FooClient&gt;();
-</span></span><span style="display:flex;"><span>    builder.Services.AddSingleton&lt;BarClient&gt;();
-</span></span><span style="display:flex;"><span>    builder.Services.AddTransient&lt;TopicResolver&gt;(topicProvider =&gt; key =&gt;
-</span></span><span style="display:flex;"><span>    {
-</span></span><span style="display:flex;"><span>        <span style="color:#8b949e;font-style:italic">// The key can be a string, Type, enum, int - whatever you need really</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#ff7b72">switch</span> (key)
-</span></span><span style="display:flex;"><span>        {
-</span></span><span style="display:flex;"><span>            <span style="color:#ff7b72">case</span> <span style="color:#a5d6ff">&#34;Foo&#34;</span>:
-</span></span><span style="display:flex;"><span>                <span style="color:#ff7b72">return</span> topicProvider.GetService&lt;FooClient&gt;().TopicClient;
-</span></span><span style="display:flex;"><span>            <span style="color:#ff7b72">case</span> <span style="color:#a5d6ff">&#34;Bar&#34;</span>:
-</span></span><span style="display:flex;"><span>                <span style="color:#ff7b72">return</span> topicProvider.GetService&lt;BarClient&gt;().TopicClient;
-</span></span><span style="display:flex;"><span>            <span style="color:#ff7b72">default</span>:
-</span></span><span style="display:flex;"><span>                <span style="color:#ff7b72">throw</span> <span style="color:#ff7b72">new</span> KeyNotFoundException();
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>    });
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p>Let&rsquo;s me explain what&rsquo;s happening here. First we&rsquo;re registering our named clients as <a href="https://docs.microsoft.com/en-us/azure/service-bus-messaging/service-bus-performance-improvements#reusing-factories-and-clients"><strong>singletons</strong></a> per the explanations and reasoning given in the documentation.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#f00">public</span> <span style="color:#f00">class</span> FooClient
+{
+    <span style="color:#f00">public</span> <span style="color:#f00">readonly</span> ITopicClient TopicClient;
+
+    <span style="color:#f00">public</span> FooClient(IOptions&lt;ServiceBusOptions&gt; options)
+    {
+        TopicClient = <span style="color:#f00">new</span> TopicClient(options.Value.Endpoint, options.Value.FooTopic);
+    }
+}
+
+<span style="color:#f00">public</span> <span style="color:#f00">class</span> BarClient
+{
+    <span style="color:#f00">public</span> <span style="color:#f00">readonly</span> ITopicClient TopicClient;
+
+    <span style="color:#f00">public</span> BarClient(IOptions&lt;ServiceBusOptions&gt; options)
+    {
+        TopicClient = <span style="color:#f00">new</span> TopicClient(options.Value.Endpoint, options.Value.BarTopic);
+    }
+}
+</code></pre></div><p>Now that we have our clients we are going to create a factory with the help of a <code>delegate</code>. Based on a <code>key</code> we&rsquo;ll return the exact topic client we want when we want it!</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#f00">using</span> Microsoft.Azure.ServiceBus;
+
+<span style="color:#f00">namespace</span> FooBarApp.Clients
+{
+    <span style="color:#0f0">// The key can be a string, Type, enum, int - whatever you need really
+</span><span style="color:#0f0"></span>    <span style="color:#f00">public</span> <span style="color:#f00">delegate</span> ITopicClient TopicResolver(<span style="color:#ee82ee">string</span> key);
+}
+</code></pre></div><p>The step where the magic happens is in our DI registration.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#0f0">// This is the Azure Functions host builder
+</span><span style="color:#0f0">// In a web service you&#39;ll have the IServiceCollection
+</span><span style="color:#0f0"></span><span style="color:#f00">public</span> <span style="color:#f00">static</span> <span style="color:#f00">void</span> Configure(IFunctionsHostBuilder builder)
+{
+    builder.Services.AddSingleton&lt;FooClient&gt;();
+    builder.Services.AddSingleton&lt;BarClient&gt;();
+    builder.Services.AddTransient&lt;TopicResolver&gt;(topicProvider =&gt; key =&gt;
+    {
+        <span style="color:#0f0">// The key can be a string, Type, enum, int - whatever you need really
+</span><span style="color:#0f0"></span>        <span style="color:#f00">switch</span> (key)
+        {
+            <span style="color:#f00">case</span> <span style="color:#87ceeb">&#34;Foo&#34;</span>:
+                <span style="color:#f00">return</span> topicProvider.GetService&lt;FooClient&gt;().TopicClient;
+            <span style="color:#f00">case</span> <span style="color:#87ceeb">&#34;Bar&#34;</span>:
+                <span style="color:#f00">return</span> topicProvider.GetService&lt;BarClient&gt;().TopicClient;
+            <span style="color:#f00">default</span>:
+                <span style="color:#f00">throw</span> <span style="color:#f00">new</span> KeyNotFoundException();
+        }
+    });
+}
+</code></pre></div><p>Let&rsquo;s me explain what&rsquo;s happening here. First we&rsquo;re registering our named clients as <a href="https://docs.microsoft.com/en-us/azure/service-bus-messaging/service-bus-performance-improvements#reusing-factories-and-clients"><strong>singletons</strong></a> per the explanations and reasoning given in the documentation.</p>
 <p>Next we register our <code>delegate</code> as a transient service that will return one of the topic clients we already registered based on a <code>key</code>. For my usage I use a <code>string</code> key stored inside the <a href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.azure.servicebus.message.userproperties?view=azure-dotnet#Microsoft_Azure_ServiceBus_Message_UserProperties">message user properties</a>. Your <code>key</code> can be anything like <code>int</code>, <code>enum</code> or a specific <code>Type</code>.</p>
 <p>Last thing we have to do is to put our <code>TopicResolver</code> to work!</p>
-<div class="highlight"><pre tabindex="0" style="color:#c9d1d9;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic">// Code below uses a MediatR handler as an example</span>
-</span></span><span style="display:flex;"><span><span style="color:#ff7b72">public</span> <span style="color:#ff7b72">class</span> <span style="color:#f0883e;font-weight:bold">MessageHandler</span> : IRequestHandler&lt;Message, <span style="color:#ff7b72">bool</span>&gt;
-</span></span><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">private</span> <span style="color:#ff7b72">readonly</span> TopicResolver topicResolver;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">public</span> MessageHandler(TopicResolver topicResolver)
-</span></span><span style="display:flex;"><span>    {
-</span></span><span style="display:flex;"><span>        <span style="color:#ff7b72">this</span>.topicResolver = topicResolver ?? <span style="color:#ff7b72">throw</span> <span style="color:#ff7b72">new</span> ArgumentNullException(nameof(topicResolver));
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">public</span> <span style="color:#ff7b72">async</span> Task&lt;<span style="color:#ff7b72">bool</span>&gt; Handle(Message msg, CancellationToken cancellationToken)
-</span></span><span style="display:flex;"><span>    {
-</span></span><span style="display:flex;"><span>        <span style="color:#ff7b72">if</span> (msg == <span style="color:#ff7b72">null</span>) <span style="color:#ff7b72">throw</span> <span style="color:#ff7b72">new</span> ArgumentNullException(nameof(msg));
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        <span style="color:#ff7b72">try</span>
-</span></span><span style="display:flex;"><span>        {
-</span></span><span style="display:flex;"><span>             <span style="color:#8b949e;font-style:italic">// Use a field from the user properties of the message as key</span>
-</span></span><span style="display:flex;"><span>             <span style="color:#8b949e;font-style:italic">// The client we get can be either FooClient or BarClient based on the value</span>
-</span></span><span style="display:flex;"><span>            <span style="color:#ff7b72">var</span> client = topicResolver(msg.UserProperties[<span style="color:#a5d6ff">&#34;Key&#34;</span>]);
-</span></span><span style="display:flex;"><span>            <span style="color:#ff7b72">await</span> client.SendAsync(msg);
-</span></span><span style="display:flex;"><span>            <span style="color:#ff7b72">return</span> <span style="color:#ff7b72">true</span>;
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>        <span style="color:#ff7b72">catch</span> (Exception ex)
-</span></span><span style="display:flex;"><span>        {
-</span></span><span style="display:flex;"><span>            <span style="color:#ff7b72">return</span> <span style="color:#ff7b72">false</span>;
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p>As a bonus here&rsquo;s how to test if the <code>delegate</code> is doing it&rsquo;s job and verifying that the right client is called.</p>
-<div class="highlight"><pre tabindex="0" style="color:#c9d1d9;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#ff7b72">using</span> <span style="color:#ff7b72">System</span>;
-</span></span><span style="display:flex;"><span><span style="color:#ff7b72">using</span> <span style="color:#ff7b72">System.Threading.Tasks</span>;
-</span></span><span style="display:flex;"><span><span style="color:#ff7b72">using</span> <span style="color:#ff7b72">AutoFixture</span>;
-</span></span><span style="display:flex;"><span><span style="color:#ff7b72">using</span> <span style="color:#ff7b72">MediatR</span>;
-</span></span><span style="display:flex;"><span><span style="color:#ff7b72">using</span> <span style="color:#ff7b72">Microsoft.Azure.ServiceBus</span>;
-</span></span><span style="display:flex;"><span><span style="color:#ff7b72">using</span> <span style="color:#ff7b72">Moq</span>;
-</span></span><span style="display:flex;"><span><span style="color:#ff7b72">using</span> <span style="color:#ff7b72">Shouldly</span>;
-</span></span><span style="display:flex;"><span><span style="color:#ff7b72">using</span> <span style="color:#ff7b72">Xunit</span>;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#ff7b72">namespace</span> <span style="color:#ff7b72">FooBarApp.Tests</span>
-</span></span><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">public</span> <span style="color:#ff7b72">class</span> <span style="color:#f0883e;font-weight:bold">MessageHandlerTests</span>
-</span></span><span style="display:flex;"><span>    {
-</span></span><span style="display:flex;"><span>        <span style="color:#ff7b72">private</span> <span style="color:#ff7b72">readonly</span> Mock&lt;TopicResolver&gt; topicResolver;
-</span></span><span style="display:flex;"><span>        <span style="color:#ff7b72">private</span> <span style="color:#ff7b72">readonly</span> Fixture fixture;
-</span></span><span style="display:flex;"><span>        <span style="color:#ff7b72">private</span> IRequestHandler&lt;Message, <span style="color:#ff7b72">bool</span>&gt; sut;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        <span style="color:#ff7b72">public</span> MessageHandlerTests()
-</span></span><span style="display:flex;"><span>        {
-</span></span><span style="display:flex;"><span>            topicResolver = <span style="color:#ff7b72">new</span> Mock&lt;TopicResolver&gt;();
-</span></span><span style="display:flex;"><span>            fixture = <span style="color:#ff7b72">new</span> Fixture();
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        [Fact]
-</span></span><span style="display:flex;"><span>        <span style="color:#ff7b72">public</span> <span style="color:#ff7b72">async</span> Task Handle_ValidMessageRequest_Foo_SendsMessage()
-</span></span><span style="display:flex;"><span>        {
-</span></span><span style="display:flex;"><span>            <span style="color:#ff7b72">var</span> message = fixture.Create&lt;Message&gt;();
-</span></span><span style="display:flex;"><span>            <span style="color:#8b949e;font-style:italic">// Best will be to create a customizer for different Messages</span>
-</span></span><span style="display:flex;"><span>            message.UserProperties.Add(<span style="color:#a5d6ff">&#34;Key&#34;</span>, <span style="color:#a5d6ff">&#34;Foo&#34;</span>);
-</span></span><span style="display:flex;"><span>            <span style="color:#ff7b72">var</span> client = <span style="color:#ff7b72">new</span> Mock&lt;ITopicClient&gt;();
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>            topicResolver.Setup(x =&gt; x.Invoke(It.IsAny&lt;<span style="color:#ff7b72">string</span>&gt;()))
-</span></span><span style="display:flex;"><span>                .Returns(client.Object);
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>            sut = <span style="color:#ff7b72">new</span> MessageHandler(topicResolver.Object);
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>            <span style="color:#ff7b72">await</span> sut.Handle(message, <span style="color:#ff7b72">default</span>);
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>            topicResolver.Verify(x =&gt; x(<span style="color:#a5d6ff">&#34;Foo&#34;</span>), Times.Once);
-</span></span><span style="display:flex;"><span>            client.Verify((x =&gt; x.SendAsync(It.IsAny&lt;Message&gt;())), Times.Once);
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        [Fact]
-</span></span><span style="display:flex;"><span>        <span style="color:#ff7b72">public</span> <span style="color:#ff7b72">async</span> Task Handle_ValidMessageRequest_Bar_SendsMessage()
-</span></span><span style="display:flex;"><span>        {
-</span></span><span style="display:flex;"><span>            <span style="color:#ff7b72">var</span> message = fixture.Create&lt;Message&gt;();
-</span></span><span style="display:flex;"><span>            <span style="color:#8b949e;font-style:italic">// Best will be to create a customizer for different Messages</span>
-</span></span><span style="display:flex;"><span>            message.UserProperties.Add(<span style="color:#a5d6ff">&#34;Key&#34;</span>, <span style="color:#a5d6ff">&#34;Bar&#34;</span>);
-</span></span><span style="display:flex;"><span>            <span style="color:#ff7b72">var</span> client = <span style="color:#ff7b72">new</span> Mock&lt;ITopicClient&gt;();
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>            topicResolver.Setup(x =&gt; x.Invoke(It.IsAny&lt;<span style="color:#ff7b72">string</span>&gt;()))
-</span></span><span style="display:flex;"><span>                .Returns(client.Object);
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>            sut = <span style="color:#ff7b72">new</span> MessageHandler(topicResolver.Object);
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>            <span style="color:#ff7b72">await</span> sut.Handle(message, <span style="color:#ff7b72">default</span>);
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>            topicResolver.Verify(x =&gt; x(<span style="color:#a5d6ff">&#34;Bar&#34;</span>), Times.Once);
-</span></span><span style="display:flex;"><span>            client.Verify((x =&gt; x.SendAsync(It.IsAny&lt;Message&gt;())), Times.Once);
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p>And that&rsquo;s it! With this setup now you can add multiple topic clients with ease! Hope you find this post useful. There are other ways to accomplish the same thing and solve this problem, but I like this approach because it&rsquo;s extremely clean, elegant and testable!</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#0f0">// Code below uses a MediatR handler as an example
+</span><span style="color:#0f0"></span><span style="color:#f00">public</span> <span style="color:#f00">class</span> MessageHandler : IRequestHandler&lt;Message, <span style="color:#ee82ee">bool</span>&gt;
+{
+    <span style="color:#f00">private</span> <span style="color:#f00">readonly</span> TopicResolver topicResolver;
 
-                    
-                    <HR width="100%" id="EOF">
-		    <p style="color:#777;">Last modified on 2020-01-11</p>
-                    
-                </div>
-            </div>
-            
-            
-            <nav class="post-pagination">
+    <span style="color:#f00">public</span> MessageHandler(TopicResolver topicResolver)
+    {
+        <span style="color:#f00">this</span>.topicResolver = topicResolver ?? <span style="color:#f00">throw</span> <span style="color:#f00">new</span> ArgumentNullException(nameof(topicResolver));
+    }
 
-                
-                <a class="newer-posts" href="/about/">
-			Next<br>About me
-                </a>
-                
-                
-                
-                <a class="older-posts" href="/2019/07/auto-refreshing-cache-in-dotnet/">
-			Previous<br>Auto Refreshing Cache in .NET
-                </a>
-                
-            </nav>
-            <div class="post-comment-wrapper">
-                
+    <span style="color:#f00">public</span> <span style="color:#f00">async</span> Task&lt;<span style="color:#ee82ee">bool</span>&gt; Handle(Message msg, CancellationToken cancellationToken)
+    {
+        <span style="color:#f00">if</span> (msg == <span style="color:#f00">null</span>) <span style="color:#f00">throw</span> <span style="color:#f00">new</span> ArgumentNullException(nameof(msg));
 
+        <span style="color:#f00">try</span>
+        {
+             <span style="color:#0f0">// Use a field from the user properties of the message as key
+</span><span style="color:#0f0"></span>             <span style="color:#0f0">// The client we get can be either FooClient or BarClient based on the value
+</span><span style="color:#0f0"></span>            <span style="color:#ee82ee">var</span> client = topicResolver(msg.UserProperties[<span style="color:#87ceeb">&#34;Key&#34;</span>]);
+            <span style="color:#f00">await</span> client.SendAsync(msg);
+            <span style="color:#f00">return</span> <span style="color:#f00">true</span>;
+        }
+        <span style="color:#f00">catch</span> (Exception ex)
+        {
+            <span style="color:#f00">return</span> <span style="color:#f00">false</span>;
+        }
+    }
+}
+</code></pre></div><p>As a bonus here&rsquo;s how to test if the <code>delegate</code> is doing it&rsquo;s job and verifying that the right client is called.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#f00">using</span> System;
+<span style="color:#f00">using</span> System.Threading.Tasks;
+<span style="color:#f00">using</span> AutoFixture;
+<span style="color:#f00">using</span> MediatR;
+<span style="color:#f00">using</span> Microsoft.Azure.ServiceBus;
+<span style="color:#f00">using</span> Moq;
+<span style="color:#f00">using</span> Shouldly;
+<span style="color:#f00">using</span> Xunit;
 
+<span style="color:#f00">namespace</span> FooBarApp.Tests
+{
+    <span style="color:#f00">public</span> <span style="color:#f00">class</span> MessageHandlerTests
+    {
+        <span style="color:#f00">private</span> <span style="color:#f00">readonly</span> Mock&lt;TopicResolver&gt; topicResolver;
+        <span style="color:#f00">private</span> <span style="color:#f00">readonly</span> Fixture fixture;
+        <span style="color:#f00">private</span> IRequestHandler&lt;Message, <span style="color:#ee82ee">bool</span>&gt; sut;
 
+        <span style="color:#f00">public</span> MessageHandlerTests()
+        {
+            topicResolver = <span style="color:#f00">new</span> Mock&lt;TopicResolver&gt;();
+            fixture = <span style="color:#f00">new</span> Fixture();
+        }
 
+        [Fact]
+        <span style="color:#f00">public</span> <span style="color:#f00">async</span> Task Handle_ValidMessageRequest_Foo_SendsMessage()
+        {
+            <span style="color:#ee82ee">var</span> message = fixture.Create&lt;Message&gt;();
+            <span style="color:#0f0">// Best will be to create a customizer for different Messages
+</span><span style="color:#0f0"></span>            message.UserProperties.Add(<span style="color:#87ceeb">&#34;Key&#34;</span>, <span style="color:#87ceeb">&#34;Foo&#34;</span>);
+            <span style="color:#ee82ee">var</span> client = <span style="color:#f00">new</span> Mock&lt;ITopicClient&gt;();
 
+            topicResolver.Setup(x =&gt; x.Invoke(It.IsAny&lt;<span style="color:#ee82ee">string</span>&gt;()))
+                .Returns(client.Object);
 
+            sut = <span style="color:#f00">new</span> MessageHandler(topicResolver.Object);
 
+            <span style="color:#f00">await</span> sut.Handle(message, <span style="color:#f00">default</span>);
 
+            topicResolver.Verify(x =&gt; x(<span style="color:#87ceeb">&#34;Foo&#34;</span>), Times.Once);
+            client.Verify((x =&gt; x.SendAsync(It.IsAny&lt;Message&gt;())), Times.Once);
+        }
 
+        [Fact]
+        <span style="color:#f00">public</span> <span style="color:#f00">async</span> Task Handle_ValidMessageRequest_Bar_SendsMessage()
+        {
+            <span style="color:#ee82ee">var</span> message = fixture.Create&lt;Message&gt;();
+            <span style="color:#0f0">// Best will be to create a customizer for different Messages
+</span><span style="color:#0f0"></span>            message.UserProperties.Add(<span style="color:#87ceeb">&#34;Key&#34;</span>, <span style="color:#87ceeb">&#34;Bar&#34;</span>);
+            <span style="color:#ee82ee">var</span> client = <span style="color:#f00">new</span> Mock&lt;ITopicClient&gt;();
 
+            topicResolver.Setup(x =&gt; x.Invoke(It.IsAny&lt;<span style="color:#ee82ee">string</span>&gt;()))
+                .Returns(client.Object);
 
+            sut = <span style="color:#f00">new</span> MessageHandler(topicResolver.Object);
+
+            <span style="color:#f00">await</span> sut.Handle(message, <span style="color:#f00">default</span>);
+
+            topicResolver.Verify(x =&gt; x(<span style="color:#87ceeb">&#34;Bar&#34;</span>), Times.Once);
+            client.Verify((x =&gt; x.SendAsync(It.IsAny&lt;Message&gt;())), Times.Once);
+        }
+    }
+}
+</code></pre></div><p>And that&rsquo;s it! With this setup now you can add multiple topic clients with ease! Hope you find this post useful. There are other ways to accomplish the same thing and solve this problem, but I like this approach because it&rsquo;s extremely clean, elegant and testable!</p>
+
+</article>
 
             </div>
-        </div>
-    </div>
-
-
-                    </div>
-            </div><div id="sideContainer" class="side-container">
-    
-    <a class="a-block nav-head false" href="https://underscorehao.net/">
-    
-        <div class="nav-title">
-            Pavel Danov
-        </div>
-        
-        <div class="nav-subtitle">
-            Life and Tech
-        </div>
-        
-    </a>
-
-    <div class="nav-link-list">
-        
-        
-            
-            
-            
-            
-            
-            <a class="a-block nav-link-item false" href="/about">
-                About
-            </a>
-            
-        
-            
-            
-            
-            
-            
-            <a class="a-block nav-link-item false" href="/posts">
-                Archive
-            </a>
-            
-        
-            
-            
-            
-            
-            
-            <a class="a-block nav-link-item false" href="/categories">
-                Categories
-            </a>
-            
-        
-            
-            
-            
-            
-            
-            <a class="a-block nav-link-item false" href="/tags">
-                Tags
-            </a>
-            
-        
-            
-            
-            
-            
-            
-            <a class="a-block nav-link-item false" href="/index.xml">
-                RSS Feed
-            </a>
-            
-        
-    </div>
-
-    
-
-    <div class="nav-footer">
-        
-Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> by <a href="https://risehere.net/">Rise</a>
-<br>
-Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a>'s <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> <br>
-<br>
-
-&copy;
-	
-	Copyright 2017-2023 by Pavel Danov
-	
-
-    </div>
-    
-</div><div id="extraContainer" class="extra-container">
-    <div class="toc-wrapper">
-        
-
-        
-        <div class="toc">
-
-
-	<div class="toc-content">
-	
-		
-		
-		
-		<center>- CATALOG -</center>
-		
-		
-		<ul>
-			
-				
-				
-					
-						
-						
-						
-						
-							
-								
-									<ul>
-								
-							
-						
-						
-							<li>
-								<a href="#multiple-topics" class="nav-multiple-topics">
-									Multiple topics
-								</a>
-							</li>
-						
-						
-					
-				
-			
-				
-				
-					
-						
-						
-						
-						
-						
-							<li>
-								<a href="#basic-setup" class="nav-basic-setup">
-									Basic Setup
-								</a>
-							</li>
-						
-						
-					
-				
-			
-				
-				
-					
-						
-						
-						
-						
-						
-							<li>
-								<a href="#the-na%c3%afve-approach" class="nav-the-naïve-approach">
-									The naïve approach
-								</a>
-							</li>
-						
-						
-					
-				
-			
-				
-				
-					
-						
-						
-						
-						
-						
-							<li>
-								<a href="#introducing-the-itopicclient-resolver" class="nav-introducing-the-itopicclient-resolver">
-									Introducing the ITopicClient resolver
-								</a>
-							</li>
-						
-						
-					
-				
-			
-		</ul>
-	</div>
-
-</div>
-        
-    </div>
-    <div class="pagination">
-        <a id="globalBackToTop" class="pagination-action animated-visibility" href="#top"
-            :class="{ invisible: scrollY == 0 }">
-            <i class="material-icons pagination-action-icon">
-                keyboard_arrow_up
-            </i>
-        </a>
-        
-        <a type="button" class="pagination-action" id="darkModeToggleButton">
-            <span class="material-icons pagination-action-icon" id="darkModeToggleIcon">
-                dark_mode
-            </span>
-        </a>
-        
-        
-    </div>
-</div><div id="single-column-footer">
-Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> by <a href="https://risehere.net/">Rise</a>
-<br>
-Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a>'s <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> <br>
-<br>
-
-&copy;
-	
-	Copyright 2017-2023 by Pavel Danov
-	
-</div>
-            </div>
-    
-    <script src="/js/journal.js"></script></body>
-</html>
+        </main>
+    </body></html>

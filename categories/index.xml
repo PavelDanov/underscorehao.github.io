@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Categories on Pavel Danov</title>
+    <title>Categories on </title>
     <link>https://underscorehao.net/categories/</link>
-    <description>Recent content in Categories on Pavel Danov</description>
+    <description>Recent content in Categories on </description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <copyright>Copyright 2017-2023 by Pavel Danov</copyright>
     <lastBuildDate>Wed, 10 Nov 2021 12:50:00 +0000</lastBuildDate><atom:link href="https://underscorehao.net/categories/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Software Development</title>
