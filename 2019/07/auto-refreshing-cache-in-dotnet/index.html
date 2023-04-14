@@ -8,7 +8,7 @@ Being the smart and responsible engineer that you are, you decide to rectify you
 Auto Refreshing Cache in .NET
 </title>
 <link rel="shortcut icon" type=image/x-icon href=/>
-<link rel=stylesheet href=/css/main.26ce895efbc9df460bf30dc5e7309178501280634938b0d7f89417ce9980ecf02b981e101b4e3572f97c3f38336c57a0f20ca8c0a233b582b06b6361229fa3dd.css integrity="sha512-Js6JXvvJ30YL8w3F5zCReFASgGNJOLDX+JQXzpmA7PArmB4QG041cvl8PzgzbFeg8gyowKIztYKwa2NhIp+j3Q==">
+<link rel=stylesheet href=/css/main.5c10ece54f1723f67c16bf8ad2a1e23710f204f7aafcd1bf844da01793141f4eea6da112cc59dba9d372cd954db7a2ec1bb612693ba493c3382236f993fe55d4.css integrity="sha512-XBDs5U8XI/Z8Fr+K0qHiNxDyBPeq/NG/hE2gF5MUH07qbaESzFnbqdNyzZVNt6LsG7YSaTukk8M4Ijb5k/5V1A==">
 </head>
 <body a=light>
 <main class=page-content aria-label=Content>
@@ -21,6 +21,20 @@ Auto Refreshing Cache in .NET
 </time>
 </p>
 <h1>Auto Refreshing Cache in .NET</h1>
+<aside>
+<nav id=TableOfContents>
+<ul>
+<li><a href=#caching-is-hard>Caching is hard</a></li>
+<li><a href=#caching-in-net>Caching in .NET</a></li>
+<li><a href=#implementation-with-memorycache-in-net-framework>Implementation with MemoryCache in .NET Framework</a>
+<ul>
+<li><a href=#bonus>Bonus</a></li>
+</ul>
+</li>
+<li><a href=#implementation-with-imemorycache-in-net-core>Implementation with IMemoryCache in .NET Core</a></li>
+</ul>
+</nav>
+</aside>
 <h2 id=caching-is-hard>Caching is hard</h2>
 <p>On a bright sunny day while you&rsquo;re working on your awesome project you catch a glimpse of something. You bring yourself closer to the monitor and begin meticulously examining your code. What you find brings you feelings of disgust and shame! You&rsquo;ve been calling an API retrieving data you need over and over again even though said data hardly changes!</p>
 <p>Being the smart and responsible engineer that you are, you decide to rectify your mistake immediately. You think to yourself</p>

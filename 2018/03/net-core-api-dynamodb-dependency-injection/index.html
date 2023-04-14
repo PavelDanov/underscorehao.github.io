@@ -8,7 +8,7 @@ Amazon&rsquo;s .NET Core SDK is very good for the most part. Everything works as
 .NET Core API with DynamoDB Context Dependency Injection
 </title>
 <link rel="shortcut icon" type=image/x-icon href=/>
-<link rel=stylesheet href=/css/main.26ce895efbc9df460bf30dc5e7309178501280634938b0d7f89417ce9980ecf02b981e101b4e3572f97c3f38336c57a0f20ca8c0a233b582b06b6361229fa3dd.css integrity="sha512-Js6JXvvJ30YL8w3F5zCReFASgGNJOLDX+JQXzpmA7PArmB4QG041cvl8PzgzbFeg8gyowKIztYKwa2NhIp+j3Q==">
+<link rel=stylesheet href=/css/main.5c10ece54f1723f67c16bf8ad2a1e23710f204f7aafcd1bf844da01793141f4eea6da112cc59dba9d372cd954db7a2ec1bb612693ba493c3382236f993fe55d4.css integrity="sha512-XBDs5U8XI/Z8Fr+K0qHiNxDyBPeq/NG/hE2gF5MUH07qbaESzFnbqdNyzZVNt6LsG7YSaTukk8M4Ijb5k/5V1A==">
 </head>
 <body a=light>
 <main class=page-content aria-label=Content>
@@ -21,6 +21,14 @@ Amazon&rsquo;s .NET Core SDK is very good for the most part. Everything works as
 </time>
 </p>
 <h1>.NET Core API with DynamoDB Context Dependency Injection</h1>
+<aside>
+<nav id=TableOfContents>
+<ul>
+<li><a href=#the-problem>The Problem</a></li>
+<li><a href=#the-solution>The Solution</a></li>
+</ul>
+</nav>
+</aside>
 <h2 id=the-problem>The Problem</h2>
 <p>Today I faced a problem which I knew would come, but didn&rsquo;t have time to implement properly at the time. There were more urgent tasks at hand before, deadlines to be met and this issue remained unresolved.</p>
 <p>Amazon&rsquo;s .NET Core SDK is very good for the most part. Everything works as it should. But let&rsquo;s say you use the <a href=https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DotNetSDKHighLevel.html>.NET Object Persistence Model</a> for <a href=https://aws.amazon.com/dynamodb/>DynamoDB</a> in your service and you have mapped C# classes to DynamoDB tables like this:</p>
