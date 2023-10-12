@@ -17,13 +17,14 @@ Amazon&rsquo;s .NET Core SDK is very good for the most part. Everything works as
   
   
   
-  <link rel="stylesheet" href="/css/main.26ce895efbc9df460bf30dc5e7309178501280634938b0d7f89417ce9980ecf02b981e101b4e3572f97c3f38336c57a0f20ca8c0a233b582b06b6361229fa3dd.css" integrity="sha512-Js6JXvvJ30YL8w3F5zCReFASgGNJOLDX&#43;JQXzpmA7PArmB4QG041cvl8PzgzbFeg8gyowKIztYKwa2NhIp&#43;j3Q==" />
+  <link rel="stylesheet" href="/css/main.222dd460ca013f5cf5b21f91ddaead188b2c1d21ae0f7ef3b8513407f3d151c0d1ad1a040a8338b5c6080c9e6e32199e60fab0eed7674f25d6e1e1a616f8e8de.css" integrity="sha512-Ii3UYMoBP1z1sh&#43;R3a6tGIssHSGuD37zuFE0B/PRUcDRrRoECoM4tcYIDJ5uMhmeYPqw7tdnTyXW4eGmFvjo3g==" />
   
 </head>
 <body a="light">
         <main class="page-content" aria-label="Content">
             <div class="w">
 <a href="/">..</a>
+
 
 <article>
     <p class="post-meta">
@@ -33,6 +34,17 @@ Amazon&rsquo;s .NET Core SDK is very good for the most part. Everything works as
     </p>
 
     <h1>.NET Core API with DynamoDB Context Dependency Injection</h1>
+
+    
+        <aside >
+            <nav id="TableOfContents">
+  <ul>
+    <li><a href="#the-problem">The Problem</a></li>
+    <li><a href="#the-solution">The Solution</a></li>
+  </ul>
+</nav>
+        </aside>
+    
 
     <h2 id="the-problem">The Problem</h2>
 <p>Today I faced a problem which I knew would come, but didn&rsquo;t have time to implement properly at the time. There were more urgent tasks at hand before, deadlines to be met and this issue remained unresolved.</p>
@@ -121,12 +133,14 @@ Amazon&rsquo;s .NET Core SDK is very good for the most part. Everything works as
 <p>C# attributes are not meant to change at runtime, so we&rsquo;re in a tough spot! What can we do to tell our build pipeline which tables we&rsquo;d like to use?</p>
 <h2 id="the-solution">The Solution</h2>
 <p>.NET Core&rsquo;s powerful dependency injection comes to our rescue! First we create the same section (with the respective databases for our environments) in our <strong><code>appsettings.Development.json</code></strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#c9d1d9;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#a5d6ff">&#34;DynamoDbTables&#34;</span><span style="color:#f85149">:</span> {
+<div class="highlight"><pre tabindex="0" style="color:#c9d1d9;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#a5d6ff">&#34;DynamoDbTables&#34;</span><span style="color:#f85149">:</span>
+</span></span><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>    <span style="color:#7ee787">&#34;Player&#34;</span>: <span style="color:#a5d6ff">&#34;DevPlayer&#34;</span>,
 </span></span><span style="display:flex;"><span>    <span style="color:#7ee787">&#34;Location&#34;</span>: <span style="color:#a5d6ff">&#34;DevLocation&#34;</span>
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>and <strong><code>appsettings.json</code></strong> file</p>
-<div class="highlight"><pre tabindex="0" style="color:#c9d1d9;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#a5d6ff">&#34;DynamoDbTables&#34;</span><span style="color:#f85149">:</span> {
+<div class="highlight"><pre tabindex="0" style="color:#c9d1d9;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#a5d6ff">&#34;DynamoDbTables&#34;</span><span style="color:#f85149">:</span>
+</span></span><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>    <span style="color:#7ee787">&#34;Player&#34;</span>: <span style="color:#a5d6ff">&#34;ProdPlayer&#34;</span>,
 </span></span><span style="display:flex;"><span>    <span style="color:#7ee787">&#34;Location&#34;</span>: <span style="color:#a5d6ff">&#34;ProdLocation&#34;</span>
 </span></span><span style="display:flex;"><span>}
