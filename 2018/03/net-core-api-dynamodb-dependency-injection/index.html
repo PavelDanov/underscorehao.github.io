@@ -49,7 +49,7 @@ Amazon&rsquo;s .NET Core SDK is very good for the most part. Everything works as
     <h2 id="the-problem">The Problem</h2>
 <p>Today I faced a problem which I knew would come, but didn&rsquo;t have time to implement properly at the time. There were more urgent tasks at hand before, deadlines to be met and this issue remained unresolved.</p>
 <p>Amazon&rsquo;s .NET Core SDK is very good for the most part. Everything works as it should. But let&rsquo;s say you use the <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DotNetSDKHighLevel.html">.NET Object Persistence Model</a> for <a href="https://aws.amazon.com/dynamodb/">DynamoDB</a> in your service and you have mapped C# classes to DynamoDB tables like this:</p>
-<div class="highlight"><pre tabindex="0" style="color:#c9d1d9;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#ff7b72">namespace</span> <span style="color:#ff7b72">Models</span>;
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#ff7b72">namespace</span> <span style="color:#ff7b72">Models</span>;
 </span></span><span style="display:flex;"><span>    
 </span></span><span style="display:flex;"><span>[DynamoDBTable(&#34;Player&#34;)]
 </span></span><span style="display:flex;"><span><span style="color:#ff7b72">public</span> <span style="color:#ff7b72">class</span> <span style="color:#f0883e;font-weight:bold">Player</span>
@@ -86,7 +86,7 @@ Amazon&rsquo;s .NET Core SDK is very good for the most part. Everything works as
 </span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">public</span> <span style="color:#ff7b72">string</span> Description { <span style="color:#ff7b72">get</span>; <span style="color:#ff7b72">set</span>; }
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>It works well. Everything is mapped as it should. You have a service that calls the .NET SDK so you can write, read and delete data from the context like this:</p>
-<div class="highlight"><pre tabindex="0" style="color:#c9d1d9;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#ff7b72">namespace</span> <span style="color:#ff7b72">Services</span>;
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#ff7b72">namespace</span> <span style="color:#ff7b72">Services</span>;
 </span></span><span style="display:flex;"><span>    
 </span></span><span style="display:flex;"><span><span style="color:#ff7b72">public</span> <span style="color:#ff7b72">class</span> <span style="color:#f0883e;font-weight:bold">DynamoDbService</span>
 </span></span><span style="display:flex;"><span>{
@@ -133,32 +133,32 @@ Amazon&rsquo;s .NET Core SDK is very good for the most part. Everything works as
 <p>C# attributes are not meant to change at runtime, so we&rsquo;re in a tough spot! What can we do to tell our build pipeline which tables we&rsquo;d like to use?</p>
 <h2 id="the-solution">The Solution</h2>
 <p>.NET Core&rsquo;s powerful dependency injection comes to our rescue! First we create the same section (with the respective databases for our environments) in our <strong><code>appsettings.Development.json</code></strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#c9d1d9;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#a5d6ff">&#34;DynamoDbTables&#34;</span><span style="color:#f85149">:</span>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#a5d6ff">&#34;DynamoDbTables&#34;</span><span style="color:#f85149">:</span>
 </span></span><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>    <span style="color:#7ee787">&#34;Player&#34;</span>: <span style="color:#a5d6ff">&#34;DevPlayer&#34;</span>,
 </span></span><span style="display:flex;"><span>    <span style="color:#7ee787">&#34;Location&#34;</span>: <span style="color:#a5d6ff">&#34;DevLocation&#34;</span>
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>and <strong><code>appsettings.json</code></strong> file</p>
-<div class="highlight"><pre tabindex="0" style="color:#c9d1d9;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#a5d6ff">&#34;DynamoDbTables&#34;</span><span style="color:#f85149">:</span>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#a5d6ff">&#34;DynamoDbTables&#34;</span><span style="color:#f85149">:</span>
 </span></span><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>    <span style="color:#7ee787">&#34;Player&#34;</span>: <span style="color:#a5d6ff">&#34;ProdPlayer&#34;</span>,
 </span></span><span style="display:flex;"><span>    <span style="color:#7ee787">&#34;Location&#34;</span>: <span style="color:#a5d6ff">&#34;ProdLocation&#34;</span>
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>Then we head up and create a simple configuration class which we&rsquo;ll bind to our DynamoDbTables JSON object later</p>
-<div class="highlight"><pre tabindex="0" style="color:#c9d1d9;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#ff7b72">public</span> <span style="color:#ff7b72">class</span> <span style="color:#f0883e;font-weight:bold">DynamoDbOptions</span>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#ff7b72">public</span> <span style="color:#ff7b72">class</span> <span style="color:#f0883e;font-weight:bold">DynamoDbOptions</span>
 </span></span><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">public</span> <span style="color:#ff7b72">string</span> Player { <span style="color:#ff7b72">get</span>; <span style="color:#ff7b72">set</span>; }
 </span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">public</span> <span style="color:#ff7b72">string</span> Location { <span style="color:#ff7b72">get</span>; <span style="color:#ff7b72">set</span>; }
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>After that we have to create our custom DynamoDb context interface</p>
-<div class="highlight"><pre tabindex="0" style="color:#c9d1d9;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#ff7b72">public</span> <span style="color:#ff7b72">interface</span> <span style="color:#f0883e;font-weight:bold">IDynamoDbContext</span>&lt;T&gt; : IDisposable <span style="color:#ff7b72">where</span> T : <span style="color:#ff7b72">class</span>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#ff7b72">public</span> <span style="color:#ff7b72">interface</span> <span style="color:#f0883e;font-weight:bold">IDynamoDbContext</span>&lt;T&gt; : IDisposable <span style="color:#ff7b72">where</span> T : <span style="color:#ff7b72">class</span>
 </span></span><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>    Task&lt;T&gt; GetByIdAsync(<span style="color:#ff7b72">string</span> id);
 </span></span><span style="display:flex;"><span>    Task SaveAsync(T item);
 </span></span><span style="display:flex;"><span>    Task DeleteByIdAsync(T item);
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>and the context class which we&rsquo;ll inject in our services</p>
-<div class="highlight"><pre tabindex="0" style="color:#c9d1d9;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#ff7b72">public</span> <span style="color:#ff7b72">class</span> <span style="color:#f0883e;font-weight:bold">DynamoDbContext</span>&lt;T&gt; : DynamoDBContext, IDynamoDbContext&lt;T&gt;
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#ff7b72">public</span> <span style="color:#ff7b72">class</span> <span style="color:#f0883e;font-weight:bold">DynamoDbContext</span>&lt;T&gt; : DynamoDBContext, IDynamoDbContext&lt;T&gt;
 </span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">where</span> T : <span style="color:#ff7b72">class</span>
 </span></span><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">private</span> DynamoDBOperationConfig _config;
@@ -188,7 +188,7 @@ Amazon&rsquo;s .NET Core SDK is very good for the most part. Everything works as
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>Then we go to our <strong><code>Startup.cs</code></strong> and add a couple of lines to our <strong><code>ConfigureServices()</code></strong> method</p>
-<div class="highlight"><pre tabindex="0" style="color:#c9d1d9;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic">// AWS Options</span>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic">// AWS Options</span>
 </span></span><span style="display:flex;"><span><span style="color:#ff7b72">var</span> awsOptions = Configuration.GetAWSOptions();
 </span></span><span style="display:flex;"><span>services.AddDefaultAWSOptions(awsOptions);
 </span></span><span style="display:flex;"><span>
@@ -200,7 +200,7 @@ Amazon&rsquo;s .NET Core SDK is very good for the most part. Everything works as
 </span></span><span style="display:flex;"><span>services.AddScoped&lt;IDynamoDbContext&lt;Player&gt;&gt;(provider =&gt; <span style="color:#ff7b72">new</span> DynamoDbContext&lt;Player&gt;(client, dynamoDbOptions.Player));
 </span></span><span style="display:flex;"><span>services.AddScoped&lt;IDynamoDbContext&lt;Location&gt;&gt;(provider =&gt; <span style="color:#ff7b72">new</span> DynamoDbContext&lt;Location&gt;(client, dynamoDbOptions.Location));
 </span></span></code></pre></div><p>And voilà! We can now remove the <strong><code>[DynamoDBTable(&quot;SomeTableName&quot;)]</code></strong> attributes from our classes. We can keep both <strong><code>[DynamoDBHashKey]</code></strong> and <strong><code>[DynamoDBProperty]</code></strong> attributes. If we need custom converters we can just add <strong><code>[DynamoDBProperty(typeof(SomeConverter))]</code></strong> attribute to our property.</p>
-<div class="highlight"><pre tabindex="0" style="color:#c9d1d9;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic">// No table name attribute needed!</span>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic">// No table name attribute needed!</span>
 </span></span><span style="display:flex;"><span><span style="color:#ff7b72">public</span> <span style="color:#ff7b72">class</span> <span style="color:#f0883e;font-weight:bold">Player</span>
 </span></span><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>    [DynamoDBHashKey]
@@ -235,7 +235,7 @@ Amazon&rsquo;s .NET Core SDK is very good for the most part. Everything works as
 </span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">public</span> <span style="color:#ff7b72">string</span> Description { <span style="color:#ff7b72">get</span>; <span style="color:#ff7b72">set</span>; }
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>and we can use the desired context with their respective tables in our services!</p>
-<div class="highlight"><pre tabindex="0" style="color:#c9d1d9;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#ff7b72">namespace</span> <span style="color:#ff7b72">Services</span>;
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#ff7b72">namespace</span> <span style="color:#ff7b72">Services</span>;
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#ff7b72">public</span> <span style="color:#ff7b72">class</span> <span style="color:#f0883e;font-weight:bold">AwesomeDynamoDbService</span>
 </span></span><span style="display:flex;"><span>{

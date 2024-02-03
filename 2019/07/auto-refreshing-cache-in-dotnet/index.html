@@ -70,7 +70,7 @@ Being the smart and responsible engineer that you are, you decide to rectify you
 <p>If that&rsquo;s what you need, keep on reading!</p>
 <h2 id="implementation-with-memorycache-in-net-framework">Implementation with MemoryCache in .NET Framework</h2>
 <p>Let&rsquo;s start with the simple stuff. We want to perform some basic CRUD operations on our cache - saving data to it, getting our cached objects and potentially deleting our data. The best way to do it is to define an interface.</p>
-<div class="highlight"><pre tabindex="0" style="color:#c9d1d9;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#ff7b72">using</span> <span style="color:#ff7b72">System.Runtime.Caching</span>;
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#ff7b72">using</span> <span style="color:#ff7b72">System.Runtime.Caching</span>;
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#ff7b72">namespace</span> <span style="color:#ff7b72">FooBar.Caching</span>
 </span></span><span style="display:flex;"><span>{
@@ -83,7 +83,7 @@ Being the smart and responsible engineer that you are, you decide to rectify you
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>These are the methods I&rsquo;m going to use to illustrate my example. Depending on your use case you can have a lot more of them doing various things to your cache, but for my case those are enough. The point I want you to focus on here is the <strong><code>CacheItemPolicy</code></strong> we can set during the Save.</p>
 <p>Now that we have our interface we can also implement it in a new class</p>
-<div class="highlight"><pre tabindex="0" style="color:#c9d1d9;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#ff7b72">using</span> <span style="color:#ff7b72">System.Runtime.Caching</span>;
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#ff7b72">using</span> <span style="color:#ff7b72">System.Runtime.Caching</span>;
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#ff7b72">namespace</span> <span style="color:#ff7b72">FooBar.Caching</span>
 </span></span><span style="display:flex;"><span>{
@@ -91,12 +91,12 @@ Being the smart and responsible engineer that you are, you decide to rectify you
 </span></span><span style="display:flex;"><span>    {
 </span></span><span style="display:flex;"><span>        <span style="color:#ff7b72">private</span> <span style="color:#ff7b72">readonly</span> MemoryCache memoryCache;
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        <span style="color:#ff7b72">public</span> MemoryAutoRefreshCache(MemoryCache memoryCache = <span style="color:#ff7b72">null</span>) =&gt; <span style="color:#ff7b72">this</span>.memoryCache = memoryCache ?? MemoryCache.Default;
+</span></span><span style="display:flex;"><span>        <span style="color:#ff7b72">public</span> MemoryAutoRefreshCache(MemoryCache memoryCache = <span style="color:#79c0ff">null</span>) =&gt; <span style="color:#ff7b72">this</span>.memoryCache = memoryCache ?? MemoryCache.Default;
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>        <span style="color:#ff7b72">public</span> T GetById&lt;T&gt;(<span style="color:#ff7b72">string</span> id)
 </span></span><span style="display:flex;"><span>        {
 </span></span><span style="display:flex;"><span>            <span style="color:#ff7b72">var</span> <span style="color:#ff7b72">value</span> = (T)memoryCache.Get(id);
-</span></span><span style="display:flex;"><span>            <span style="color:#ff7b72">if</span> (<span style="color:#ff7b72">value</span> == <span style="color:#ff7b72">null</span>)
+</span></span><span style="display:flex;"><span>            <span style="color:#ff7b72">if</span> (<span style="color:#ff7b72">value</span> == <span style="color:#79c0ff">null</span>)
 </span></span><span style="display:flex;"><span>            {
 </span></span><span style="display:flex;"><span>                <span style="color:#ff7b72">return</span> <span style="color:#ff7b72">default</span>(T);
 </span></span><span style="display:flex;"><span>            }
@@ -126,7 +126,7 @@ Being the smart and responsible engineer that you are, you decide to rectify you
 </ul>
 <p>As you can imagine we&rsquo;ll use the <strong><code>UpdateCallback</code></strong> in our case.</p>
 <p>So let&rsquo;s see how an implementation of this auto refreshing cache will look like!</p>
-<div class="highlight"><pre tabindex="0" style="color:#c9d1d9;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#ff7b72">using</span> <span style="color:#ff7b72">System</span>;
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#ff7b72">using</span> <span style="color:#ff7b72">System</span>;
 </span></span><span style="display:flex;"><span><span style="color:#ff7b72">using</span> <span style="color:#ff7b72">System.Runtime.Caching</span>;
 </span></span><span style="display:flex;"><span><span style="color:#ff7b72">using</span> <span style="color:#ff7b72">System.Threading</span>;
 </span></span><span style="display:flex;"><span><span style="color:#ff7b72">using</span> <span style="color:#ff7b72">FooBar.Caching</span>;
@@ -145,7 +145,7 @@ Being the smart and responsible engineer that you are, you decide to rectify you
 </span></span><span style="display:flex;"><span>        <span style="color:#ff7b72">public</span> Configuration GetConfiguration()
 </span></span><span style="display:flex;"><span>        {
 </span></span><span style="display:flex;"><span>            <span style="color:#ff7b72">var</span> cachedConfig = localCache.GetById&lt;Configuration&gt;(cacheKey);
-</span></span><span style="display:flex;"><span>            <span style="color:#ff7b72">if</span> (cachedConfig != <span style="color:#ff7b72">null</span>)
+</span></span><span style="display:flex;"><span>            <span style="color:#ff7b72">if</span> (cachedConfig != <span style="color:#79c0ff">null</span>)
 </span></span><span style="display:flex;"><span>            {
 </span></span><span style="display:flex;"><span>                <span style="color:#ff7b72">return</span> cachedConfig;
 </span></span><span style="display:flex;"><span>            }
@@ -154,7 +154,7 @@ Being the smart and responsible engineer that you are, you decide to rectify you
 </span></span><span style="display:flex;"><span>            {
 </span></span><span style="display:flex;"><span>                <span style="color:#8b949e;font-style:italic">// Check to see if anyone wrote in the cache while we&#39;re waiting for our turn</span>
 </span></span><span style="display:flex;"><span>                cachedConfig = localCache.GetById&lt;Configuration&gt;(cacheKey);
-</span></span><span style="display:flex;"><span>                <span style="color:#ff7b72">if</span> (cachedConfig != <span style="color:#ff7b72">null</span>)
+</span></span><span style="display:flex;"><span>                <span style="color:#ff7b72">if</span> (cachedConfig != <span style="color:#79c0ff">null</span>)
 </span></span><span style="display:flex;"><span>                {
 </span></span><span style="display:flex;"><span>                    <span style="color:#ff7b72">return</span> cachedConfig;
 </span></span><span style="display:flex;"><span>                }
@@ -188,7 +188,7 @@ Being the smart and responsible engineer that you are, you decide to rectify you
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>                        <span style="color:#8b949e;font-style:italic">// If new is not null - update, otherwise just refresh the old value</span>
 </span></span><span style="display:flex;"><span>                        <span style="color:#8b949e;font-style:italic">// The condition by which you decide to update or refresh the data depends entirely on you</span>
-</span></span><span style="display:flex;"><span>                        <span style="color:#ff7b72">if</span> (newEntity != <span style="color:#ff7b72">null</span>)
+</span></span><span style="display:flex;"><span>                        <span style="color:#ff7b72">if</span> (newEntity != <span style="color:#79c0ff">null</span>)
 </span></span><span style="display:flex;"><span>                        {
 </span></span><span style="display:flex;"><span>                            <span style="color:#ff7b72">var</span> updatedEntity = newEntity;
 </span></span><span style="display:flex;"><span>                            args.UpdatedCacheItem = <span style="color:#ff7b72">new</span> CacheItem(cacheKey, updatedEntity);
@@ -211,7 +211,7 @@ Being the smart and responsible engineer that you are, you decide to rectify you
 <h3 id="bonus">Bonus</h3>
 <p>As a bonus you can read on the interesting thing that happens when you put <strong><code>AbsoluteExpiration</code></strong> below 20 seconds <a href="https://stackoverflow.com/questions/12630168/memorycache-absoluteexpiration-acting-strange">here</a>.</p>
 <p>Also it&rsquo;s important to note that items can expire some time after the AbsoluteExpiration, there&rsquo;s no guarantee that they&rsquo;ll expire right on the spot. Here are two tests confirming that (I know we shouldn&rsquo;t test code that isn&rsquo;t ours, but it&rsquo;s fun!)</p>
-<div class="highlight"><pre tabindex="0" style="color:#c9d1d9;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#ff7b72">using</span> <span style="color:#ff7b72">FooBar.Caching</span>;
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#ff7b72">using</span> <span style="color:#ff7b72">FooBar.Caching</span>;
 </span></span><span style="display:flex;"><span><span style="color:#ff7b72">using</span> <span style="color:#ff7b72">NUnit.Framework</span>;
 </span></span><span style="display:flex;"><span><span style="color:#ff7b72">using</span> <span style="color:#ff7b72">System</span>;
 </span></span><span style="display:flex;"><span><span style="color:#ff7b72">using</span> <span style="color:#ff7b72">System.Runtime.Caching</span>;
@@ -294,7 +294,7 @@ Being the smart and responsible engineer that you are, you decide to rectify you
 </span></span><span style="display:flex;"><span>                        <span style="color:#ff7b72">var</span> newEntity = args.Source[id];
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>                        <span style="color:#8b949e;font-style:italic">// If new is not null - update, otherwise just refresh the old value</span>
-</span></span><span style="display:flex;"><span>                        <span style="color:#ff7b72">if</span> (newEntity != <span style="color:#ff7b72">null</span>)
+</span></span><span style="display:flex;"><span>                        <span style="color:#ff7b72">if</span> (newEntity != <span style="color:#79c0ff">null</span>)
 </span></span><span style="display:flex;"><span>                        {
 </span></span><span style="display:flex;"><span>                            <span style="color:#ff7b72">var</span> updatedEntity = newEntity;
 </span></span><span style="display:flex;"><span>                            args.UpdatedCacheItem = <span style="color:#ff7b72">new</span> CacheItem(id, updatedEntity);
@@ -329,7 +329,7 @@ Being the smart and responsible engineer that you are, you decide to rectify you
 </span></span><span style="display:flex;"><span>                        <span style="color:#ff7b72">var</span> newEntity = AddKeys(id);
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>                        <span style="color:#8b949e;font-style:italic">// If new is not null - update, otherwise just refresh the old value</span>
-</span></span><span style="display:flex;"><span>                        <span style="color:#ff7b72">if</span> (newEntity != <span style="color:#ff7b72">null</span>)
+</span></span><span style="display:flex;"><span>                        <span style="color:#ff7b72">if</span> (newEntity != <span style="color:#79c0ff">null</span>)
 </span></span><span style="display:flex;"><span>                        {
 </span></span><span style="display:flex;"><span>                            <span style="color:#ff7b72">var</span> updatedEntity = newEntity;
 </span></span><span style="display:flex;"><span>                            args.UpdatedCacheItem = <span style="color:#ff7b72">new</span> CacheItem(id, updatedEntity);
@@ -354,7 +354,7 @@ Being the smart and responsible engineer that you are, you decide to rectify you
 <p>I&rsquo;d be lying if I didn&rsquo;t say that I prefer the .NET Core implementation. But I digress. Let&rsquo;s stay on the issue at hand - implementing an auto refreshing cache.</p>
 <p>We still have access to <strong><code>MemoryCache</code></strong> in .NET Core. However it only provides a callback which will execute <strong><em>after</em></strong> an item has been <a href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.extensions.caching.memory.memorycacheentryoptions.postevictioncallbacks?view=aspnetcore-2.2#Microsoft_Extensions_Caching_Memory_MemoryCacheEntryOptions_PostEvictionCallbacks">removed</a>. That doesn&rsquo;t matter for our use case. Remember what we said at the start. We don&rsquo;t care if we get stale data as long as there are no cache misses! To achieve the same thing we did in the previous section we are going to use a shiny new interface called <a href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.extensions.caching.memory.imemorycache?view=aspnetcore-2.2"><strong><code>IMemoryCache</code></strong></a>. And guess what! It&rsquo;s provided by Microsoft too!</p>
 <p>The code is more or less the same with some differences when it comes to the locking. This time we&rsquo;re performing operations inside an async method so we can&rsquo;t use a regular lock. For the sake of completeness I&rsquo;ll provide the full implementation + tests and gotchas after.</p>
-<div class="highlight"><pre tabindex="0" style="color:#c9d1d9;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#ff7b72">using</span> <span style="color:#ff7b72">System</span>;
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#ff7b72">using</span> <span style="color:#ff7b72">System</span>;
 </span></span><span style="display:flex;"><span><span style="color:#ff7b72">using</span> <span style="color:#ff7b72">System.Collections.Concurrent</span>;
 </span></span><span style="display:flex;"><span><span style="color:#ff7b72">using</span> <span style="color:#ff7b72">System.Threading</span>;
 </span></span><span style="display:flex;"><span><span style="color:#ff7b72">using</span> <span style="color:#ff7b72">System.Threading.Tasks</span>;
@@ -418,7 +418,7 @@ Being the smart and responsible engineer that you are, you decide to rectify you
 </span></span><span style="display:flex;"><span>                        <span style="color:#8b949e;font-style:italic">// If you want a cache object that will never expire you can just make the following call:</span>
 </span></span><span style="display:flex;"><span>                        <span style="color:#8b949e;font-style:italic">// memoryCache.Set(key, value, GetMemoryCacheEntryOptions(expireInSeconds));</span>
 </span></span><span style="display:flex;"><span>                        <span style="color:#ff7b72">var</span> newValue = <span style="color:#ff7b72">await</span> GetSettingsFromRemoteLocation();
-</span></span><span style="display:flex;"><span>                        <span style="color:#ff7b72">if</span> (newValue != <span style="color:#ff7b72">null</span>)
+</span></span><span style="display:flex;"><span>                        <span style="color:#ff7b72">if</span> (newValue != <span style="color:#79c0ff">null</span>)
 </span></span><span style="display:flex;"><span>                        {
 </span></span><span style="display:flex;"><span>                            memoryCache.Set(key, newValue, GetMemoryCacheEntryOptions(expireInSeconds)); <span style="color:#8b949e;font-style:italic">// 1 hour</span>
 </span></span><span style="display:flex;"><span>                        }
@@ -444,7 +444,7 @@ Being the smart and responsible engineer that you are, you decide to rectify you
 </li>
 </ul>
 <p>To prove this to you I&rsquo;ll provide another pair of tests</p>
-<div class="highlight"><pre tabindex="0" style="color:#c9d1d9;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#ff7b72">using</span> <span style="color:#ff7b72">System</span>;
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#ff7b72">using</span> <span style="color:#ff7b72">System</span>;
 </span></span><span style="display:flex;"><span><span style="color:#ff7b72">using</span> <span style="color:#ff7b72">System.Threading</span>;
 </span></span><span style="display:flex;"><span><span style="color:#ff7b72">using</span> <span style="color:#ff7b72">System.Threading.Tasks</span>;
 </span></span><span style="display:flex;"><span><span style="color:#ff7b72">using</span> <span style="color:#ff7b72">Microsoft.Extensions.Caching.Memory</span>;
