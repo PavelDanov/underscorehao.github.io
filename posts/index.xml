@@ -10,30 +10,30 @@
     <atom:link href="https://underscorehao.net/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>How I learned 1500 Chinese Characters in a Month - Heisig Method Review</title>
-      <link>https://underscorehao.net/2020/05/learning-1500-chinese-characters-in-a-month-heisig-method-review/</link>
+      <link>https://underscorehao.net/2020/05/14/learning-1500-chinese-characters-in-a-month-heisig-method-review/</link>
       <pubDate>Thu, 14 May 2020 20:00:00 +0100</pubDate>
-      <guid>https://underscorehao.net/2020/05/learning-1500-chinese-characters-in-a-month-heisig-method-review/</guid>
+      <guid>https://underscorehao.net/2020/05/14/learning-1500-chinese-characters-in-a-month-heisig-method-review/</guid>
       <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;&#xA;&lt;p&gt;Hello dear visitor!&lt;/p&gt;&#xA;&lt;p&gt;Before you stands a very long article in which you&amp;rsquo;ll find my review and results after spending 31 days with a book called &lt;a href=&#34;https://www.goodreads.com/book/show/5862954-remembering-simplified-hanzi-1&#34;&gt;Remembering Simplified Hanzi 1: How Not to Forget the Meaning and Writing of Chinese Characters&lt;/a&gt; written by James Heisig and Timothy W. Richardson. I think it&amp;rsquo;s a groundbreaking book and an amazing method because it broke down a certain wall that was hindering my desire and drive to learn the Chinese language for a long time.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Publishing to Multiple Topics in Azure Service Bus</title>
-      <link>https://underscorehao.net/2020/01/publishing-to-multiple-topics-in-azure-service-bus/</link>
+      <link>https://underscorehao.net/2020/01/11/publishing-to-multiple-topics-in-azure-service-bus/</link>
       <pubDate>Sat, 11 Jan 2020 19:33:48 +0000</pubDate>
-      <guid>https://underscorehao.net/2020/01/publishing-to-multiple-topics-in-azure-service-bus/</guid>
+      <guid>https://underscorehao.net/2020/01/11/publishing-to-multiple-topics-in-azure-service-bus/</guid>
       <description>&lt;h2 id=&#34;multiple-topics&#34;&gt;Multiple topics&lt;/h2&gt;&#xA;&lt;p&gt;There are two main approaches when it comes to topics in Azure Service Bus. Depending what&amp;rsquo;s your architecture and needs you can have either:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;Filtered topic&lt;/strong&gt; - this means you have only one topic for all of your event types. All publishers push messages onto that single topic. Some of the message fields and properties are then used for filtering by the subscribers since in most cases a subscriber will be interested only in certain types of messages.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Multiple topics&lt;/strong&gt; - you have multiple topics for different domain events or channels of your system. You can still leverage the filtering to have more granular control in your subscribers. You can also have topics based on priority, event types etc.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;Our main concern in this post is the second use case and how to build a nice &lt;a href=&#34;https://docs.microsoft.com/en-us/dotnet/api/microsoft.azure.servicebus.topicclient?view=azure-dotnet&#34;&gt;&lt;strong&gt;&lt;code&gt;ITopicClient&lt;/code&gt;&lt;/strong&gt;&lt;/a&gt; factory inside a .NET Core project. I&amp;rsquo;ve built my example with Azure Functions, but 99.9% of the code is completely identical to what you would do in a normal .NET Core web service.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Auto Refreshing Cache in .NET</title>
-      <link>https://underscorehao.net/2019/07/auto-refreshing-cache-in-dotnet/</link>
+      <link>https://underscorehao.net/2019/07/11/auto-refreshing-cache-in-dotnet/</link>
       <pubDate>Thu, 11 Jul 2019 22:47:02 +0100</pubDate>
-      <guid>https://underscorehao.net/2019/07/auto-refreshing-cache-in-dotnet/</guid>
+      <guid>https://underscorehao.net/2019/07/11/auto-refreshing-cache-in-dotnet/</guid>
       <description>&lt;h2 id=&#34;caching-is-hard&#34;&gt;Caching is hard&lt;/h2&gt;&#xA;&lt;p&gt;On a bright sunny day while you&amp;rsquo;re working on your awesome project you catch a glimpse of something. You bring yourself closer to the monitor and begin meticulously examining your code. What you find brings you feelings of disgust and shame! You&amp;rsquo;ve been calling an API retrieving data you need over and over again even though said data hardly changes!&lt;/p&gt;&#xA;&lt;p&gt;Being the smart and responsible engineer that you are, you decide to rectify your mistake immediately. You think to yourself&lt;/p&gt;</description>
     </item>
     <item>
       <title>.NET Core API with DynamoDB Context Dependency Injection</title>
-      <link>https://underscorehao.net/2018/03/net-core-api-dynamodb-dependency-injection/</link>
+      <link>https://underscorehao.net/2018/03/13/net-core-api-dynamodb-dependency-injection/</link>
       <pubDate>Tue, 13 Mar 2018 22:27:05 +0200</pubDate>
-      <guid>https://underscorehao.net/2018/03/net-core-api-dynamodb-dependency-injection/</guid>
+      <guid>https://underscorehao.net/2018/03/13/net-core-api-dynamodb-dependency-injection/</guid>
       <description>&lt;h2 id=&#34;the-problem&#34;&gt;The Problem&lt;/h2&gt;&#xA;&lt;p&gt;Today I faced a problem which I knew would come, but didn&amp;rsquo;t have time to implement properly at the time. There were more urgent tasks at hand before, deadlines to be met and this issue remained unresolved.&lt;/p&gt;&#xA;&lt;p&gt;Amazon&amp;rsquo;s .NET Core SDK is very good for the most part. Everything works as it should. But let&amp;rsquo;s say you use the &lt;a href=&#34;https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DotNetSDKHighLevel.html&#34;&gt;.NET Object Persistence Model&lt;/a&gt; for &lt;a href=&#34;https://aws.amazon.com/dynamodb/&#34;&gt;DynamoDB&lt;/a&gt; in your service and you have mapped C# classes to DynamoDB tables like this:&lt;/p&gt;</description>
     </item>
   </channel>
