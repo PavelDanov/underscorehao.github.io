@@ -2,6 +2,9 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://underscorehao.net/posts/</loc>
+    <lastmod>2024-08-18T13:34:54+02:00</lastmod>
+  </url><url>
     <loc>https://underscorehao.net/notes/</loc>
     <lastmod>2024-02-08T22:00:00+00:00</lastmod>
   </url><url>
@@ -17,26 +20,8 @@
     <loc>https://underscorehao.net/programmers-limbo/</loc>
     <lastmod>2023-04-10T22:34:30+01:00</lastmod>
   </url><url>
-    <loc>https://underscorehao.net/tags/c&#43;&#43;/</loc>
-    <lastmod>2021-11-10T12:50:00+00:00</lastmod>
-  </url><url>
-    <loc>https://underscorehao.net/2021/11/compiling-cpp-sfml-windows-cli/</loc>
-    <lastmod>2021-11-10T12:50:00+00:00</lastmod>
-  </url><url>
-    <loc>https://underscorehao.net/posts/</loc>
-    <lastmod>2021-11-10T12:50:00+00:00</lastmod>
-  </url><url>
-    <loc>https://underscorehao.net/tags/sfml/</loc>
-    <lastmod>2021-11-10T12:50:00+00:00</lastmod>
-  </url><url>
-    <loc>https://underscorehao.net/categories/software-development/</loc>
-    <lastmod>2021-11-10T12:50:00+00:00</lastmod>
-  </url><url>
-    <loc>https://underscorehao.net/tags/</loc>
-    <lastmod>2021-11-10T12:50:00+00:00</lastmod>
-  </url><url>
-    <loc>https://underscorehao.net/tags/windows/</loc>
-    <lastmod>2021-11-10T12:50:00+00:00</lastmod>
+    <loc>https://underscorehao.net/categories/programmers-limbo/</loc>
+    <lastmod>2023-04-10T22:34:30+01:00</lastmod>
   </url><url>
     <loc>https://underscorehao.net/tags/chinese/</loc>
     <lastmod>2020-05-14T20:00:00+01:00</lastmod>
@@ -45,6 +30,9 @@
     <lastmod>2020-05-14T20:00:00+01:00</lastmod>
   </url><url>
     <loc>https://underscorehao.net/categories/languages/</loc>
+    <lastmod>2020-05-14T20:00:00+01:00</lastmod>
+  </url><url>
+    <loc>https://underscorehao.net/tags/</loc>
     <lastmod>2020-05-14T20:00:00+01:00</lastmod>
   </url><url>
     <loc>https://underscorehao.net/tags/%E4%B8%AD%E6%96%87/</loc>
@@ -59,10 +47,13 @@
     <loc>https://underscorehao.net/tags/azure/</loc>
     <lastmod>2020-01-11T19:33:48+00:00</lastmod>
   </url><url>
-    <loc>https://underscorehao.net/tags/c#/</loc>
+    <loc>https://underscorehao.net/tags/c%23/</loc>
     <lastmod>2020-01-11T19:33:48+00:00</lastmod>
   </url><url>
     <loc>https://underscorehao.net/2020/01/publishing-to-multiple-topics-in-azure-service-bus/</loc>
+    <lastmod>2020-01-11T19:33:48+00:00</lastmod>
+  </url><url>
+    <loc>https://underscorehao.net/categories/software-development/</loc>
     <lastmod>2020-01-11T19:33:48+00:00</lastmod>
   </url><url>
     <loc>https://underscorehao.net/2019/07/auto-refreshing-cache-in-dotnet/</loc>
