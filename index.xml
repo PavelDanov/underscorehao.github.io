@@ -30,6 +30,13 @@
       <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;&#xA;&lt;p&gt;There are millions of consultancies out there and more are popping left and right by the minute. Some are outsource shops or a couple of dev friends teaming up in trying to create a business, others are big multinational corporations that bid on big government or enterprise contracts. There&amp;rsquo;s a consultancy for virtually every business domain you can think of and everything in-between. They like to advertise themselves as providing &lt;code&gt;digital transformation&lt;/code&gt;, being &lt;code&gt;cloud native&lt;/code&gt;, &lt;code&gt;engineering intuition&lt;/code&gt; (&lt;em&gt;facepalm&lt;/em&gt;) and a litany of other meaningless slogans.&lt;/p&gt;</description>
     </item>
     <item>
+      <title>Compiling C&#43;&#43; project using SFML with cl.exe</title>
+      <link>https://underscorehao.net/2021/11/10/compiling-cpp-sfml-windows-cli/</link>
+      <pubDate>Wed, 10 Nov 2021 12:50:00 +0000</pubDate>
+      <guid>https://underscorehao.net/2021/11/10/compiling-cpp-sfml-windows-cli/</guid>
+      <description>&lt;h2 id=&#34;why&#34;&gt;Why?&lt;/h2&gt;&#xA;&lt;p&gt;The usefulness of this approach is debatable, but let me try to offer an answer on why you might want to know how to do that. I think it&amp;rsquo;s the mark of a good engineer to know what&amp;rsquo;s happening under the hood. Simple as that. New or inexperienced developers will benefit from understanding the connection between the user interface in Visual Studio and the actual command line tools used underneath.&lt;/p&gt;</description>
+    </item>
+    <item>
       <title>How I learned 1500 Chinese Characters in a Month - Heisig Method Review</title>
       <link>https://underscorehao.net/2020/05/14/learning-1500-chinese-characters-in-a-month-heisig-method-review/</link>
       <pubDate>Thu, 14 May 2020 20:00:00 +0100</pubDate>

@@ -16,6 +16,13 @@
       <description>&lt;p&gt;I haven&amp;rsquo;t written here for quite a while. Writing again feels like a way to mark this new beginning, to chronicle what it’s like returning to a structured path after so many years. In my time of absence, I began countless drafts, but none felt quite right to publish. The past few years have been a storm of global crises, career shifts, and personal battles that left me questoning my direction. I switched jobs twice, only to leave them both and go towards the contracting route. It was a time of intense internal work, a sort of 内功 (nèigōng), or &lt;em&gt;&amp;lsquo;internal skill/strength&amp;rsquo;&lt;/em&gt; as it&amp;rsquo;s called in Chinese martial arts.&lt;/p&gt;</description>
     </item>
     <item>
+      <title>Compiling C&#43;&#43; project using SFML with cl.exe</title>
+      <link>https://underscorehao.net/2021/11/10/compiling-cpp-sfml-windows-cli/</link>
+      <pubDate>Wed, 10 Nov 2021 12:50:00 +0000</pubDate>
+      <guid>https://underscorehao.net/2021/11/10/compiling-cpp-sfml-windows-cli/</guid>
+      <description>&lt;h2 id=&#34;why&#34;&gt;Why?&lt;/h2&gt;&#xA;&lt;p&gt;The usefulness of this approach is debatable, but let me try to offer an answer on why you might want to know how to do that. I think it&amp;rsquo;s the mark of a good engineer to know what&amp;rsquo;s happening under the hood. Simple as that. New or inexperienced developers will benefit from understanding the connection between the user interface in Visual Studio and the actual command line tools used underneath.&lt;/p&gt;</description>
+    </item>
+    <item>
       <title>How I learned 1500 Chinese Characters in a Month - Heisig Method Review</title>
       <link>https://underscorehao.net/2020/05/14/learning-1500-chinese-characters-in-a-month-heisig-method-review/</link>
       <pubDate>Thu, 14 May 2020 20:00:00 +0100</pubDate>
