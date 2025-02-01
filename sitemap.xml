@@ -2,6 +2,9 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://underscorehao.net/posts/</loc>
+    <lastmod>2025-01-14T22:03:38+00:00</lastmod>
+  </url><url>
     <loc>https://underscorehao.net/notes/key-to-doing/</loc>
     <lastmod>2024-11-25T23:19:45+00:00</lastmod>
   </url><url>
@@ -17,32 +20,17 @@
     <loc>https://underscorehao.net/tags/%E4%B8%AD%E6%96%87/</loc>
     <lastmod>2024-11-25T23:19:45+00:00</lastmod>
   </url><url>
-    <loc>https://underscorehao.net/tags/books/</loc>
-    <lastmod>2024-11-25T22:46:12+00:00</lastmod>
-  </url><url>
-    <loc>https://underscorehao.net/bookshelf/code/</loc>
-    <lastmod>2024-11-25T22:46:12+00:00</lastmod>
-  </url><url>
-    <loc>https://underscorehao.net/categories/books/</loc>
-    <lastmod>2024-11-22T21:45:58+00:00</lastmod>
-  </url><url>
-    <loc>https://underscorehao.net/bookshelf/</loc>
-    <lastmod>2024-11-22T21:45:58+00:00</lastmod>
-  </url><url>
-    <loc>https://underscorehao.net/categories/</loc>
-    <lastmod>2024-11-22T21:45:58+00:00</lastmod>
-  </url><url>
     <loc>https://underscorehao.net/notes/focus/</loc>
     <lastmod>2024-11-20T21:55:06+00:00</lastmod>
   </url><url>
     <loc>https://underscorehao.net/2024/11/14/back-to-university/</loc>
     <lastmod>2024-11-14T20:49:31+00:00</lastmod>
   </url><url>
-    <loc>https://underscorehao.net/posts/</loc>
-    <lastmod>2024-11-14T20:49:31+00:00</lastmod>
-  </url><url>
     <loc>https://underscorehao.net/notes/</loc>
     <lastmod>2024-02-08T22:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://underscorehao.net/categories/</loc>
+    <lastmod>2023-04-11T12:28:22+01:00</lastmod>
   </url><url>
     <loc>https://underscorehao.net/programmers-limbo/on-consultancies/</loc>
     <lastmod>2023-04-11T12:28:22+01:00</lastmod>
