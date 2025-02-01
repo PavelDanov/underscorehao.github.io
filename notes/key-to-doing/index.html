@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en"><head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    
-    <meta name="description" content="
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	
+	<meta name="description" content="
 看到和做到是两回事，
 说到和做到是两回事。
 理解和做到，仍旧是两回事。
@@ -21,48 +21,80 @@ Don&rsquo;t confuse them.
 This is the key to doing.
 
 " />
-    
+	
 
-    <title>
-         Key to Doing 
-    </title>
+	<title>
+		 Key to Doing 
+	</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+	<link rel="shortcut icon" type="image/x-icon" href="https://underscorehao.net/" />
+	  
+	<link rel="stylesheet" href="/css/main.b329e0d5e05348cf0e89b7ac2781cac01f51bb240e23b0eae6dc5d9ea6aa1f82d989853cd9b36e0e624eb603d8c0ac0a607bae5548e3c57eefc99d43f8471882.css" integrity="sha512-syng1eBTSM8OibesJ4HKwB9RuyQOI7Dq5txdnqaqH4LZiYU82bNuDmJOtgPYwKwKYHuuVUjjxX7vyZ1D&#43;EcYgg==" />
+	
+	
+	<script>
+		var _paq = (window._paq = window._paq || []);
+		 
+		_paq.push(["trackPageView"]);
+		_paq.push(["enableLinkTracking"]);
+		(function () {
+			var u = "https://underschorehao.matomo.cloud/";
+			_paq.push(["setTrackerUrl", u + "matomo.php"]);
+			_paq.push(["setSiteId", "1"]);
+			var d = document,
+				g = d.createElement("script"),
+				s = d.getElementsByTagName("script")[0];
+			g.async = true;
+			g.src =
+				"https://cdn.matomo.cloud/underschorehao.matomo.cloud/matomo.js";
+			s.parentNode.insertBefore(g, s);
+		})();
+	</script>
+	
+	<script>
+		document.addEventListener("DOMContentLoaded", function () {
+			const toggleButton = document.getElementById("appearance-toggle");
+			const currentTheme = localStorage.getItem("theme") || "auto";
 
-    <link
-        rel="shortcut icon"
-        type="image/x-icon"
-        href="https://underscorehao.net/"
-    />
-      
-    <link
-        rel="stylesheet"
-        href="/css/main.f88212ad1ab6e444554063ab228d971231b5be1a1df4d7b95805dfbaa864b7bbe35f69c4be47efbf0b90ede3c18ee84fb7eb0a6f7869fef552367a1fc83b7f01.css"
-        integrity="sha512-&#43;IISrRq25ERVQGOrIo2XEjG1vhod9Ne5WAXfuqhkt7vjX2nEvkfvvwuQ7ePBjuhPt&#43;sKb3hp/vVSNnofyDt/AQ=="
-    />
-    
-    
-    <script>
-        var _paq = (window._paq = window._paq || []);
-         
-        _paq.push(["trackPageView"]);
-        _paq.push(["enableLinkTracking"]);
-        (function () {
-            var u = "https://underschorehao.matomo.cloud/";
-            _paq.push(["setTrackerUrl", u + "matomo.php"]);
-            _paq.push(["setSiteId", "1"]);
-            var d = document,
-                g = d.createElement("script"),
-                s = d.getElementsByTagName("script")[0];
-            g.async = true;
-            g.src =
-                "https://cdn.matomo.cloud/underschorehao.matomo.cloud/matomo.js";
-            s.parentNode.insertBefore(g, s);
-        })();
-    </script>
-    
-</head>
-<body a="auto">
-        <main class="page-content" aria-label="Content">
-            <div class="w">
+			function updateIcon(theme) {
+				if (theme === "dark") {
+					toggleButton.classList.add("dark-mode");
+					toggleButton.classList.remove("light-mode");
+				} else {
+					toggleButton.classList.add("light-mode");
+					toggleButton.classList.remove("dark-mode");
+				}
+			}
+
+			if (currentTheme === "dark") {
+				document.body.setAttribute("a", "dark");
+				updateIcon("dark");
+			} else if (currentTheme === "light") {
+				document.body.setAttribute("a", "light");
+				updateIcon("light");
+			} else {
+				document.body.setAttribute("a", "auto");
+				updateIcon("auto");
+			}
+
+			toggleButton.addEventListener("click", function () {
+				let theme = document.body.getAttribute("a");
+				if (theme === "dark") {
+					document.body.setAttribute("a", "light");
+					localStorage.setItem("theme", "light");
+					updateIcon("light");
+				} else {
+					document.body.setAttribute("a", "dark");
+					localStorage.setItem("theme", "dark");
+					updateIcon("dark");
+				}
+			});
+		});
+	</script>
+</head><body a="auto">
+	<i id="appearance-toggle" class="fa fa-adjust" style="cursor: pointer;"></i>
+	<main class="page-content" aria-label="Content">
+		<div class="w">
 <a href="/">..</a>
 
 
@@ -97,10 +129,11 @@ This is the key to doing.
 
 </article>
 
-                
+			
 © Copyright 2017-2025 by Pavel Danov
 
-            </div>
-        </main>
-    </body>
+		</div>
+	</main>
+</body>
+
 </html>
