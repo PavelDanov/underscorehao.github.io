@@ -6,8 +6,15 @@
     <description>Recent content in About me on Pavel Danov / 亶保罗</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 25 Nov 2024 23:19:45 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 25 Feb 2025 18:00:00 +0000</lastBuildDate>
     <atom:link href="https://underscorehao.net/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Plovdiv Game Jam 2025</title>
+      <link>https://underscorehao.net/2025/02/25/plovdiv-game-jam/</link>
+      <pubDate>Tue, 25 Feb 2025 18:00:00 +0000</pubDate>
+      <guid>https://underscorehao.net/2025/02/25/plovdiv-game-jam/</guid>
+      <description>&lt;p&gt;I was a lecturer at this year&amp;rsquo;s Plovdiv Game Jam where I gave a presentation on Performance-Aware programming. The lecture was mostly an overview of some common ways that can help us when we want to write performant code.&lt;/p&gt;&#xA;&lt;p&gt;Unfortunately, nowadays the majority of developers don&amp;rsquo;t think about such things at all. My time was quite limited, so I tried to show and explain as many starting points in this area as possible.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Key to Doing</title>
       <link>https://underscorehao.net/notes/key-to-doing/</link>
