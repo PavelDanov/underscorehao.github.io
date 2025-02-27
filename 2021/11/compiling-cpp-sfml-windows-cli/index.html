@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	
+	<meta name="description" content="Why?
+The usefulness of this approach is debatable, but let me try to offer an answer on why you might want to know how to do that. I think it&rsquo;s the mark of a good engineer to know what&rsquo;s happening under the hood. Simple as that. New or inexperienced developers will benefit from understanding the connection between the user interface in Visual Studio and the actual command line tools used underneath." />
+	
+
+	<title>
+		 Compiling C&#43;&#43; project using SFML with cl.exe 
+	</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+	<link rel="shortcut icon" type="image/x-icon" href="https://underscorehao.net/" />
+	  
+	<link rel="stylesheet" href="/css/main.b329e0d5e05348cf0e89b7ac2781cac01f51bb240e23b0eae6dc5d9ea6aa1f82d989853cd9b36e0e624eb603d8c0ac0a607bae5548e3c57eefc99d43f8471882.css" integrity="sha512-syng1eBTSM8OibesJ4HKwB9RuyQOI7Dq5txdnqaqH4LZiYU82bNuDmJOtgPYwKwKYHuuVUjjxX7vyZ1D&#43;EcYgg==" />
+	
+	
+	<script>
+		var _paq = window._paq = window._paq || [];
+		_paq.push(['trackPageView']);
+		_paq.push(['enableLinkTracking']);
+		(function() {
+			var u="https://underscorehao.matomo.cloud/";
+			_paq.push(['setTrackerUrl', u+'matomo.php']);
+			_paq.push(['setSiteId', '1']);
+			var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+			g.async=true; g.src='https://cdn.matomo.cloud/underscorehao.matomo.cloud/matomo.js'; s.parentNode.insertBefore(g,s);
+		})();
+	</script>
+	
+	<script>
+		document.addEventListener("DOMContentLoaded", function () {
+			const toggleButton = document.getElementById("appearance-toggle");
+			const currentTheme = localStorage.getItem("theme") || "auto";
+
+			function updateIcon(theme) {
+				if (theme === "dark") {
+					toggleButton.classList.add("dark-mode");
+					toggleButton.classList.remove("light-mode");
+				} else {
+					toggleButton.classList.add("light-mode");
+					toggleButton.classList.remove("dark-mode");
+				}
+			}
+
+			if (currentTheme === "dark") {
+				document.body.setAttribute("a", "dark");
+				updateIcon("dark");
+			} else if (currentTheme === "light") {
+				document.body.setAttribute("a", "light");
+				updateIcon("light");
+			} else {
+				document.body.setAttribute("a", "auto");
+				updateIcon("auto");
+			}
+
+			toggleButton.addEventListener("click", function () {
+				let theme = document.body.getAttribute("a");
+				if (theme === "dark") {
+					document.body.setAttribute("a", "light");
+					localStorage.setItem("theme", "light");
+					updateIcon("light");
+				} else {
+					document.body.setAttribute("a", "dark");
+					localStorage.setItem("theme", "dark");
+					updateIcon("dark");
+				}
+			});
+		});
+	</script>
+</head>
+<body a="auto">
+	<i id="appearance-toggle" class="fa fa-adjust" style="cursor: pointer;"></i>
+	<main class="page-content" aria-label="Content">
+		<div class="w">
+<a href="/">..</a>
+
+
+<article>
+    <p class="post-meta">
+        <time datetime="2021-11-10 12:50:00 &#43;0000 UTC">
+            2021-11-10
+        </time>
+    </p>
+
+    <h1>Compiling C&#43;&#43; project using SFML with cl.exe</h1>
+
+    
+
+    <h2 id="why">Why?</h2>
+<p>The usefulness of this approach is debatable, but let me try to offer an answer on why you might want to know how to do that. I think it&rsquo;s the mark of a good engineer to know what&rsquo;s happening under the hood. Simple as that. New or inexperienced developers will benefit from understanding the connection between the user interface in Visual Studio and the actual command line tools used underneath.</p>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>Imagine that you&rsquo;re on Windows and want to use the <a href="https://docs.microsoft.com/en-us/cpp/build/building-on-the-command-line?view=msvc-170">MSVC</a> compiler toolset from the command line to build a project with <a href="https://www.sfml-dev.org/index.php">SFML</a>. In a nutshell you&rsquo;re going to replicate the documentation given for <a href="https://www.sfml-dev.org/tutorials/2.5/start-vc.php">SFML and Visual Studio</a>, but from the terminal.</p>
+<p>Assuming you have installed all the necessarry tooling and you have SFML in the <code>C:\libs\SFML-2.5.1</code> directory you can just do the following.</p>
+<h2 id="dynamic-linking">Dynamic Linking</h2>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># For DEBUG builds -d is part of the lib names. See SFML docs on that.</span>
+</span></span><span style="display:flex;"><span>cl Main.cpp Game.cpp Window.cpp <span style="color:#a5d6ff">&#34;sfml-graphics-d.lib&#34;</span> <span style="color:#a5d6ff">&#34;sfml-window-d.lib&#34;</span> <span style="color:#a5d6ff">&#34;sfml-system-d.lib&#34;</span> <span style="color:#a5d6ff">&#34;sfml-audio-d.lib&#34;</span> <span style="color:#a5d6ff">&#34;sfml-network-d.lib&#34;</span> /I <span style="color:#a5d6ff">&#34;C:\libs\SFML-2.5.1\include&#34;</span> /MDd /link /LIBPATH:<span style="color:#a5d6ff">&#34;C:\libs\SFML-2.5.1\lib&#34;</span> /DEBUG
+</span></span></code></pre></div><p>Let&rsquo;s quickly break that down.</p>
+<ul>
+<li>After <code>cl</code> put your <code>.cpp</code> files, then add all <code>.lib</code> files because the linker will look for those.</li>
+<li>With <a href="https://docs.microsoft.com/en-us/cpp/build/reference/i-additional-include-directories?view=msvc-170">/I</a> you include the path to the SFML headers.</li>
+<li>Next is <a href="https://docs.microsoft.com/en-us/cpp/build/reference/md-mt-ld-use-run-time-library?view=msvc-170">/MDd</a> which is dealing with the runtime and adding additional debug information.</li>
+<li>We also need <a href="https://docs.microsoft.com/en-us/cpp/build/reference/link-pass-options-to-linker?view=msvc-170">/link</a> which is used to pass options to the linker and in this case we&rsquo;re passing <a href="https://docs.microsoft.com/en-us/cpp/build/reference/libpath-additional-libpath?view=msvc-170">/LIBPATH</a> which contains the path to the SFML libraries.</li>
+<li>Finally we pass <a href="https://docs.microsoft.com/en-us/cpp/build/reference/debug-generate-debug-info?view=msvc-170">/DEBUG</a> to the linker because we&rsquo;re doing a debug build in this case.</li>
+</ul>
+<p>This will create a <code>Main.exe</code> in your current folder. You&rsquo;ll need to add the appropriate SFML <code>.dll</code> files to that folder in order to execute your program successfully.</p>
+<h2 id="static-linking">Static Linking</h2>
+<p>For static linking the process is almost the same with some slight differences.</p>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># Note -s-d as part of the lib names. See SFML docs on that.</span>
+</span></span><span style="display:flex;"><span>cl Main.cpp Game.cpp Window.cpp <span style="color:#a5d6ff">&#34;sfml-graphics-s-d.lib&#34;</span> <span style="color:#a5d6ff">&#34;sfml-window-s-d.lib&#34;</span> <span style="color:#a5d6ff">&#34;sfml-system-s-d.lib&#34;</span> <span style="color:#a5d6ff">&#34;sfml-audio-s-d.lib&#34;</span> <span style="color:#a5d6ff">&#34;sfml-network-s-d.lib&#34;</span> opengl32.lib freetype.lib winmm.lib gdi32.lib user32.lib Advapi32.lib /I <span style="color:#a5d6ff">&#34;C:\libs\SFML-2.5.1\include&#34;</span> /D SFML_STATIC /MDd /link /LIBPATH:<span style="color:#a5d6ff">&#34;C:\libs\SFML-2.5.1\lib&#34;</span> /DEBUG
+</span></span></code></pre></div><ul>
+<li>This time we&rsquo;re including the static version of the SFML libraries.</li>
+<li>We have to pass the extra dependencies needed by SFML in order for the build to be successful and not blow up with a lot of link errors.</li>
+<li>We use the <a href="https://docs.microsoft.com/en-us/cpp/build/reference/d-preprocessor-definitions?view=msvc-170">/D</a> flag to define the <code>SFML_STATIC</code> macro.</li>
+</ul>
+<p>If all is well you&rsquo;ll be able to just run your <code>Main.exe</code> straight away.</p>
+<figure><img src="/images/sfml-compile.gif"
+    alt="Compiling a project with SFML in Vim"><figcaption>
+      <p>Compiling a project with SFML in Vim</p>
+    </figcaption>
+</figure>
+
+
+</article>
+
+		</div>
+	</main>
+</body></html>
