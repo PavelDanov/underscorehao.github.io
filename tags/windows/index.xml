@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Windows on Pavel Danov / 亶保罗</title>
-    <link>https://underscorehao.net/tags/windows/</link>
+    <link>https://paveldanov.net/tags/windows/</link>
     <description>Recent content in Windows on Pavel Danov / 亶保罗</description>
     <generator>Hugo</generator>
     <language>en</language>
     <lastBuildDate>Wed, 10 Nov 2021 12:50:00 +0000</lastBuildDate>
-    <atom:link href="https://underscorehao.net/tags/windows/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://paveldanov.net/tags/windows/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Compiling C&#43;&#43; project using SFML with cl.exe</title>
-      <link>https://underscorehao.net/2021/11/compiling-cpp-sfml-windows-cli/</link>
+      <link>https://paveldanov.net/2021/11/compiling-cpp-sfml-windows-cli/</link>
       <pubDate>Wed, 10 Nov 2021 12:50:00 +0000</pubDate>
-      <guid>https://underscorehao.net/2021/11/compiling-cpp-sfml-windows-cli/</guid>
+      <guid>https://paveldanov.net/2021/11/compiling-cpp-sfml-windows-cli/</guid>
       <description>&lt;h2 id=&#34;why&#34;&gt;Why?&lt;/h2&gt;&#xA;&lt;p&gt;The usefulness of this approach is debatable, but let me try to offer an answer on why you might want to know how to do that. I think it&amp;rsquo;s the mark of a good engineer to know what&amp;rsquo;s happening under the hood. Simple as that. New or inexperienced developers will benefit from understanding the connection between the user interface in Visual Studio and the actual command line tools used underneath.&lt;/p&gt;</description>
     </item>
   </channel>

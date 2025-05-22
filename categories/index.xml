@@ -2,38 +2,38 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on Pavel Danov / 亶保罗</title>
-    <link>https://underscorehao.net/categories/</link>
+    <link>https://paveldanov.net/categories/</link>
     <description>Recent content in Categories on Pavel Danov / 亶保罗</description>
     <generator>Hugo</generator>
     <language>en</language>
     <lastBuildDate>Tue, 11 Apr 2023 12:28:22 +0100</lastBuildDate>
-    <atom:link href="https://underscorehao.net/categories/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://paveldanov.net/categories/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Programmer&#39;s Limbo</title>
-      <link>https://underscorehao.net/categories/programmers-limbo/</link>
+      <link>https://paveldanov.net/categories/programmers-limbo/</link>
       <pubDate>Tue, 11 Apr 2023 12:28:22 +0100</pubDate>
-      <guid>https://underscorehao.net/categories/programmers-limbo/</guid>
+      <guid>https://paveldanov.net/categories/programmers-limbo/</guid>
       <description></description>
     </item>
     <item>
       <title>Programmers-Limbo</title>
-      <link>https://underscorehao.net/categories/programmers-limbo/</link>
+      <link>https://paveldanov.net/categories/programmers-limbo/</link>
       <pubDate>Mon, 10 Apr 2023 22:34:30 +0100</pubDate>
-      <guid>https://underscorehao.net/categories/programmers-limbo/</guid>
+      <guid>https://paveldanov.net/categories/programmers-limbo/</guid>
       <description></description>
     </item>
     <item>
       <title>Software Development</title>
-      <link>https://underscorehao.net/categories/software-development/</link>
+      <link>https://paveldanov.net/categories/software-development/</link>
       <pubDate>Wed, 10 Nov 2021 12:50:00 +0000</pubDate>
-      <guid>https://underscorehao.net/categories/software-development/</guid>
+      <guid>https://paveldanov.net/categories/software-development/</guid>
       <description></description>
     </item>
     <item>
       <title>Languages</title>
-      <link>https://underscorehao.net/categories/languages/</link>
+      <link>https://paveldanov.net/categories/languages/</link>
       <pubDate>Thu, 14 May 2020 20:00:00 +0100</pubDate>
-      <guid>https://underscorehao.net/categories/languages/</guid>
+      <guid>https://paveldanov.net/categories/languages/</guid>
       <description></description>
     </item>
   </channel>

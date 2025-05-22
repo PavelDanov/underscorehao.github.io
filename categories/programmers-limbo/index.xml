@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Programmer&#39;s Limbo on Pavel Danov / 亶保罗</title>
-    <link>https://underscorehao.net/categories/programmers-limbo/</link>
+    <link>https://paveldanov.net/categories/programmers-limbo/</link>
     <description>Recent content in Programmer&#39;s Limbo on Pavel Danov / 亶保罗</description>
     <generator>Hugo</generator>
     <language>en</language>
     <lastBuildDate>Tue, 11 Apr 2023 12:28:22 +0100</lastBuildDate>
-    <atom:link href="https://underscorehao.net/categories/programmers-limbo/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://paveldanov.net/categories/programmers-limbo/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>On Consultancies</title>
-      <link>https://underscorehao.net/programmers-limbo/on-consultancies/</link>
+      <link>https://paveldanov.net/programmers-limbo/on-consultancies/</link>
       <pubDate>Tue, 11 Apr 2023 12:28:22 +0100</pubDate>
-      <guid>https://underscorehao.net/programmers-limbo/on-consultancies/</guid>
+      <guid>https://paveldanov.net/programmers-limbo/on-consultancies/</guid>
       <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;&#xA;&lt;p&gt;There are millions of consultancies out there and more are popping left and right by the minute. Some are outsource shops or a couple of dev friends teaming up in trying to create a business, others are big multinational corporations that bid on big government or enterprise contracts. There&amp;rsquo;s a consultancy for virtually every business domain you can think of and everything in-between. They like to advertise themselves as providing &lt;code&gt;digital transformation&lt;/code&gt;, being &lt;code&gt;cloud native&lt;/code&gt;, &lt;code&gt;engineering intuition&lt;/code&gt; (&lt;em&gt;facepalm&lt;/em&gt;) and a litany of other meaningless slogans.&lt;/p&gt;</description>
     </item>
   </channel>

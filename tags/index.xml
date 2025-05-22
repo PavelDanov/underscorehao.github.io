@@ -2,87 +2,87 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Pavel Danov / 亶保罗</title>
-    <link>https://underscorehao.net/tags/</link>
+    <link>https://paveldanov.net/tags/</link>
     <description>Recent content in Tags on Pavel Danov / 亶保罗</description>
     <generator>Hugo</generator>
     <language>en</language>
     <lastBuildDate>Mon, 25 Nov 2024 23:19:45 +0000</lastBuildDate>
-    <atom:link href="https://underscorehao.net/tags/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://paveldanov.net/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Life</title>
-      <link>https://underscorehao.net/tags/life/</link>
+      <link>https://paveldanov.net/tags/life/</link>
       <pubDate>Mon, 25 Nov 2024 23:19:45 +0000</pubDate>
-      <guid>https://underscorehao.net/tags/life/</guid>
+      <guid>https://paveldanov.net/tags/life/</guid>
       <description></description>
     </item>
     <item>
       <title>Tips</title>
-      <link>https://underscorehao.net/tags/tips/</link>
+      <link>https://paveldanov.net/tags/tips/</link>
       <pubDate>Mon, 25 Nov 2024 23:19:45 +0000</pubDate>
-      <guid>https://underscorehao.net/tags/tips/</guid>
+      <guid>https://paveldanov.net/tags/tips/</guid>
       <description></description>
     </item>
     <item>
       <title>中文</title>
-      <link>https://underscorehao.net/tags/%E4%B8%AD%E6%96%87/</link>
+      <link>https://paveldanov.net/tags/%E4%B8%AD%E6%96%87/</link>
       <pubDate>Mon, 25 Nov 2024 23:19:45 +0000</pubDate>
-      <guid>https://underscorehao.net/tags/%E4%B8%AD%E6%96%87/</guid>
+      <guid>https://paveldanov.net/tags/%E4%B8%AD%E6%96%87/</guid>
       <description></description>
     </item>
     <item>
       <title>C&#43;&#43;</title>
-      <link>https://underscorehao.net/tags/c&#43;&#43;/</link>
+      <link>https://paveldanov.net/tags/c&#43;&#43;/</link>
       <pubDate>Wed, 10 Nov 2021 12:50:00 +0000</pubDate>
-      <guid>https://underscorehao.net/tags/c&#43;&#43;/</guid>
+      <guid>https://paveldanov.net/tags/c&#43;&#43;/</guid>
       <description></description>
     </item>
     <item>
       <title>Sfml</title>
-      <link>https://underscorehao.net/tags/sfml/</link>
+      <link>https://paveldanov.net/tags/sfml/</link>
       <pubDate>Wed, 10 Nov 2021 12:50:00 +0000</pubDate>
-      <guid>https://underscorehao.net/tags/sfml/</guid>
+      <guid>https://paveldanov.net/tags/sfml/</guid>
       <description></description>
     </item>
     <item>
       <title>Windows</title>
-      <link>https://underscorehao.net/tags/windows/</link>
+      <link>https://paveldanov.net/tags/windows/</link>
       <pubDate>Wed, 10 Nov 2021 12:50:00 +0000</pubDate>
-      <guid>https://underscorehao.net/tags/windows/</guid>
+      <guid>https://paveldanov.net/tags/windows/</guid>
       <description></description>
     </item>
     <item>
       <title>Chinese</title>
-      <link>https://underscorehao.net/tags/chinese/</link>
+      <link>https://paveldanov.net/tags/chinese/</link>
       <pubDate>Thu, 14 May 2020 20:00:00 +0100</pubDate>
-      <guid>https://underscorehao.net/tags/chinese/</guid>
+      <guid>https://paveldanov.net/tags/chinese/</guid>
       <description></description>
     </item>
     <item>
       <title>.Net</title>
-      <link>https://underscorehao.net/tags/.net/</link>
+      <link>https://paveldanov.net/tags/.net/</link>
       <pubDate>Sat, 11 Jan 2020 19:33:48 +0000</pubDate>
-      <guid>https://underscorehao.net/tags/.net/</guid>
+      <guid>https://paveldanov.net/tags/.net/</guid>
       <description></description>
     </item>
     <item>
       <title>Azure</title>
-      <link>https://underscorehao.net/tags/azure/</link>
+      <link>https://paveldanov.net/tags/azure/</link>
       <pubDate>Sat, 11 Jan 2020 19:33:48 +0000</pubDate>
-      <guid>https://underscorehao.net/tags/azure/</guid>
+      <guid>https://paveldanov.net/tags/azure/</guid>
       <description></description>
     </item>
     <item>
       <title>C#</title>
-      <link>https://underscorehao.net/tags/c%23/</link>
+      <link>https://paveldanov.net/tags/c%23/</link>
       <pubDate>Sat, 11 Jan 2020 19:33:48 +0000</pubDate>
-      <guid>https://underscorehao.net/tags/c%23/</guid>
+      <guid>https://paveldanov.net/tags/c%23/</guid>
       <description></description>
     </item>
     <item>
       <title>Aws</title>
-      <link>https://underscorehao.net/tags/aws/</link>
+      <link>https://paveldanov.net/tags/aws/</link>
       <pubDate>Tue, 13 Mar 2018 22:27:05 +0200</pubDate>
-      <guid>https://underscorehao.net/tags/aws/</guid>
+      <guid>https://paveldanov.net/tags/aws/</guid>
       <description></description>
     </item>
   </channel>

@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Azure on Pavel Danov / 亶保罗</title>
-    <link>https://underscorehao.net/tags/azure/</link>
+    <link>https://paveldanov.net/tags/azure/</link>
     <description>Recent content in Azure on Pavel Danov / 亶保罗</description>
     <generator>Hugo</generator>
     <language>en</language>
     <lastBuildDate>Sat, 11 Jan 2020 19:33:48 +0000</lastBuildDate>
-    <atom:link href="https://underscorehao.net/tags/azure/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://paveldanov.net/tags/azure/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Publishing to Multiple Topics in Azure Service Bus</title>
-      <link>https://underscorehao.net/2020/01/publishing-to-multiple-topics-in-azure-service-bus/</link>
+      <link>https://paveldanov.net/2020/01/publishing-to-multiple-topics-in-azure-service-bus/</link>
       <pubDate>Sat, 11 Jan 2020 19:33:48 +0000</pubDate>
-      <guid>https://underscorehao.net/2020/01/publishing-to-multiple-topics-in-azure-service-bus/</guid>
+      <guid>https://paveldanov.net/2020/01/publishing-to-multiple-topics-in-azure-service-bus/</guid>
       <description>&lt;h2 id=&#34;multiple-topics&#34;&gt;Multiple topics&lt;/h2&gt;&#xA;&lt;p&gt;There are two main approaches when it comes to topics in Azure Service Bus. Depending what&amp;rsquo;s your architecture and needs you can have either:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;Filtered topic&lt;/strong&gt; - this means you have only one topic for all of your event types. All publishers push messages onto that single topic. Some of the message fields and properties are then used for filtering by the subscribers since in most cases a subscriber will be interested only in certain types of messages.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Multiple topics&lt;/strong&gt; - you have multiple topics for different domain events or channels of your system. You can still leverage the filtering to have more granular control in your subscribers. You can also have topics based on priority, event types etc.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;Our main concern in this post is the second use case and how to build a nice &lt;a href=&#34;https://docs.microsoft.com/en-us/dotnet/api/microsoft.azure.servicebus.topicclient?view=azure-dotnet&#34;&gt;&lt;strong&gt;&lt;code&gt;ITopicClient&lt;/code&gt;&lt;/strong&gt;&lt;/a&gt; factory inside a .NET Core project. I&amp;rsquo;ve built my example with Azure Functions, but 99.9% of the code is completely identical to what you would do in a normal .NET Core web service.&lt;/p&gt;</description>
     </item>
   </channel>
